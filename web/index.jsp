@@ -1,3 +1,4 @@
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- 
     Document   : index.jsp
     Created on : May 16, 2023, 2:04:05 PM
@@ -52,7 +53,7 @@
 
     <body>
         <div class="super_container">
-            <!--<!-- Header  -->
+            <!-- Header  -->
             
             <jsp:include page="header.jsp" />
 
@@ -114,7 +115,6 @@
             </div>
 
             <!-- Menu -->
-
             <div class="new_arrivals">
                 <div class="container">
                     <div class="row">
@@ -134,15 +134,16 @@
                                         class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked"
                                         data-filter="*"
                                         >
-                                        all
+                                        all <!-- catename -->
                                     </li>
-                                    <li
-                                        class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-                                        data-filter=".women"
-                                        >
-                                        combo
-                                    </li>
-                                    <li
+                                    <c:forEach items="${cate}" var="c" >
+                                        <li
+                                            class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
+                                            data-filter=".hh${c.cId}"> <!-- Women change to CateName là lum. -->
+                                            ${c.cName}
+                                        </li>
+                                    </c:forEach>
+<!--                                     <li
                                         class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
                                         data-filter=".accessories"
                                         >
@@ -171,7 +172,7 @@
                                         data-filter=".men"
                                         >
                                         other
-                                    </li>
+                                    </li>-->
                                 </ul>
                             </div>
                         </div>
@@ -183,37 +184,39 @@
                                 data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'
                                 >
                                 <!-- Product 1 -->
-
-                                <div class="product-item men">
-                                    <div class="product discount product_filter">
-                                        <div class="product_image">
-                                            <img src="images/product_1.png" alt="" />
-                                        </div>
-                                        <div class="favorite favorite_left"></div>
-                                        <div
-                                            class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"
-                                            >
-                                            <span>-$20</span>
-                                        </div>
-                                        <div class="product_info">
-                                            <h6 class="product_name">
-                                                <a href="single.jsp"
-                                                   >Fujifilm X100T 16 MP Digital Camera (Silver)</a
+                                <c:forEach items="${product}" var="p" >
+                                    <div class="product-item hh${p.getCateID()}"> <!-- fix name "men" to CateName -->
+                                        <div class="product discount product_filter">
+                                            <div class="product_image">
+                                                <img src="${p.pImg}" alt="" /> <!-- img -->
+                                            </div>
+                                            <div class="favorite favorite_left"></div>
+<!--                                            <div
+                                                class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"
                                                 >
-                                            </h6>
-                                            <div class="product_price">
-                                                $520.00<span>$590.00</span>
+                                                <span>-$20</span>   
+                                            </div>--> <!-- Giam gia -->
+                                            <div class="product_info">
+                                                <h6 class="product_name">
+                                                    <a href="single.jsp"
+                                                       >${p.pName}</a 
+                                                    > <!-- Pname -->
+                                                </h6>
+                                                <div class="product_price">
+                                                    ${p.pPrice} VNÐ 
+<!--                                                    <span>$590.00</span>-->
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="red_button add_to_cart_button">
+                                            <a href="#">add to cart</a>
+                                        </div>
                                     </div>
-                                    <div class="red_button add_to_cart_button">
-                                        <a href="#">add to cart</a>
-                                    </div>
-                                </div>
+                                </c:forEach>    
 
                                 <!-- Product 2 -->
 
-                                <div class="product-item women">
+<!--                                <div class="product-item women">
                                     <div class="product product_filter">
                                         <div class="product_image">
                                             <img src="images/product_2.png" alt="" />
@@ -238,7 +241,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Product 3 -->
+                                 Product 3 
 
                                 <div class="product-item women">
                                     <div class="product product_filter">
@@ -260,7 +263,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Product 4 -->
+                                 Product 4 
 
                                 <div class="product-item accessories">
                                     <div class="product product_filter">
@@ -287,7 +290,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Product 5 -->
+                                 Product 5 
 
                                 <div class="product-item women men">
                                     <div class="product product_filter">
@@ -309,7 +312,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Product 6 -->
+                                 Product 6 
 
                                 <div class="product-item accessories">
                                     <div class="product discount product_filter">
@@ -338,7 +341,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Product 7 -->
+                                 Product 7 
 
                                 <div class="product-item women">
                                     <div class="product product_filter">
@@ -360,7 +363,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Product 8 -->
+                                 Product 8 
 
                                 <div class="product-item accessories">
                                     <div class="product product_filter">
@@ -382,7 +385,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Product 9 -->
+                                 Product 9 
 
                                 <div class="product-item men">
                                     <div class="product product_filter">
@@ -409,7 +412,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Product 10 -->
+                                 Product 10 
 
                                 <div class="product-item men">
                                     <div class="product product_filter">
@@ -429,7 +432,7 @@
                                     <div class="red_button add_to_cart_button">
                                         <a href="#">add to cart</a>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                     </div>
