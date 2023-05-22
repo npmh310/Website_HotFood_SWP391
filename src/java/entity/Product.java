@@ -14,16 +14,18 @@ public class Product {
     private String pImg;
     private float pPrice;
     private String pDetail;
+    private String CateID;
 
     public Product() {
     }
 
-    public Product(int pId, String pName, String pImg, float pPrice, String pDetail) {
+    public Product(int pId, String pName, String pImg, float pPrice, String pDetail, String CateID) {
         this.pId = pId;
         this.pName = pName;
         this.pImg = pImg;
         this.pPrice = pPrice;
         this.pDetail = pDetail;
+        this.CateID = CateID;
     }
 
     public int getpId() {
@@ -66,10 +68,16 @@ public class Product {
         this.pDetail = pDetail;
     }
 
+    public String getCateID() {
+        return CateID;
+    }
+
+    public void setCateID(String CateID) {
+        this.CateID = CateID;
+    }
+
     @Override
     public String toString() {
-        return "Product{" + "pId=" + pId + ", pName=" + pName + ", pImg=" + pImg + ", pPrice=" + pPrice + ", pDetail=" + pDetail + '}';
+        return "Product{" + "pId=" + pId + ", pName=" + pName + ", pImg=" + pImg + ", pPrice=" + pPrice + ", pDetail=" + pDetail + ", CateID=" + CateID + '}';
     }
-   
-    
 }
