@@ -198,7 +198,7 @@
                                             </div>--> <!-- Giam gia -->
                                             <div class="product_info">
                                                 <h6 class="product_name">
-                                                    <a href="single.jsp"
+                                                    <a href="detail?pId=${p.pId}"
                                                        >${p.pName}</a 
                                                     > <!-- Pname -->
                                                 </h6>
