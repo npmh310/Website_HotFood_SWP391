@@ -28,7 +28,7 @@ public class ProductDAO implements DatabaseInfo{
         }
         try {
             Connection con = DriverManager.getConnection(DBURL, USERDB, PASSDB);
-            System.out.println("Connect database success!");
+//            System.out.println("Connect database success!");
             return con;
         } catch (SQLException e) {
             System.out.println("Error: " + e);
@@ -67,13 +67,13 @@ public class ProductDAO implements DatabaseInfo{
         return null;
     }
     
-    public static ArrayList<Product> getProductByIdCate(String id){
+    public ArrayList<Product> getProductByIdCate(String cId){
         
         ArrayList<Product> ls = new ArrayList<>();
         String query = "Select * from Product where CateID = ?";
         try ( Connection con = getConnect()) {
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, id);
+            ps.setString(1, cId);
             ResultSet  rs = ps.executeQuery();
             while (rs.next()) {
                 ls.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(6), rs.getFloat(5), rs.getString(4), rs.getString(3)));           
@@ -101,6 +101,20 @@ public class ProductDAO implements DatabaseInfo{
     }
     
     
+    public  Category getNameCateById(String cId){
+        Category cate = new Category();
+        String query = "select  * from Category where CateID =?";
+        try (Connection con = getConnect()) {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, cId);
+            ResultSet  rs = ps.executeQuery();
+            while(rs.next()){
+             return new Category(rs.getInt(1), rs.getString(2));
+            }
+        } catch (Exception e) {
+        }
+    return null;
+}
 //    
 //     public static int add(Product p) {
 //        int rs;
