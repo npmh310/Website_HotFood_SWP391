@@ -33,6 +33,25 @@ public class category extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String cateId = request.getParameter("cId");
+        ProductDAO p = new ProductDAO();
+
+        ArrayList<Category> cate = p.getAllCate();
+        ArrayList<Product> productList;
+        Category cateByCId = p.getNameCateById(cateId);
+        
+        if (cateId == null) {
+            productList = p.getAllProduct();
+        } else {
+            productList = p.getProductByIdCate(cateId);
+        }
+
+//         response.getWriter().print(listProductByCid);
+        request.setAttribute("cate", cate);
+        request.setAttribute("tag", cateId);
+        request.setAttribute("cateByCId", cateByCId);
+//        request.setAttribute("product", prd);
+        request.setAttribute("listProductByCid", productList);
         request.getRequestDispatcher("categories.jsp").forward(request, response);
     }
 
@@ -48,16 +67,7 @@ public class category extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ProductDAO p = new ProductDAO();
-        ArrayList<Category> cate = p.getAllCate();
-        ArrayList<Product> prd = p.getAllProduct();
-        
-//        System.out.println(cate + "hi");
-//        System.out.println(prd);
-        
-        request.setAttribute("cate", cate);
-        request.setAttribute("product", prd);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
