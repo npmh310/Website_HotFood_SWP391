@@ -86,7 +86,7 @@
                                 style="background-image: url(images/banner_chicken.jpg)"
                                 >
                                 <div class="banner_category">
-                                    <a href="categories.jsp">fried chicken</a>
+                                    <a href="category?cId=2">fried chicken</a>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                                 style="background-image: url(images/banner_pizza.jpg)"
                                 >
                                 <div class="banner_category">
-                                    <a href="categories.jsp">pizza</a>
+                                    <a href="category?cId=4">pizza</a>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                                 style="background-image: url(images/banner_hamburger4.jpg)"
                                 >
                                 <div class="banner_category">
-                                    <a href="categories.jsp">hamburger</a>
+                                    <a href="category?cId=3">hamburger</a>
                                 </div>
                             </div>
                         </div>
@@ -143,36 +143,7 @@
                                             ${c.cName}
                                         </li>
                                     </c:forEach>
-<!--                                     <li
-                                        class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-                                        data-filter=".accessories"
-                                        >
-                                        fried chicken
-                                    </li>
-                                    <li
-                                        class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-                                        data-filter=".men"
-                                        >
-                                        hamburger
-                                    </li>
-                                    <li
-                                        class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-                                        data-filter=".men"
-                                        >
-                                        pizza
-                                    </li>
-                                    <li
-                                        class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-                                        data-filter=".men"
-                                        >
-                                        water
-                                    </li>
-                                    <li
-                                        class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-                                        data-filter=".men"
-                                        >
-                                        other
-                                    </li>-->
+
                                 </ul>
                             </div>
                         </div>
@@ -213,6 +184,7 @@
                                         </div>
                                     </div>
                                 </c:forEach>    
+
 
                             </div>
                         </div>
