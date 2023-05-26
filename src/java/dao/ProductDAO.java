@@ -18,8 +18,8 @@ import java.sql.SQLException;
  *
  * @author linhp
  */
-public class ProductDAO implements DatabaseInfo{
-    
+public class ProductDAO implements DatabaseInfo {
+
     public static Connection getConnect() {
         try {
             Class.forName(DRIVERNAME);
@@ -35,72 +35,72 @@ public class ProductDAO implements DatabaseInfo{
         }
         return null;
     }
-    
-    public static Product getProductById(String id){
+
+    public static Product getProductById(String id) {
 
         String query = "Select * from Product where pID = ?";
         try ( Connection con = getConnect()) {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, id);
-            ResultSet  rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                return new Product(rs.getInt(1), rs.getString(2), rs.getString(6), rs.getFloat(5), rs.getString(4), rs.getString(3));           
+                return new Product(rs.getInt(1), rs.getString(2), rs.getString(6), rs.getFloat(5), rs.getString(4), rs.getString(3));
             }
         } catch (Exception e) {
         }
         return null;
     }
 //    
-    public static ArrayList<Product> getAllProduct(){
-        
+
+    public static ArrayList<Product> getAllProduct() {
+
         ArrayList<Product> ls = new ArrayList<>();
         String query = "Select * from Product";
         try ( Connection con = getConnect()) {
             PreparedStatement ps = con.prepareStatement(query);
-            ResultSet  rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                ls.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(6), rs.getFloat(5), rs.getString(4), rs.getString(3)));           
+                ls.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(6), rs.getFloat(5), rs.getString(4), rs.getString(3)));
             }
             return ls;
         } catch (Exception e) {
         }
         return null;
     }
-    
-    public static ArrayList<Product> getProductByIdCate(String id){
-        
+
+    public static ArrayList<Product> getProductByIdCate(String id) {
+
         ArrayList<Product> ls = new ArrayList<>();
         String query = "Select * from Product where CateID = ?";
         try ( Connection con = getConnect()) {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, id);
-            ResultSet  rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                ls.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(6), rs.getFloat(5), rs.getString(4), rs.getString(3)));           
+                ls.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(6), rs.getFloat(5), rs.getString(4), rs.getString(3)));
             }
             return ls;
         } catch (Exception e) {
         }
         return null;
     }
-    
-    public ArrayList<Category> getAllCate(){
-        
+
+    public ArrayList<Category> getAllCate() {
+
         ArrayList<Category> ls = new ArrayList<>();
         String query = "Select * from Category";
         try ( Connection con = getConnect()) {
             PreparedStatement ps = con.prepareStatement(query);
-            ResultSet  rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                ls.add(new Category(rs.getInt(1), rs.getString(2)));           
+                ls.add(new Category(rs.getInt(1), rs.getString(2)));
             }
             return ls;
         } catch (Exception e) {
         }
         return null;
     }
-    
-    
+
 //    
 //     public static int add(Product p) {
 //        int rs;
@@ -146,9 +146,27 @@ public class ProductDAO implements DatabaseInfo{
 //        } catch (Exception e) {
 //        }
 //    }
-    
 //    public static void main(String[] args) {
 //        System.out.println(getAllProduct1());
 //    }
+    public ArrayList<Product> searchProducrByName(String txtSearch) {
+        ArrayList<Product> products = new ArrayList<>();
+        String query = "select * from Product\n"
+                + "where [pName] like ?";
+
+        try ( Connection con = getConnect()) {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, "%" + txtSearch + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Product product = new Product(rs.getInt(1), rs.getString(2), rs.getString(6), rs.getFloat(5), rs.getString(4), rs.getString(3));
+                products.add(product);
+            }
+        } catch (Exception e) {
+        }
+        return products;
+
+    }
+
     
 }

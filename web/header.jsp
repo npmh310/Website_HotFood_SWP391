@@ -48,38 +48,11 @@
         <link rel="stylesheet" type="text/css" href="styles/main_styles.css" />
         <link rel="stylesheet" type="text/css" href="styles/responsive.css" />
         <link rel="stylesheet" href="styles/myCss.css" />
-        <style>
-            /* Style the buttons that are used to open and close the accordion panel */
-            .accordion {
-               
-                background-color: #fff;
-                color: #444;
-                cursor: pointer;
-                padding: 18px;
-                width: 100%;
-                text-align: left;
-                border: none;
-                outline: none;
-                transition: 0.4s;
-            }
-
-            /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-            .active, .accordion:hover {
-                background-color: #ccc;
-                width: fit-content;
-                height: fit-content;
-                padding: 10px 10px 10px 10px;
-            }
-
-            /* Style the accordion panel. Note: hidden by default */
-            .panel {
-                padding: 10px 10px;
-                background-color: white;
-                display: none;
-                overflow: hidden;
-            }
-        </style>
+        
+        <link rel="stylesheet" href="styles/search.css" />
     </head>
+
+
 
     <body>
         <div class="super_container">
@@ -101,7 +74,7 @@
                                     <ul class="navbar_menu">
                                         <li><a href="home">home</a></li>
                                         <li><a href="#">Promotional</a></li>
-                                        <li><a href="#">Combo</a></li>
+                                        <!--<li><a href="#">Combo</a></li>-->
                                         <li><a href="categories.jsp">categories</a></li>
                                         <li><a href="#">best seller</a></li>
 
@@ -109,10 +82,12 @@
                                     <ul class="navbar_user">
                                         <li>
                                             <div class="input-group rounded">
-                                                <button class="accordion"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                                <button style="border: none; background-color: #fff" class="accordion"><i class="fa fa-search" aria-hidden="true"></i></button>
                                                 <div class="panel">
                                                     <form action="search" method="post">
-                                                        <input name="txt" type="text" placeholder="Search...">
+                                                        <input name="txt" type="text" placeholder="search" maxlength="40" 
+                                                               style="width: 100px; font-family: unset !important; 
+                                                               font-weight: normal; height: 28px; padding-left: 7px; font-size: 14px">
                                                     </form>
                                                 </div>
                                             </div>
@@ -209,7 +184,7 @@
                     acc[i].addEventListener("click", function () {
                         /* Toggle between adding and removing the "active" class,
                          to highlight the button that controls the panel */
-                        this.classList.toggle("active");
+                        this.classList.toggle("abc");
 
                         /* Toggle between hiding and showing the active panel */
                         var panel = this.nextElementSibling;
