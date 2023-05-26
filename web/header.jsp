@@ -65,7 +65,7 @@
 
             /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
             .active, .accordion:hover {
-                background-color: #ccc;
+                background-color: #fff;
                 width: fit-content;
                 height: fit-content;
                 padding: 10px 10px 10px 10px;
@@ -112,7 +112,9 @@
                                                 <button class="accordion"><i class="fa fa-search" aria-hidden="true"></i></button>
                                                 <div class="panel">
                                                     <form action="search" method="post">
-                                                        <input name="txt" type="text" placeholder="Search...">
+                                                        <input name="txt" type="text" placeholder="search" maxlength="40" 
+                                                               style="width: 100px; font-family: unset !important; 
+                                                               font-weight: normal; height: 28px; padding-left: 7px; font-size: 14px">
                                                     </form>
                                                 </div>
                                             </div>

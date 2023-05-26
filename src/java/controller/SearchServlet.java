@@ -29,7 +29,7 @@ public class SearchServlet extends HttpServlet {
        
         ArrayList<Product> list = dao.searchProducrByName(txt);
         
-        
+         request.setAttribute("product_size", list.size());
         request.setAttribute("product", list);
  
         request.getRequestDispatcher("search.jsp").forward(request, response);
