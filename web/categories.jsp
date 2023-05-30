@@ -83,7 +83,7 @@
                                     <li class="active">
                                     <c:choose>
                                         <c:when test="${tag == null}">
-                                            <a href="index.jsp"
+                                            <a href="#"
                                                ><i class="fa fa-angle-right" aria-hidden="true"></i>All
                                             </a>
                                         </c:when>
