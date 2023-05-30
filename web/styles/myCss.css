@@ -2,7 +2,6 @@
     background-size: cover;
     background-position: center bottom 15%;
 }
-
 .header
 {
 	position: fixed;
@@ -26,12 +25,9 @@
 	color: #b5aec4;
 	text-transform: uppercase;
 }
-
-
 /********************************
 3.4 Main Navigation
 *********************************/
-
 .main_nav_container
 {
 	width: 100%;
@@ -126,12 +122,9 @@
 	font-size: 12px;
 	color: #FFFFFF;
 }
-
-
 /*********************************
 3.6 Logo
 *********************************/
-
 .logo_container
 {
 	position: absolute;
@@ -154,6 +147,3 @@
 {
 	color: #fe4c50;
 }
-
-/*/**********************************/
-
