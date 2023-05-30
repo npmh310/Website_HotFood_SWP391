@@ -87,7 +87,7 @@
                       ></a>
                     </li>
                     <li class="checkout">
-                      <a href="#">
+                      <a href="cart.jsp">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         <span id="checkout_items" class="checkout_items"
                           >2</span
@@ -105,7 +105,7 @@
         </div>
       </header>
 
-      <div class="fs_menu_overlay"></div>
+      
       <div class="hamburger_menu">
         <div class="hamburger_close">
           <i class="fa fa-times" aria-hidden="true"></i>
