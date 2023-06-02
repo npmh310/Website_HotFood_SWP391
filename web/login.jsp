@@ -29,40 +29,48 @@
   </head>
   <body>
     <div class="container" id="container">
-      <div class="form-container sign-up-container">
-        <form action="#">
-          <h1 style="margin-bottom: 10px; color: #3b3b4d">Create Account</h1>
-          <div class="social-container">
-            <a href="#" class="social"
-              ><i class="fa fa-facebook" aria-hidden="true"></i
-            ></a>
-            <a href="#" class="social"
-              ><i class="fa fa-google" aria-hidden="true"></i
-            ></a>
-          </div>
-          <span style="margin-bottom: 10px;">or use your email for registration</span>
-          <input type="text" placeholder="Name"  />
-          <input type="text" placeholder="Username" />
-          <input type="password" placeholder="Password" />
-          <input type="email" placeholder="Email" />
-          <input type="tel" placeholder="Phone" />
-          <button style="margin-top: 15px;">Sign Up</button>
-        </form>
-      </div>
+            <div class="form-container sign-up-container">
+              <form action="login" method="post">
+                <h1 style="margin-bottom: 10px; color: #3b3b4d">Create Account</h1>
+                <div class="social-container">
+      <!--            <a href="#" class="social"
+                    ><i class="fa fa-facebook" aria-hidden="true"></i
+                  ></a>-->
+                  <a href="https://accounts.google.com/o/oauth2/auth?scope=email profile&redirect_uri=http://localhost:8080/Final_Project_SWE391/GoogleSignInServlet&response_type=code
+                     &client_id=47980504396-boe53k1d63t9639n02bdob58ki3fnkjb.apps.googleusercontent.com&approval_prompt=force" class="social">
+                      <i class="fa fa-google" aria-hidden="true"></i
+                  ></a> 
+                </div>
+                <p>${status1}${status}</p>
+                <span style="margin-bottom: 10px;">or use your email for registration</span>
+                <input type="hidden" name="opption" value="register"/>
+                <input type="text" value="${fullname}" name="fullname" placeholder="Full-Name" />
+                <input type="text" name="username1" placeholder="Username" required/>
+                <input type="password" name="password1" placeholder="New password" required/>
+                <input type="email" name="email" placeholder="Email" required/>
+                <input type="text" name="address" placeholder="Address" required/>
+                <input type="tel" value="${phoneNum}" name="phone" placeholder="Phone number" required/>
+                <button style="margin-top: 15px;">Sign Up</button>
+              </form>
+            </div>
       <div class="form-container sign-in-container">
-        <form action="#">
+        <form action="login" method="post">
           <h1 style="margin-bottom: 15px; color: #3b3b4d">Sign in</h1>
           <div class="social-container">
-            <a href="#" class="social"
+<!--            <a href="#" class="social"
               ><i class="fa fa-facebook" aria-hidden="true"></i
-            ></a>
-            <a href="#" class="social"
-              ><i class="fa fa-google" aria-hidden="true"></i
+            ></a>-->
+            <a href="https://accounts.google.com/o/oauth2/auth?scope=email profile&redirect_uri=http://localhost:8080/Final_Project_SWE391/GoogleSignInServlet&response_type=code
+                     &client_id=47980504396-boe53k1d63t9639n02bdob58ki3fnkjb.apps.googleusercontent.com&approval_prompt=force" 
+                class="social">
+                <i class="fa fa-google" aria-hidden="true"></i
             ></a>
           </div>
           <span style="margin: 5px 0 20px 0;">or use your account</span>
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
+          <p>${mess}${status}</p>
+          <input type="hidden" name="opption" value="login"/>
+          <input type="text" name="username" placeholder="Username or email address" required />
+          <input type="password" name="password" placeholder="Password" required />
           <a href="#" style="margin: 30px 0">Forgot your password?</a>
           <button>Sign In</button>
         </form>

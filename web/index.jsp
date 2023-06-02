@@ -64,7 +64,7 @@
                     <div class="row align-items-center fill_height">
                         <div class="col">
                             <div class="main_slider_content">
-                                <h6>Welcome back Minh Hieu</h6>
+                                <h6>Welcome back ${sessionScope.user.aFullname}</h6>
                                 <h1>low cost - high quality</h1>
                                 <div class="red_button shop_now_button">
                                     <a href="#">shop now</a>

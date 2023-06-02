@@ -4,6 +4,7 @@
     Author     : minhhieu
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,14 +65,14 @@
             <div class="row">
               <div class="col-lg-12 text-right">
                 <div class="logo_container">
-                  <a href="index.jsp">hot<span>food</span></a>
+                  <a href="home">hot<span>food</span></a>
                 </div>
                 <nav class="navbar">
                   <ul class="navbar_menu">
                     <li><a href="#">home</a></li>
                     <li><a href="#">Promotional</a></li>
                     <li><a href="#">Combo</a></li>
-                    <li><a href="categories.jsp">categories</a></li>
+                    <li><a href="category">categories</a></li>
                     <li><a href="#">best seller</a></li>
                     
                   </ul>
@@ -81,11 +82,22 @@
                         ><i class="fa fa-search" aria-hidden="true"></i
                       ></a>
                     </li>
+                    <c:if test="${empty sessionScope.user}">
                     <li>
-                      <a href="login.jsp"
+                      <a href="login"
                         ><i class="fa fa-user" aria-hidden="true"></i
                       ></a>
                     </li>
+                    </c:if>
+                    
+                    <c:if test="${not empty sessionScope.user}">
+                    <li>
+                      <a href="detail"
+                        ><i class="fa fa-user" aria-hidden="true"></i
+                      ></a>
+                    </li>
+                    </c:if>
+                    
                     <li class="checkout">
                       <a href="#">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
