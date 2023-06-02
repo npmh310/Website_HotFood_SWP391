@@ -28,10 +28,10 @@ public class ProductDAO implements DatabaseInfo{
         }
         try {
             Connection con = DriverManager.getConnection(DBURL, USERDB, PASSDB);
-            System.out.println("Connect database success!");
+//            System.out.println("Connect database success!");
             return con;
         } catch (SQLException e) {
-            System.out.println("Error: " + e);
+            System.out.println("SQL Error: " + e);
         }
         return null;
     }
@@ -147,8 +147,8 @@ public class ProductDAO implements DatabaseInfo{
 //        }
 //    }
     
-//    public static void main(String[] args) {
-//        System.out.println(getAllProduct1());
-//    }
+    public static void main(String[] args) {
+        System.out.println(getAllProduct());
+    }
     
 }

@@ -57,7 +57,7 @@ public class category extends HttpServlet {
         
         request.setAttribute("cate", cate);
         request.setAttribute("product", prd);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("categories.jsp").forward(request, response);
     }
 
     /**
