@@ -64,11 +64,12 @@
   <body>
     <div class="super_container">
       <!-- Header -->
+      <jsp:include page="header.jsp" />
 
-      <header class="header trans_300">
-        <!-- Top Navigation -->
+<!--      <header class="header trans_300">
+         Top Navigation 
 
-        <!-- Main Navigation -->
+         Main Navigation 
 
         <div class="main_nav_container">
           <div class="container">
@@ -113,7 +114,7 @@
             </div>
           </div>
         </div>
-      </header>
+      </header>-->
 
       <div class="fs_menu_overlay"></div>
       <div class="hamburger_menu">
