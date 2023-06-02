@@ -1,13 +1,16 @@
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html lang="en">
     <head>
+
         <title>Hot Food</title>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+        <jsp:include page="header.jsp" />
         <!-- Tạo logo ở title -->
         <link
             rel="shortcut icon"
@@ -54,103 +57,29 @@
             type="text/css"
             href="styles/categories_responsive.css"
             />
+
         <link rel="stylesheet" href="styles/cart.css" />
     </head>
+    <style>
+        .logo_container a {
+            font-size: 27px;
+            color: #1e1e27;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
 
+        .navbar_menu li a {
+            display: block;
+            color: #1e1e27;
+            font-size: 16px;
+            font-weight: 500;
+            text-transform: uppercase;
+            padding: 20px;
+        }
+    </style>
     <body>
         <div class="super_container">
             <!-- Header -->
-
-
-            <header class="header trans_300">
-                <!-- Top Navigation -->
-
-                <!-- Main Navigation -->
-
-                <div class="main_nav_container">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 text-right">
-                                <div class="logo_container">
-                                    <a href="home">hot<span>food</span></a>
-                                </div>
-                                <nav class="navbar">
-                                    <ul class="navbar_menu">
-                                        <li><a href="home">home</a></li>
-                                        <li><a href="#">Promotional</a></li>
-                                        <!--<li><a href="category?cId=1">Combo</a></li>-->
-                                        <li><a href="category">categories</a></li>
-                                        <li><a href="#">best seller</a></li>
-
-                                    </ul>
-                                    <ul class="navbar_user">
-                                        <li>
-                                            <a href="#"
-                                               ><i class="fa fa-search" aria-hidden="true"></i
-                                                ></a>
-                                        </li>
-                                        <li>
-                                            <a href="login.jsp"
-                                               ><i class="fa fa-user" aria-hidden="true"></i
-                                                ></a>
-                                        </li>
-                                        <li class="checkout">
-                                            <a href="cart.jsp">
-                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                <span id="checkout_items" class="checkout_items"
-                                                      >2</span
-                                                >
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <div class="hamburger_container">
-                                        <i class="fa fa-bars" aria-hidden="true"></i>
-                                    </div>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-
-
-            <div class="hamburger_menu">
-                <div class="hamburger_close">
-                    <i class="fa fa-times" aria-hidden="true"></i>
-                </div>
-                <div class="hamburger_menu_content text-right">
-                    <ul class="menu_top_nav">
-
-                        <li class="menu_item has-children">
-                            <a href="#">
-                                My Account
-                                <i class="fa fa-angle-down"></i>
-                            </a>
-                            <ul class="menu_selection">
-                                <li>
-                                    <a href="#"
-                                       ><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a
-                                    >
-                                </li>
-                                <li>
-                                    <a href="#"
-                                       ><i class="fa fa-user-plus" aria-hidden="true"></i
-                                        >Register</a
-                                    >
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu_item"><a href="home">home</a></li>
-                        <li class="menu_item"><a href="#">Promotional</a></li>
-                        <!--<li class="menu_item"><a href="category?cId=1">Combo</a></li>-->
-                        <li class="menu_item"><a href="category">Categories</a></li>
-                        <li class="menu_item"><a href="#">Best Seller</a></li>
-
-                    </ul>
-                </div>
-            </div>
-
-
             <div class="container product_section_container" style="margin-top: 150px">
                 <div class="card" style="max-width: 1200px">
                     <div class="row">
