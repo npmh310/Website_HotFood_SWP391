@@ -102,8 +102,8 @@
                                     <ul class="navbar_menu">
                                         <li><a href="home">home</a></li>
                                         <li><a href="#">Promotional</a></li>
-                                        <li><a href="#">Combo</a></li>
-                                        <li><a href="categories.jsp">categories</a></li>
+                                        
+                                        <li><a href="category">categories</a></li>
                                         <li><a href="#">best seller</a></li>
 
                                     </ul>
@@ -196,8 +196,8 @@
                         </li>
                         <li class="menu_item"><a href="home">home</a></li>
                         <li class="menu_item"><a href="#">Promotional</a></li>
-                        <li class="menu_item"><a href="#">Combo</a></li>
-                        <li class="menu_item"><a href="#">Categories</a></li>
+                       
+                        <li class="menu_item"><a href="category">Categories</a></li>
                         <li class="menu_item"><a href="#">Best Seller</a></li>
 
                     </ul>
@@ -228,3 +228,4 @@
             </script>
     </body>
 
+    

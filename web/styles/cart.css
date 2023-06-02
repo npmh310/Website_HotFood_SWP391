@@ -1,12 +1,12 @@
 .main_slider{
     background-size: cover;
-   background-position: center bottom ;
+    background-position: center bottom ;
 }
 
-body{
+/*body{
     background-color: #fff ;
-    /* font-family: 'Montserrat', sans-serif; */
-}
+     font-family: 'Montserrat', sans-serif; 
+}*/
 
 
 
@@ -15,7 +15,7 @@ body{
 }
 
 .card{
-    margin: auto; 
+    margin: auto;
     max-width: 950px;
     width: 90%;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -34,7 +34,7 @@ body{
     border-bottom-left-radius: 1rem;
     border-top-left-radius: 1rem;
 }
- 
+
 @media(max-width:767px){
     .cart{
         padding: 4vh;
@@ -44,8 +44,8 @@ body{
 }
 
 .product-row{
-   border-bottom:1px solid #dee2e6;
- 
+    border-bottom:1px solid #dee2e6;
+
 }
 
 .summary{
@@ -54,14 +54,14 @@ body{
     border-bottom-right-radius: 1rem;
     padding: 4vh;
     color: rgb(65, 65, 65);
-    
+
 }
 
 
 @media(max-width:767px){
     .summary{
-    border-top-right-radius: unset;
-    border-bottom-left-radius: 1rem;
+        border-top-right-radius: unset;
+        border-bottom-left-radius: 1rem;
     }
 }
 
@@ -71,7 +71,9 @@ body{
 .summary .col-10
 {
     padding: 0;
-}.row{
+}
+
+.row{
     margin: 0;
 }
 
@@ -86,7 +88,7 @@ body{
 .col-2, .col{
     padding: 0 1vh;
 }
-a{
+.back-to-shop a{
     padding: 0 1vh;
 }
 .close{
@@ -106,7 +108,7 @@ h5{
 hr{
     margin-top: 1.25rem;
 }
-form{
+.summary form{
     padding: 50px 0;
 }
 select{
@@ -117,7 +119,7 @@ select{
     width: 100%;
     background-color: rgb(247, 247, 247);
 }
-input{
+.summary input{
     border: 1px solid rgba(0, 0, 0, 0.137);
     padding: 1vh;
     margin-bottom: 4vh;
@@ -127,7 +129,7 @@ input{
 }
 input:focus::-webkit-input-placeholder
 {
-      color:transparent;
+    color:transparent;
 }
 .btn{
     background-color: #fe4c50;
@@ -146,21 +148,38 @@ input:focus::-webkit-input-placeholder
     color: white;
     -webkit-box-shadow: none;
     -webkit-user-select: none;
-    transition: none; 
+    transition: none;
 }
 .btn:hover{
     color: white;
 }
 a{
-    color: black; 
+    color: black;
 }
 a:hover{
     color: black;
     text-decoration: none;
 }
- #code{
+
+#code{
     background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253) , rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
     background-repeat: no-repeat;
     background-position-x: 95%;
     background-position-y: center;
+}
+
+.logo_container a {
+    font-size: 27px;
+    color: #1e1e27;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.navbar_menu li a {
+    display: block;
+    color: #1e1e27;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 20px;
 }
