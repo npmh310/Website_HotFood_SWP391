@@ -62,63 +62,49 @@ public class login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String opt = request.getParameter("opption");
-        try {
-            if (opt.equalsIgnoreCase("login")) {
-                String username = request.getParameter("username");
-                String password = request.getParameter("password");
+        if (opt.equalsIgnoreCase("login")) {
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
 
-                Account u = AccountDAO.login(username, password);
-                if (u != null) {
-                    //            System.out.println(u.toString());
-                    // start session
-                    HttpSession session = request.getSession(true);
-                    session.setAttribute("user", u);
+            Account u = AccountDAO.login(username, password);
+            if (u != null) {
+                // start session
+                HttpSession session = request.getSession(true);
+                session.setAttribute("user", u);
 //                    session.setMaxInactiveInterval(15 * 60);
-                    response.sendRedirect("home");
+                response.sendRedirect("home");
 
-                    // send direct to index jsp as customer role(1)
-                } else {
-                    request.setAttribute("mess", "Username or password is incorrect.");
-                    //            response.sendRedirect("Login");
-                }
+            } else {
+                request.setAttribute("mess", "Username or password is incorrect.");
             }
-
-            if (opt.equalsIgnoreCase("register")) {
-                String name = request.getParameter("fullname");
-                String user = request.getParameter("username1");
-                String pass = request.getParameter("password1");
-                String email = request.getParameter("email");
-                String address = request.getParameter("address");
-                String phone = request.getParameter("phone");
-                AccountDAO ls = new AccountDAO();
-                Account acc = new Account(name, user, pass, phone, address, email);
-
-//            if(!pass2.equals(repass2)){
-//                request.setAttribute("status", "sai pass roi dm");
-//                request.setAttribute("name", name2);
-//                request.setAttribute("username", user2);
-//                request.setAttribute("phoneNum", phoneNum2);
-//                request.getRequestDispatcher("signinandup.jsp").forward(request, response);             
-//            }
-                // fix regrex in validation function
-                Account a = ls.checkUserExist(user);
-                Account b = ls.checkEmailExist(email);
-                if (a == null && b == null) {
-                    ls.register(acc);
-                    request.setAttribute("status", "Sign Up Success");
-                    request.getRequestDispatcher("login.jsp").forward(request, response);
-                    response.sendRedirect("login/#registerss");
-                } else {
-                    request.setAttribute("status1", "Your username or email address already exists");
-                    request.setAttribute("fullname", name);
-                    request.setAttribute("phoneNum", phone);
-                    request.getRequestDispatcher("login.jsp").forward(request, response);
-                    response.sendRedirect("login");
-                }
-            }
-        }finally {
-            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
+
+        if (opt.equalsIgnoreCase("register")) {
+            String name = request.getParameter("fullname");
+            String user = request.getParameter("username1");
+            String pass = request.getParameter("password1");
+            String email = request.getParameter("email");
+            String address = request.getParameter("address");
+            String phone = request.getParameter("phone");
+            AccountDAO ls = new AccountDAO();
+            Account acc = new Account(name, user, pass, phone, address, email);
+
+            Account a = ls.checkUserExist(user);
+            Account b = ls.checkEmailExist(email);
+            if (a == null && b == null) {
+                ls.register(acc);
+                request.setAttribute("status", "Sign Up Success");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+                response.sendRedirect("login");
+            } else {
+                request.setAttribute("status1", "Your username or email address already exists");
+                request.setAttribute("fullname", name);
+                request.setAttribute("phoneNum", phone);
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+                response.sendRedirect("login");
+            }
+        }
+//        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
     /**

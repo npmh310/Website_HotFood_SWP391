@@ -10,6 +10,7 @@ import entity.Account;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -97,9 +98,52 @@ public class AccountDAO {
         }
         return -1;
     }
-        
-    public static void main(String[] args) {
-        System.out.println(login("naruto", "Hotfood123"));
+    
+    public static boolean update(Account acc){
+        String query = "UPDATE Account SET FullName=?, PhoneNum=?, Address=?, email=?\n"
+                + " WHERE ID =?";
+        try (Connection con = getConnect()) {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, acc.getaFullname());
+            ps.setString(2, acc.getaPhone());
+            ps.setString(3, acc.getaAddress());
+            ps.setString(4, acc.getaEmail());
+            ps.setInt(5, acc.getaId());
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("loi");
+        }
+        return true;
     }
+    
+    public static boolean resetPass(Account acc){
+        String query = "UPDATE Account SET Password=?\n"
+                + " WHERE ID =?";
+        try (Connection con = getConnect()) {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, acc.getaPassword());
+            ps.setInt(2, acc.getaId());
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("loi");
+        }
+        return true;
+    }
+        
+//    public static void main(String[] args) {
+//        Account ac1 = checkUserExist("linhne");
+//        System.out.println(ac1);
+//        ac1.setaFullname("linhne");
+//        try {
+//            update(ac1);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        System.out.println(ac1);
+//    }
     
 }

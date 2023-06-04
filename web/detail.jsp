@@ -82,7 +82,7 @@
                   <ul class="navbar_menu">
                     <li><a href="home">home</a></li>
                     <li><a href="#">Promotional</a></li>
-                    <li><a href="home">Combo</a></li>
+                    <!--<li><a href="home">Combo</a></li>-->
                     <li><a href="category">categories</a></li>
                     <li><a href="home">best seller</a></li>
                   </ul>
@@ -98,7 +98,7 @@
                       ></a>
                     </li>
                     <li class="checkout">
-                      <a href="#">
+                      <a href="cart.jsp">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         <span id="checkout_items" class="checkout_items"
                           >2</span
@@ -168,7 +168,7 @@
             </li>
             <li class="menu_item"><a href="home">home</a></li>
             <li class="menu_item"><a href="#">Promotional</a></li>
-            <li class="menu_item"><a href="#">Combo</a></li>
+            <!--<li class="menu_item"><a href="#">Combo</a></li>-->
             <li class="menu_item"><a href="category">Categories</a></li>
             <li class="menu_item"><a href="#">Best Seller</a></li>
           </ul>
@@ -202,7 +202,7 @@
           <div class="col-lg-7">
             <div class="single_product_pics">
               <div class="row">
-                <div class="col-lg-9 image_col order-lg-2 order-1">
+                <div class="col-lg-10 image_col order-lg-2 order-1">
                   <div class="single_product_image">
                     <div
                       class="single_product_image_background"

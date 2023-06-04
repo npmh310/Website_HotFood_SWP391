@@ -4,22 +4,21 @@
  */
 package controller;
 
-import dao.ProductDAO;
-import entity.Category;
-import entity.Product;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 
 /**
  *
  * @author linhp
  */
-public class category extends HttpServlet {
+@WebServlet(name = "logout", urlPatterns = {"/logout"})
+public class logout extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,26 +32,9 @@ public class category extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String cateId = request.getParameter("cId");
-        ProductDAO p = new ProductDAO();
-
-        ArrayList<Category> cate = p.getAllCate();
-        ArrayList<Product> productList;
-        Category cateByCId = p.getNameCateById(cateId);
-        
-        if (cateId == null) {
-            productList = p.getAllProduct();
-        } else {
-            productList = p.getProductByIdCate(cateId);
-        }
-
-//         response.getWriter().print(listProductByCid);
-        request.setAttribute("cate", cate);
-        request.setAttribute("tag", cateId);
-        request.setAttribute("cateByCId", cateByCId);
-//        request.setAttribute("product", prd);
-        request.setAttribute("listProductByCid", productList);
-        request.getRequestDispatcher("categories.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        session.removeAttribute("user");
+        response.sendRedirect("home");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

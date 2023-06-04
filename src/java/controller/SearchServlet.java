@@ -5,54 +5,34 @@
 package controller;
 
 import dao.ProductDAO;
-import entity.Category;
 import entity.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 
 /**
  *
- * @author linhp
+ * @author taing
  */
-public class category extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+public class SearchServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String cateId = request.getParameter("cId");
-        ProductDAO p = new ProductDAO();
-
-        ArrayList<Category> cate = p.getAllCate();
-        ArrayList<Product> productList;
-        Category cateByCId = p.getNameCateById(cateId);
+        String txt = request.getParameter("txt");
         
-        if (cateId == null) {
-            productList = p.getAllProduct();
-        } else {
-            productList = p.getProductByIdCate(cateId);
-        }
-
-//         response.getWriter().print(listProductByCid);
-        request.setAttribute("cate", cate);
-        request.setAttribute("tag", cateId);
-        request.setAttribute("cateByCId", cateByCId);
-//        request.setAttribute("product", prd);
-        request.setAttribute("listProductByCid", productList);
-        request.getRequestDispatcher("categories.jsp").forward(request, response);
+        ProductDAO dao = new ProductDAO();
+       
+        ArrayList<Product> list = dao.searchProducrByName(txt);
+        
+         request.setAttribute("product_size", list.size());
+        request.setAttribute("product", list);
+ 
+        request.getRequestDispatcher("search.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -32,7 +32,7 @@ public class GoogleSignInServlet extends HttpServlet {
                     String lastName = userToken.getFamily_name();
 //                    String picture = userToken.getPicture();
 
-                    user = new Account(username, null, firstName + lastName, null, null, email);
+                    user = new Account(username, null, firstName + " " + lastName, null, null, email);
 
                     AccountDAO.register(user);
                     System.out.println("dky thanh cong");
