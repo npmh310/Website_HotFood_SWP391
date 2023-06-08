@@ -3,7 +3,7 @@
     Created on : May 16, 2023, 2:27:02 PM
     Author     : minhhieu
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +51,7 @@
         <style>
             /* Style the buttons that are used to open and close the accordion panel */
             .accordion {
-               
+
                 background-color: #fff;
                 color: #444;
                 cursor: pointer;
@@ -102,7 +102,7 @@
                                     <ul class="navbar_menu">
                                         <li><a href="home">home</a></li>
                                         <li><a href="#">Promotional</a></li>
-                                        
+
                                         <li><a href="category">categories</a></li>
                                         <li><a href="#">best seller</a></li>
 
@@ -114,23 +114,28 @@
                                                 <div class="panel">
                                                     <form action="search" method="post">
                                                         <input name="txt" type="text" placeholder="search" maxlength="40" 
-                                                               style="width: 100px; font-family: unset !important; 
+                                                               style="width: 100px; font-family: unset !important;
                                                                font-weight: normal; height: 28px; padding-left: 7px; font-size: 14px">
                                                     </form>
                                                 </div>
                                             </div>
                                         </li>
-                                        <li>
-                                            <a href="login.jsp"
-                                               ><i class="fa fa-user" aria-hidden="true"></i
-                                                ></a>
-                                        </li>
+                                        <c:if test="${empty sessionScope.user}">
+                                            <li>
+                                                <a href="login"
+                                                   ><i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                                            </li>
+                                        </c:if>
+
+                                        <c:if test="${not empty sessionScope.user}">
+                                            <li>
+                                                <a href="profile.jsp"><i class="fa fa-user" aria-hidden="true"></i></a>
+                                            </li>
+                                        </c:if>
                                         <li class="checkout">
                                             <a href="cart.jsp">
                                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                <span id="checkout_items" class="checkout_items"
-                                                      >2</span
-                                                >
+                                                <span id="checkout_items" class="checkout_items" >2</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -151,30 +156,7 @@
                 </div>
                 <div class="hamburger_menu_content text-right">
                     <ul class="menu_top_nav">
-                        <!-- <li class="menu_item has-children">
-                                                    <a href="#">
-                                                            usd
-                                                            <i class="fa fa-angle-down"></i>
-                                                    </a>
-                                                    <ul class="menu_selection">
-                                                            <li><a href="#">cad</a></li>
-                                                            <li><a href="#">aud</a></li>
-                                                            <li><a href="#">eur</a></li>
-                                                            <li><a href="#">gbp</a></li>
-                                                    </ul>
-                                            </li> -->
-                        <!-- <li class="menu_item has-children">
-                                                    <a href="#">
-                                                            English
-                                                            <i class="fa fa-angle-down"></i>
-                                                    </a>
-                                                    <ul class="menu_selection">
-                                                            <li><a href="#">French</a></li>
-                                                            <li><a href="#">Italian</a></li>
-                                                            <li><a href="#">German</a></li>
-                                                            <li><a href="#">Spanish</a></li>
-                                                    </ul>
-                                            </li> -->
+
                         <li class="menu_item has-children">
                             <a href="#">
                                 My Account
@@ -196,7 +178,7 @@
                         </li>
                         <li class="menu_item"><a href="home">home</a></li>
                         <li class="menu_item"><a href="#">Promotional</a></li>
-                       
+
                         <li class="menu_item"><a href="category">Categories</a></li>
                         <li class="menu_item"><a href="#">Best Seller</a></li>
 
@@ -228,4 +210,3 @@
             </script>
     </body>
 
-    

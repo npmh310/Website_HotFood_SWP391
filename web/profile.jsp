@@ -61,7 +61,7 @@
             type="text/css"
             href="styles/categories_responsive.css"
             />
-     
+
 
         <!-- font  -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -140,10 +140,10 @@
                                             >
                                             Hello,
                                             <br />
-                                            Minh Hiếu!
+                                            ${sessionScope.user.aFullname}
                                         </h3>
                                         <p>
-                                            <a href="#">Logout</a>
+                                            <a href="logout">Logout</a>
                                         </p>
                                     </div>
                                 </div>
@@ -657,31 +657,23 @@
                                     <h3>account details</h3>
                                 </div>
                                 <div class="card-title pt-4">
-                                    <form action="">
+                                    <form action="UpdateProfile" method="" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <div class="col-12 infor-detail">
-                                                <label class="label-detail" for="username"
-                                                       >Full Name:</label
-                                                >
-                                                <input class="input-detail" type="text" id="fullname" />
+                                                <label class="label-detail">Full Name: </label>
+                                                <input class="input-detail" type="text" name="fullname"  value="${sessionScope.user.aFullname}" />
                                             </div>
                                             <div class="col-12 infor-detail">
-                                                <label class="label-detail" for="username"
-                                                       >Phone Number:</label
-                                                >
-                                                <input class="input-detail" type="text" id="phone" />
+                                                <label class="label-detail">Phone Number:</label>
+                                                <input class="input-detail" type="text" name="phone" value="${sessionScope.user.aPhone}" />
                                             </div>
                                             <div class="col-12 infor-detail">
-                                                <label class="label-detail" for="username"
-                                                       >Address:</label
-                                                >
-                                                <input class="input-detail" type="text" id="address" />
+                                                <label class="label-detail">Address:</label>
+                                                <input class="input-detail" type="text" name="address" value="${sessionScope.user.aAddress}" />
                                             </div>
                                             <div class="col-12 infor-detail mb-4">
-                                                <label class="label-detail" for="username"
-                                                       >Email:</label
-                                                >
-                                                <input class="input-detail" type="text" id="email" />
+                                                <label class="label-detail">Email:</label>
+                                                <input class="input-detail" type="text" name="email" value="${sessionScope.user.aEmail}" />
                                             </div>
                                             <div class="col-12">
                                                 <button class="btn btn-primary w-100 button-detail">
@@ -704,25 +696,35 @@
                                     <h3>Reset Password</h3>
                                 </div>
                                 <div class="card-title pt-4">
-                                    <form action="">
+                                    <form action="ResetPass" method="">
                                         <div class="form-group">
+                                            <!--<p style=" color: #848a96 ;padding: 10px 0; margin: 0 100px 40px 100px;  background-color: rgba(255, 102, 102, 0.5); border-radius: 10px; text-align: center">${mess}</p>-->
+                                            <c:choose>
+                                                <c:when test="${mess == null}">
+
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <p style=" color: #4c5057 ;padding: 10px 0; margin: 0 100px 40px 100px;  background-color: rgba(255, 102, 102, 0.5); border-radius: 10px; text-align: center">${mess}</p>
+
+                                                </c:otherwise>
+                                            </c:choose>    
                                             <div class="col-12 infor-detail">
-                                                <label class="label-detail" for="username"
+                                                <label class="label-detail"
                                                        >Old Password:</label
                                                 >
-                                                <input class="input-detail" type="text" id="fullname" />
+                                                <input class="input-detail" type="text" name="oldpass" />
                                             </div>
                                             <div class="col-12 infor-detail">
-                                                <label class="label-detail" for="username"
+                                                <label class="label-detail" 
                                                        >New Password:</label
                                                 >
-                                                <input class="input-detail" type="text" id="phone" />
+                                                <input class="input-detail" type="text" name="newpass" />
                                             </div>
                                             <div class="col-12 infor-detail">
-                                                <label class="label-detail" for="username"
+                                                <label class="label-detail"
                                                        >Repeat New Password:</label
                                                 >
-                                                <input class="input-detail" type="text" id="address" />
+                                                <input class="input-detail" type="text" name="renewpass" />
                                             </div>
 
                                             <div class="col-12">
