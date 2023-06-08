@@ -76,12 +76,22 @@
             text-transform: uppercase;
             padding: 20px;
         }
+        .cart-zone a{
+            padding: 0 1vh !important;
+        }
+        /*Sua margin*/
+        .cart-zone .row{
+            margin: 0 !important;
+        }
+        .container .row{
+            margin: 0 -15px;
+        }
     </style>
     <body>
         <div class="super_container">
             <!-- Header -->
             <div class="container product_section_container" style="margin-top: 150px">
-                <div class="card" style="max-width: 1200px">
+                <div class="card cart-zone" style="max-width: 1200px">
                     <div class="row">
                         <div class="col-md-8 cart">
                             <div class="title">
