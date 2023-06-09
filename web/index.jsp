@@ -293,7 +293,7 @@
                                         <div class="product-item">
                                             <div class="product discount">
                                                 <div class="product_image">
-                                                    <img src="images/product_1.png" alt="" />
+                                                    <img src="images/1_fried_chicken.jpg" alt="" />
                                                 </div>
                                                 <div class="favorite favorite_left"></div>
                                                 <div
@@ -304,7 +304,7 @@
                                                 <div class="product_info">
                                                     <h6 class="product_name">
                                                         <a href="single.jsp"
-                                                           >Fujifilm X100T 16 MP Digital Camera (Silver)</a
+                                                           >Fried chicken</a
                                                         >
                                                     </h6>
                                                     <div class="product_price">
@@ -321,7 +321,7 @@
                                         <div class="product-item women">
                                             <div class="product">
                                                 <div class="product_image">
-                                                    <img src="images/product_2.png" alt="" />
+                                                    <img src="images/1_spicy_chicken.png" alt="" />
                                                 </div>
                                                 <div class="favorite"></div>
                                                 <div
@@ -332,8 +332,7 @@
                                                 <div class="product_info">
                                                     <h6 class="product_name">
                                                         <a href="single.jsp"
-                                                           >Samsung CF591 Series Curved 27-Inch FHD
-                                                            Monitor</a
+                                                           >Spicy chicken</a
                                                         >
                                                     </h6>
                                                     <div class="product_price">$610.00</div>
@@ -348,13 +347,13 @@
                                         <div class="product-item women">
                                             <div class="product">
                                                 <div class="product_image">
-                                                    <img src="images/product_3.png" alt="" />
+                                                    <img src="images/bacon_pizza.png" alt="" />
                                                 </div>
                                                 <div class="favorite"></div>
                                                 <div class="product_info">
                                                     <h6 class="product_name">
                                                         <a href="single.jsp"
-                                                           >Blue Yeti USB Microphone Blackout Edition</a
+                                                           >Bacon Pizza</a
                                                         >
                                                     </h6>
                                                     <div class="product_price">$120.00</div>
@@ -369,7 +368,7 @@
                                         <div class="product-item accessories">
                                             <div class="product">
                                                 <div class="product_image">
-                                                    <img src="images/product_4.png" alt="" />
+                                                    <img src="images/fish_burger.jpg" alt="" />
                                                 </div>
                                                 <div
                                                     class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"
@@ -380,8 +379,7 @@
                                                 <div class="product_info">
                                                     <h6 class="product_name">
                                                         <a href="single.jsp"
-                                                           >DYMO LabelWriter 450 Turbo Thermal Label
-                                                            Printer</a
+                                                           >Fish Burger </a
                                                         >
                                                     </h6>
                                                     <div class="product_price">$410.00</div>
@@ -396,13 +394,13 @@
                                         <div class="product-item women men">
                                             <div class="product">
                                                 <div class="product_image">
-                                                    <img src="images/product_5.png" alt="" />
+                                                    <img src="images/chicken_burger.jpg" alt="" />
                                                 </div>
                                                 <div class="favorite"></div>
                                                 <div class="product_info">
                                                     <h6 class="product_name">
                                                         <a href="single.jsp"
-                                                           >Pryma Headphones, Rose Gold & Grey</a
+                                                           >Chicken Burger </a
                                                         >
                                                     </h6>
                                                     <div class="product_price">$180.00</div>

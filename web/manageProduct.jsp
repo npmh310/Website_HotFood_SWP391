@@ -31,7 +31,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <c:if test="${sessionScope.user.aRole > 0}">
+        
             <div class="page-container" style="height: 100%;width: 100%;margin: 0;display: table;">
                 <!-- sidebar menu area start -->
                 <div class="sidebar-menu" style="background-color: whitesmoke">
@@ -252,7 +252,7 @@
                     </div>
                 </div>
             </div>
-        </c:if>
+       
         
         
         
