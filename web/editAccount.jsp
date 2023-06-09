@@ -86,7 +86,7 @@
                                 <div class="form-group">
                                     <label>Role</label>
                                     <select name="category" class="form-select" aria-label="Default select example">                                      
-                                        <option value="0">Customer</option>                                          
+                                        <option value="${Role}">Customer</option>                                          
                                         <option value="1">Manager</option>
                                         <option value="2">Admin</option>
                                     </select>
