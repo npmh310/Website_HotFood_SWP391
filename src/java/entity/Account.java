@@ -32,6 +32,15 @@ public class Account {
         this.aRole = aRole;
     }
 
+    public Account(String aUsername, String aPassword, String aFullname, String aPhone, String aAddress, String aEmail) {
+        this.aUsername = aUsername;
+        this.aPassword = aPassword;
+        this.aFullname = aFullname;
+        this.aPhone = aPhone;
+        this.aEmail = aEmail;
+        this.aAddress = aAddress;
+    }
+
     public int getaId() {
         return aId;
     }

@@ -4,22 +4,21 @@
  */
 package controller;
 
-import dao.ProductDAO;
-import entity.Category;
-import entity.Product;
+import dao.AccountDAO;
+import entity.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
- * @author linhp
+ * @author minhhieu
  */
-public class category extends HttpServlet {
+public class ResetPass extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,26 +32,41 @@ public class category extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String cateId = request.getParameter("cId");
-        ProductDAO p = new ProductDAO();
 
-        ArrayList<Category> cate = p.getAllCate();
-        ArrayList<Product> productList;
-        Category cateByCId = p.getNameCateById(cateId);
-        
-        if (cateId == null) {
-            productList = p.getAllProduct();
-        } else {
-            productList = p.getProductByIdCate(cateId);
+        try {
+            String oldpass = request.getParameter("oldpass");
+            String newpass = request.getParameter("newpass");
+            String repass = request.getParameter("renewpass");
+            HttpSession session = request.getSession(false);
+            Account user = null;
+
+            if (session != null) {
+                user = (Account) session.getAttribute("user");
+                System.out.println(user);
+            } else {
+                response.sendRedirect("login");
+            }
+            if (oldpass.equals(user.getaPassword().trim())) {
+                // Kiểm tra xem newpass và repass có khớp nhau hay không
+                if (newpass.equals(repass)) {
+                    // Cập nhật mật khẩu mới cho người dùng
+                    user.setaPassword(newpass);
+                    AccountDAO.resetPassword(user);
+                    response.sendRedirect("profile.jsp");
+                } else {
+                    System.out.println("error3");
+                    request.setAttribute("mess", "new password does not match repeat password");
+                    request.getRequestDispatcher("profile.jsp").forward(request, response);
+                }
+            } else {
+                System.out.println("error2");
+                request.setAttribute("mess", "Old password does not right");
+                request.getRequestDispatcher("profile.jsp").forward(request, response);
+            }
+        } catch (Exception e) {
+            System.out.println("error");
         }
 
-//         response.getWriter().print(listProductByCid);
-        request.setAttribute("cate", cate);
-        request.setAttribute("tag", cateId);
-        request.setAttribute("cateByCId", cateByCId);
-//        request.setAttribute("product", prd);
-        request.setAttribute("listProductByCid", productList);
-        request.getRequestDispatcher("categories.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

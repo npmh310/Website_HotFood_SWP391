@@ -1,4 +1,4 @@
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- 
     Document   : index.jsp
     Created on : May 16, 2023, 2:04:05 PM
@@ -49,12 +49,15 @@
         <link rel="stylesheet" type="text/css" href="styles/main_styles.css" />
         <link rel="stylesheet" type="text/css" href="styles/responsive.css" />
         <link rel="stylesheet" href="styles/myCss.css" />
+        <style>
+
+        </style>
     </head>
 
     <body>
         <div class="super_container">
             <!-- Header  -->
-            
+
             <jsp:include page="header.jsp" />
 
             <!-- Slider -->
@@ -64,7 +67,15 @@
                     <div class="row align-items-center fill_height">
                         <div class="col">
                             <div class="main_slider_content">
-                                <h6>Welcome back Minh Hieu</h6>
+                                
+                                <c:if test="${empty sessionScope.user}">
+                                    <h6>Welcome to Hot Food</h6>
+                                </c:if>
+
+                                <c:if test="${not empty sessionScope.user}">
+                                    <h6>Welcome back ${sessionScope.user.aFullname}</h6>
+                                </c:if>
+
                                 <h1>low cost - high quality</h1>
                                 <div class="red_button shop_now_button">
                                     <a href="#">shop now</a>
@@ -86,7 +97,7 @@
                                 style="background-image: url(images/banner_chicken.jpg)"
                                 >
                                 <div class="banner_category">
-                                    <a href="categories.jsp">fried chicken</a>
+                                    <a href="category?cId=2">fried chicken</a>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +107,7 @@
                                 style="background-image: url(images/banner_pizza.jpg)"
                                 >
                                 <div class="banner_category">
-                                    <a href="categories.jsp">pizza</a>
+                                    <a href="category?cId=4">pizza</a>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +117,7 @@
                                 style="background-image: url(images/banner_hamburger4.jpg)"
                                 >
                                 <div class="banner_category">
-                                    <a href="categories.jsp">hamburger</a>
+                                    <a href="category?cId=3">hamburger</a>
                                 </div>
                             </div>
                         </div>
@@ -143,36 +154,7 @@
                                             ${c.cName}
                                         </li>
                                     </c:forEach>
-<!--                                     <li
-                                        class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-                                        data-filter=".accessories"
-                                        >
-                                        fried chicken
-                                    </li>
-                                    <li
-                                        class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-                                        data-filter=".men"
-                                        >
-                                        hamburger
-                                    </li>
-                                    <li
-                                        class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-                                        data-filter=".men"
-                                        >
-                                        pizza
-                                    </li>
-                                    <li
-                                        class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-                                        data-filter=".men"
-                                        >
-                                        water
-                                    </li>
-                                    <li
-                                        class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-                                        data-filter=".men"
-                                        >
-                                        other
-                                    </li>-->
+
                                 </ul>
                             </div>
                         </div>
@@ -191,11 +173,11 @@
                                                 <img src="${p.pImg}" alt="" /> <!-- img -->
                                             </div>
                                             <div class="favorite favorite_left"></div>
-<!--                                            <div
-                                                class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"
-                                                >
-                                                <span>-$20</span>   
-                                            </div>--> <!-- Giam gia -->
+                                            <!--                                            <div
+                                                                                            class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"
+                                                                                            >
+                                                                                            <span>-$20</span>   
+                                                                                        </div>--> <!-- Giam gia -->
                                             <div class="product_info">
                                                 <h6 class="product_name">
                                                     <a href="detail?pId=${p.pId}"
@@ -204,7 +186,7 @@
                                                 </h6>
                                                 <div class="product_price">
                                                     ${p.pPrice} VNÐ 
-<!--                                                    <span>$590.00</span>-->
+                                                    <!--                                                    <span>$590.00</span>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -213,6 +195,7 @@
                                         </div>
                                     </div>
                                 </c:forEach>    
+
 
                             </div>
                         </div>
@@ -288,6 +271,7 @@
                             <div class="product_slider_container">
                                 <div class="owl-carousel owl-theme product_slider">
                                     <!-- Slide 1 -->
+
 
                                     <div class="owl-item product_slider_item">
                                         <div class="product-item">
@@ -527,8 +511,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
+                                </div>
+     <!-- Sua Best seller -->
                                 <!-- Slider Navigation -->
 
                                 <div
@@ -550,11 +535,11 @@
             <!--FOOTER VS BENEFIT-->
 
             <jsp:include page="footer.jsp"></jsp:include>
-            
+
             <!--Javascript-->
-            
-                 </div>
-   
+
+        </div>
+
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="styles/bootstrap4/popper.js"></script>
         <script src="styles/bootstrap4/bootstrap.min.js"></script>
