@@ -31,6 +31,22 @@ import java.util.logging.Logger;
  */
 public class AccountDAO {
 
+    public static Connection getConnect() {
+        try {
+            Class.forName(DRIVERNAME);
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error loading driver" + e);
+        }
+        try {
+            Connection con = DriverManager.getConnection(DBURL, USERDB, PASSDB);
+            System.out.println("Connect database success!");
+            return con;
+        } catch (SQLException e) {
+            System.out.println("Error: " + e);
+        }
+        return null;
+    }
+
     public static Account login(String username, String password) {
         Account s = null;
         String sql = "SELECT * FROM Account WHERE username= ? and password= ? or email= ? and password= ?";
@@ -170,27 +186,11 @@ public class AccountDAO {
         }
         return true;
     }
-  public class AccountDAO {
-    public static Connection getConnect() {
-        try {
-            Class.forName(DRIVERNAME);
-        } catch (ClassNotFoundException e) {
-            System.out.println("Error loading driver" + e);
-        }
-        try {
-            Connection con = DriverManager.getConnection(DBURL, USERDB, PASSDB);
-            System.out.println("Connect database success!");
-            return con;
-        } catch (SQLException e) {
-            System.out.println("Error: " + e);
-        }
-        return null;
-    }
 
-  public List<Account> getAllAccount() { // sql server hieu String van = int nene dung String duoc.
+    public List<Account> getAllAccount() { // sql server hieu String van = int nene dung String duoc.
         List<Account> list = new ArrayList<>();
         String query = "select * from Account ";
-       try ( Connection con = getConnect()){
+        try ( Connection con = getConnect()) {
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
 
@@ -210,28 +210,30 @@ public class AccountDAO {
         }
         return list;
     }
-   public void deleteAccount(String id) {
+
+    public void deleteAccount(String id) {
         String query = "delete from Account \n"
                 + "where ID = ?";
-        try ( Connection con = getConnect()){
+        try ( Connection con = getConnect()) {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, id);
             ps.executeUpdate(); // không trả về bản result nên dùng executeUpdate()
         } catch (Exception e) {
         }
     }
-  public void editRole (String id, int Role){
-      String query = "update Account set Role =? where ID = ?";
-       try ( Connection con = getConnect()){
+
+    public void editRole(String id, int Role) {
+        String query = "update Account set Role =? where ID = ?";
+        try ( Connection con = getConnect()) {
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1, Role); 
-            ps.setString(2, id);           
+            ps.setInt(1, Role);
+            ps.setString(2, id);
             ps.executeUpdate(); // không trả về bản result nên dùng executeUpdate()
         } catch (Exception e) {
         }
-  }
-  
-  public Account getAccountById(String id) {
+    }
+
+    public Account getAccountById(String id) {
         String query = "Select * from Account where ID = ?";
         try ( Connection con = getConnect()) {
             PreparedStatement ps = con.prepareStatement(query);
@@ -252,4 +254,3 @@ public class AccountDAO {
         return null;
     }
 }
-
