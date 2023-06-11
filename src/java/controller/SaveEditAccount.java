@@ -5,31 +5,26 @@
 package controller;
 
 import dao.AccountDAO;
-import entity.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.w3c.dom.UserDataHandler;
 
 /**
  *
  * @author taing
  */
-public class EditUser extends HttpServlet {
+public class SaveEditAccount extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String id = request.getParameter("aid");
+        String id = request.getParameter("id");
+        int role = Integer.parseInt(request.getParameter("role"));
         AccountDAO dao = new AccountDAO();
-        Account acc = dao.getAccountById(id);        
-        
-        request.setAttribute("acc", acc);
-
-        request.getRequestDispatcher("editAccount.jsp").forward(request, response);
+        dao.editRole(id, role);
+        response.sendRedirect("user");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

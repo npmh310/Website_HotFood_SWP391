@@ -21,6 +21,12 @@ public class Account {
     public Account() {
     }
 
+    public Account(int aRole) {
+        this.aRole = aRole;
+    }
+
+    
+    
     public Account(int aId, String aUsername, String aPassword, String aFullname, String aPhone, String aEmail, String aAddress, int aRole) {
         this.aId = aId;
         this.aUsername = aUsername;

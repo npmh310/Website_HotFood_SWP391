@@ -29,18 +29,14 @@ public class SaveEdit extends HttpServlet {
         String detail = request.getParameter("detail");
         String price = request.getParameter("price");
         String image = request.getParameter("image");
-        String category = request.getParameter("category");
-        
+        String category = request.getParameter("category");        
         String id = request.getParameter("id");
 
         ProductDAO dao = new ProductDAO();
 
         dao.editProduct(name, image, price, detail, category, id);
-        
-        
+           
         response.sendRedirect("product");
-
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
