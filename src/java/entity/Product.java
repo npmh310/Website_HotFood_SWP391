@@ -28,6 +28,13 @@ public class Product {
         this.CateID = CateID;
     }
 
+    public Product(int pId, String pName, String pImg, float pPrice) {
+        this.pId = pId;
+        this.pName = pName;
+        this.pImg = pImg;
+        this.pPrice = pPrice;
+    }
+
     public int getpId() {
         return pId;
     }
