@@ -180,7 +180,12 @@
                                             </div>
                                         </div>
                                         <div class="red_button add_to_cart_button">
-                                            <a href="#">add to cart</a>
+                                            <c:if test="${not empty sessionScope.user}">
+                                                <a href="AddtoCart?pid=${p.pId}">add to cart</a>
+                                            </c:if>
+                                            <c:if test="${empty sessionScope.user}">
+                                                <a href="login">add to cart</a>
+                                            </c:if>
                                         </div>
                                     </div>
                                 </c:forEach>    

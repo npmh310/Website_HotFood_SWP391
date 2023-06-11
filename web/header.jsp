@@ -165,6 +165,11 @@
                                                    ><i class="fa fa-user" aria-hidden="true"></i
                                                     ></a>
                                             </li>
+                                            <li>
+                                                <a href="login"
+                                                   ><i class="fa fa-shopping-cart" aria-hidden="true"></i
+                                                    ></a>
+                                            </li>
                                         </c:if>
 
                                         <c:if test="${not empty sessionScope.user}">
@@ -173,15 +178,18 @@
                                                    ><i class="fa fa-user" aria-hidden="true"></i
                                                     ></a>
                                             </li>
+                                            <li class="checkout">
+                                                <a href="cart">
+                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                    <c:if test="${not empty sessionScope.user}">
+                                                        <span id="checkout_items" class="checkout_items"
+                                                              >${sessionScope.listCart.size()}</span
+                                                        >
+                                                    </c:if>
+                                                </a>
+                                            </li>
                                         </c:if>
-                                        <li class="checkout">
-                                            <a href="cart.jsp">
-                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                <span id="checkout_items" class="checkout_items"
-                                                      >2</span
-                                                >
-                                            </a>
-                                        </li>
+                                        
                                     </ul>
                                     <div class="hamburger_container">
                                         <i class="fa fa-bars" aria-hidden="true"></i>

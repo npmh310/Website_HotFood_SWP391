@@ -58,7 +58,7 @@
             href="styles/categories_responsive.css"
             />
 
-        <link rel="stylesheet" href="styles/cart.css" />
+        <link rel="stylesheet" href="styles/cart2.css" />
     </head>
     <style>
         .logo_container a {
@@ -76,211 +76,222 @@
             text-transform: uppercase;
             padding: 20px;
         }
+        .cart-zone a{
+            padding: 0 1vh !important;
+        }
+        /*Sua margin*/
+        .cart-zone .row{
+            margin: 0 !important;
+        }
+        .container .row{
+            margin: 0 -15px;
+        }
+        .quantity_selector button{
+            background-color: white;
+            border: none;
+
+        }
+        .quantity_selector{
+            padding-top: 5px !important;
+        }
     </style>
     <body>
-        <div class="super_container">
-            <!-- Header -->
-            <div class="container product_section_container" style="margin-top: 150px">
-                <div class="card" style="max-width: 1200px">
-                    <div class="row">
-                        <div class="col-md-8 cart">
-                            <div class="title">
-                                <div class="row">
-                                    <div class="col">
-                                        <div
-                                            class="logo_container"
-                                            style="
-                                            text-transform: uppercase;
-                                            font-size: 24px;
-                                            color: #1e1e27;
-                                            font-weight: 700;
-                                            "
-                                            >
-                                            Shopping<span style="color: #fe4c50">cart</span>
-                                        </div>
-                                    </div>
-                                    <div class="col align-self-center text-right text-muted">
-                                        3 items
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row product-row">
-                                <div class="row main align-items-center">
-                                    <div class="col-2">
-                                        <img
-                                            class="img-fluid"
-                                            src="https://i.imgur.com/1GrakTl.jpg"
-                                            />
-                                    </div>
-                                    <div class="col">
-                                        <div class="row text-muted">Shirt</div>
-                                        <div class="row">Cotton T-shirt</div>
-                                    </div>
-                                    <div class="col">
-                                        <a href="#">-</a><a href="#" class="border">1</a
-                                        ><a href="#">+</a>
-                                    </div>
-                                    <div class="col">
-                                        &euro; 44.00 <span class="close">&#10005;</span>
+
+        <!--cart 2-->
+        <div
+            class="container product_section_container"
+            style="max-width: 1400px"
+            >
+            <div class="card" style="max-width: 1200px">
+                <div class="row justify-content-between">
+                    <div class="col-md-7 cart product-zone">
+                        <div class="title">
+                            <div class="row">
+                                <div class="col">
+                                    <div
+                                        class="logo_container"
+                                        style="
+                                        text-transform: uppercase;
+                                        font-size: 24px;
+                                        color: #1e1e27;
+                                        font-weight: 700;
+                                        "
+                                        >
+                                        Shopping<span style="color: #fe4c50">cart</span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row product-row">
-                                <div class="row main align-items-center">
-                                    <div class="col-2">
-                                        <img
-                                            class="img-fluid"
-                                            src="https://i.imgur.com/ba3tvGm.jpg"
-                                            />
-                                    </div>
-                                    <div class="col">
-                                        <div class="row text-muted">Shirt</div>
-                                        <div class="row">Cotton T-shirt</div>
-                                    </div>
-                                    <div class="col">
-                                        <a href="#">-</a><a href="#" class="border">1</a
-                                        ><a href="#">+</a>
-                                    </div>
-                                    <div class="col">
-                                        &euro; 44.00 <span class="close">&#10005;</span>
-                                    </div>
+                                <div class="col align-self-center text-right text-muted">
+                                    ${sessionScope.listCart.size()} items
                                 </div>
-                            </div>
-                            <div class="row product-row">
-                                <div class="row main align-items-center">
-                                    <div class="col-2">
-                                        <img
-                                            class="img-fluid"
-                                            src="https://i.imgur.com/pHQ3xT3.jpg"
-                                            />
-                                    </div>
-                                    <div class="col">
-                                        <div class="row text-muted">Shirt</div>
-                                        <div class="row">Cotton T-shirt</div>
-                                    </div>
-                                    <div class="col">
-                                        <a href="#">-</a><a href="#" class="border">1</a
-                                        ><a href="#">+</a>
-                                    </div>
-                                    <div class="col">
-                                        &euro; 44.00 <span class="close">&#10005;</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="back-to-shop">
-                                <a href="home">&leftarrow; <span class="text-muted">Back to shop</span></a
-                                >
                             </div>
                         </div>
-                        <div class="col-md-4 summary">
-                            <div>
-                                <h5><b>Summary</b></h5>
+                        <c:forEach items="${sessionScope.listCart}" var="p">
+                            <div class="row product-row">
+                                <div class="row main align-items-center">
+                                    <div class="col-2">
+                                        <img
+                                            class="img-fluid"
+                                            src="${p.items.pImg}"
+                                            />
+                                    </div>
+                                    <div class="col">
+                                        <div class="row text-muted">Shirt</div>
+                                        <div class="row">${p.items.pName}</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="quantity_selector p-1">
+                                            <button><span class="minus pl-2"><a href="processCart?quantity=${p.quantity-1}&pId=${p.items.pId}&cartId=${p.getCartId()}">-
+                                                    </a></span></button>
+
+                                            <span class="quantity_value">${p.quantity}</span>
+                                            <button><span class="plus pr-2"><a href="processCart?quantity=${p.quantity+1}&pId=${p.items.pId}&cartId=${p.getCartId()}">+
+                                                    </a></span></button>
+
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        ${p.items.pPrice * p.quantity}&#8363; <span class="close">
+                                            <button style="border: none"><i class="fa fa-times" style="font-size: 18px" aria-hidden="true"></i><a href="deleteCart?pId=${p.items.pId}&cartId=${p.getCartId()}"></a></button></span>
+                                    </div>
+                                </div>
                             </div>
-                            <hr />
-                            <div class="row" style="margin-bottom: 10px;">
-                                <div class="col" style="padding-left: 0">ITEMS 3</div>
-                                <div class="col text-right">&euro; 132.00</div>
+                        </c:forEach>
+                        <div class="back-to-shop">
+                            <a href="home">&leftarrow;</a
+                            ><span class="text-muted">Back to shop</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 summary">
+                        <div>
+                            <h5><b>Summary</b></h5>
+                        </div>
+                        <hr />
+                        <c:forEach items="${sessionScope.listCart}" var="p">
+                            <div class="row" style="margin-bottom: 10px">
+                                <div class="col pl-3">${p.items.pName}</div>
+                                <div class="col text-right">${p.items.pPrice * p.quantity}&#8363;</div>
                             </div>
-                            <form>
-                                <!-- <p>SHIPPING</p> -->
-                                <!-- <select>
-                                  <option class="text-muted">
-                                    Standard-Delivery- &euro;5.00
-                                  </option>
-                                </select> -->
-                                <p style="color: black;">DISCOUNT CODE</p>
-                                <input id="code" placeholder="Enter your code" />
-                            </form>
-                            <div
-                                class="row"
-                                style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding: 2vh 0"
-                                >
-                                <div class="col">TOTAL PRICE</div>
-                                <div class="col text-right">&euro; 137.00</div>
-                            </div>
-                            <button class="btn">CHECKOUT</button>
+                        </c:forEach>
+                        
+                        <form>
+                            <p style="color: black">DISCOUNT CODE</p>
+                            <input id="code" placeholder="Enter your code" />
+                        </form>
+                        <div
+                            class="row"
+                            style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding: 2vh 0"
+                            >
+                            <div class="col">TOTAL PRICE</div>
+                            <div class="col text-right">${totalMoney}&#8363</div>
+                        </div>
+                        <button class="btn">CHECKOUT</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+
+        <footer class="footer" style="background-color: #f3f3f3">
+            <div class="container" style="margin-top: 50px">
+                <!-- <div class="row" style="margin-top: 50px">
+                  <div style="margin-bottom: 30px; padding-top: 40px">Google Map</div>
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3835.863921098815!2d108.25836811464994!3d15.968481188943292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142116949840599%3A0x365b35580f52e8d5!2zxJDhuqFpIGjhu41jIEZQVCAoRlBUIHVuaXZlcnNpdHkp!5e0!3m2!1sen!2s!4v1679321561252!5m2!1sen!2s"
+                    width="1100"
+                    height="350"
+                    style="border: 0; margin-bottom: 50px"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+                <hr
+                  _ngcontent-ng-cli-universal-c81=""
+                  style="color: #c0c0c0; background-color: #c0c0c0"
+                /> -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div
+                            class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center"
+                            >
+                            <ul class="footer_nav">
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">FAQs</a></li>
+                                <li><a href="contact.html">Contact us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div
+                            class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center"
+                            >
+                            <ul>
+                                <li>
+                                    <a href="#"
+                                       ><i class="fa fa-facebook" aria-hidden="true"></i
+                                        ></a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                       ><i class="fa fa-twitter" aria-hidden="true"></i
+                                        ></a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                       ><i class="fa fa-instagram" aria-hidden="true"></i
+                                        ></a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                       ><i class="fa fa-skype" aria-hidden="true"></i
+                                        ></a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                       ><i class="fa fa-pinterest" aria-hidden="true"></i
+                                        ></a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
+        </footer>
+    </div>
 
-            <!-- Footer -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="styles/bootstrap4/popper.js"></script>
+    <script src="styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="plugins/Isotope/isotope.pkgd.min.js"></script>
+    <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="plugins/easing/easing.js"></script>
+    <script src="plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <script src="js/categories_custom.js"></script>
+    <!--<script src="js/single_custom.js"></script>-->
+    <script>
+        function initQuantity() {
+            $('.quantity_selector').each(function () {
+                var plus = $(this).find('.plus');
+                var minus = $(this).find('.minus');
+                var value = $(this).find('.quantity_value');
 
-            <footer class="footer" style="background-color: #f3f3f3">
-                <div class="container" style="margin-top: 50px">
-                    <!-- <div class="row" style="margin-top: 50px">
-                      <div style="margin-bottom: 30px; padding-top: 40px">Google Map</div>
-                      <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3835.863921098815!2d108.25836811464994!3d15.968481188943292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142116949840599%3A0x365b35580f52e8d5!2zxJDhuqFpIGjhu41jIEZQVCAoRlBUIHVuaXZlcnNpdHkp!5e0!3m2!1sen!2s!4v1679321561252!5m2!1sen!2s"
-                        width="1100"
-                        height="350"
-                        style="border: 0; margin-bottom: 50px"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                      ></iframe>
-                    </div>
-                    <hr
-                      _ngcontent-ng-cli-universal-c81=""
-                      style="color: #c0c0c0; background-color: #c0c0c0"
-                    /> -->
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div
-                                class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center"
-                                >
-                                <ul class="footer_nav">
-                                    <li><a href="#">Blog</a></li>
-                                    <li><a href="#">FAQs</a></li>
-                                    <li><a href="contact.html">Contact us</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div
-                                class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center"
-                                >
-                                <ul>
-                                    <li>
-                                        <a href="#"
-                                           ><i class="fa fa-facebook" aria-hidden="true"></i
-                                            ></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                           ><i class="fa fa-twitter" aria-hidden="true"></i
-                                            ></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                           ><i class="fa fa-instagram" aria-hidden="true"></i
-                                            ></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                           ><i class="fa fa-skype" aria-hidden="true"></i
-                                            ></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                           ><i class="fa fa-pinterest" aria-hidden="true"></i
-                                            ></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </div>
+                plus.on('click', function () {
+                    var x = parseInt(value.text());
+                    value.text(x + 1);
+                });
 
-        <script src="js/jquery-3.2.1.min.js"></script>
-        <script src="styles/bootstrap4/popper.js"></script>
-        <script src="styles/bootstrap4/bootstrap.min.js"></script>
-        <script src="plugins/Isotope/isotope.pkgd.min.js"></script>
-        <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-        <script src="plugins/easing/easing.js"></script>
-        <script src="plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-        <script src="js/categories_custom.js"></script>
-    </body>
+                minus.on('click', function () {
+                    var x = parseInt(value.text());
+                    if (x > 1) {
+                        value.text(x - 1);
+                    }
+                });
+            });
+        }
+
+        $(document).ready(function () {
+            initQuantity();
+        });
+    </script>
+</body>
 </html>
