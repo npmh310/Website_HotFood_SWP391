@@ -34,8 +34,8 @@
         
             <div class="page-container" style="height: 100%;width: 100%;margin: 0;display: table;">
                 <!-- sidebar menu area start -->
-                <div class="sidebar-menu" style="background-color: whitesmoke">
-                    <div class="sidebar" style="position: absolute; padding: 50px 200px;background-color: whitesmoke;">
+                <div class="sidebar-menu" style="background-color: whitesmoke; ">
+                    <div class="sidebar" style="position: absolute; padding: 50px 200px;background-color: whitesmoke; margin: 0px 35px">
                         <div class="logo_container">
                             <a href="home">hot<span>food</span></a>
                         </div>
@@ -107,8 +107,7 @@
                                         <ul class="metismenu d-flex" id="menu">
                                             <li>
                                                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add">Add new product</button>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i><span>Delete</span></a></li>
+                                            </li>                                    
                                         </ul>
                                     </div>
                                 </div>
@@ -121,6 +120,7 @@
                                         <th>Image</th>
                                         <th>Detail</th>
                                         <th>Price</th>
+                                        <th>Category</th>
                                         <th>Edit</th>
                                     </tr>
                                 </thead>
@@ -130,13 +130,21 @@
                                             <th>${p.pId}</th>
                                             <th>${p.pName}</th>
                                             <th><img src="${p.pImg}" height="100px" width="90px"/></th> 
-                                            <th>${p.pDetail}</th> 
-                                            <th>${p.pPrice}</th>                                        
+                                            <th>${p.pDetail}</th>                                           
+                                            </th>
+                                            <th>${p.pPrice}</th>
                                             <th>
-                                                <a href="edit?eid=${p.pId}"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                                            <c:forEach items="${cate}" var="c">
+                                                <c:if test="${p.getCateID() == c.cId}">
+                                                    ${c.cName}
+                                                </c:if>
+                                            </c:forEach>
                                             </th>
                                             <th>
-                                                <a href="delete?pid=${p.pId}"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
+                                                <a href="edit?eid=${p.pId}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                            </th>
+                                            <th>
+                                                <a href="delete?pid=${p.pId}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                             </th>
                                         </tr>    
                                     </c:forEach>
@@ -206,8 +214,6 @@
 
             <div class="modal fade" id="add" role="dialog">
                 <div class="modal-dialog">
-
-                    <!-- Modal content-->
                     <div class="modal-content">
                         <form action="add" method="post">
                             <div class="modal-header">						
