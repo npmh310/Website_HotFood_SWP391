@@ -52,7 +52,7 @@ public class ProductDAO implements DatabaseInfo {
     }
 //    
 
-    public static ArrayList<Product> getAllProduct() {
+    public ArrayList<Product> getAllProduct() {
 
         ArrayList<Product> ls = new ArrayList<>();
         String query = "Select * from Product";
@@ -77,7 +77,7 @@ public class ProductDAO implements DatabaseInfo {
         try ( Connection con = getConnect()) {
             PreparedStatement ps = con.prepareStatement(query);
 
-            ps.setString(1, id);
+            ps.setString(1, cId);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
