@@ -1,7 +1,7 @@
 <%-- 
-    Document   : profile
-    Created on : May 31, 2023, 12:39:06 AM
-    Author     : minhhieu
+Document   : profile
+Created on : May 31, 2023, 12:39:06 AM
+Author     : minhhieu
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -93,6 +93,12 @@
                 text-transform: uppercase;
                 padding: 20px;
             }
+            .txt_red{
+                color: #fe4c50;
+                font-style: italic;
+                /*font-family: "Oswald", sans-serif;*/
+                font-size: 12px;
+            }
 
         </style>
     </head>
@@ -118,11 +124,7 @@
                             <div class="row justify-content-center flex-wrap pt-3 pb-4">
                                 <div class="col-md-12 pt-5 pb-4">
                                     <div class="logo_container">
-                                        <a
-                                            href="home"
-                                            style="font-size: 42px; color: white; line-height: 40px"
-                                            >hot<br /><span>food</span></a
-                                        >
+                                        <a href="home"style="font-size: 42px; color: white; line-height: 40px">hot<br /><span>food</span></a >
                                     </div>
                                 </div>
                                 <div class="col-md-12 pt-4">
@@ -217,217 +219,111 @@
                                 class="container tab-pane fade"
                                 id="order_placed"
                                 role="tabpanel"
-                                aria-labelledby="orderplaced"
-                                >
+                                aria-labelledby="orderplaced" >
                                 <div class="card-body pl-2 pt-2">
                                     <h3>orders placed</h3>
                                 </div>
-                                <div class="card-title pt-4">
+
+                                <section>
+                                    <!--<div class="card-title pt-4">-->
                                     <div class="container">
-                                        <div class="row">
-                                            <!-- Product 1 -->
+                                        <div class="col-12">
+                                            <div id="accordion" style="margin-bottom: 30px">
+                                                <div class="card mb-3">
+                                                    <div class="card-header" role="tab"  id="peterhead" data-toggle="collapse" data-target="#peter">
+                                                        <div class="d-flex justify-content-between align-items-center" >
+                                                            <div>
+                                                                <h5 class="mb-0">
+                                                                    <a> Ngay 14 thang 6 NAM 2023 </a>
+                                                                </h5>
+                                                            </div>
 
-                                            <div class="col-3">
-                                                <div class="product discount product_filter">
-                                                    <div class="product_image">
-                                                        <img src="images/product_1.png" alt="" />
-                                                    </div>
-                                                    <div class="favorite favorite_left"></div>
-                                                    <div
-                                                        class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"
-                                                        >
-                                                        <span>-$20</span>
-                                                    </div>
-                                                    <div class="product_info">
-                                                        <h6 class="product_name">
-                                                            <a href="single.html"
-                                                               >Fujifilm X100T 16 MP Digital Camera (Silver)</a
-                                                            >
-                                                        </h6>
-                                                        <div class="product_price">$520.00</div>
-                                                    </div>
-                                                </div>
-                                                <div class="red_button add_to_cart_button">
-                                                    <a href="#">add to cart</a>
-                                                </div>
-                                            </div>
-
-                                            <!-- Product 2 -->
-
-                                            <div class="col-3">
-                                                <div class="product product_filter">
-                                                    <div class="product_image">
-                                                        <img src="images/product_2.png" alt="" />
-                                                    </div>
-                                                    <div class="favorite"></div>
-                                                    <div
-                                                        class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"
-                                                        >
-                                                        <span>new</span>
-                                                    </div>
-                                                    <div class="product_info">
-                                                        <h6 class="product_name">
-                                                            <a href="single.html"
-                                                               >Samsung CF591 Series Curved 27-Inch FHD
-                                                                Monitor</a
-                                                            >
-                                                        </h6>
-                                                        <div class="product_price">$610.00</div>
-                                                    </div>
-                                                </div>
-                                                <div class="red_button add_to_cart_button">
-                                                    <a href="#">add to cart</a>
-                                                </div>
-                                            </div>
-
-                                            <!-- Product 3 -->
-
-                                            <div class="col-3">
-                                                <div class="product product_filter">
-                                                    <div class="product_image">
-                                                        <img src="images/product_3.png" alt="" />
-                                                    </div>
-                                                    <div class="favorite"></div>
-                                                    <div class="product_info">
-                                                        <h6 class="product_name">
-                                                            <a href="single.html"
-                                                               >Blue Yeti USB Microphone Blackout Edition</a
-                                                            >
-                                                        </h6>
-                                                        <div class="product_price">$120.00</div>
-                                                    </div>
-                                                </div>
-                                                <div class="red_button add_to_cart_button">
-                                                    <a href="#">add to cart</a>
-                                                </div>
-                                            </div>
-
-                                            <!-- Product 4 -->
-
-                                            <div class="col-3">
-                                                <div class="product product_filter">
-                                                    <div class="product_image">
-                                                        <img src="images/product_4.png" alt="" />
-                                                    </div>
-                                                    <div
-                                                        class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"
-                                                        >
-                                                        <span>sale</span>
-                                                    </div>
-                                                    <div class="favorite favorite_left"></div>
-                                                    <div class="product_info">
-                                                        <h6 class="product_name">
-                                                            <a href="single.html"
-                                                               >DYMO LabelWriter 450 Turbo Thermal Label
-                                                                Printer</a
-                                                            >
-                                                        </h6>
-                                                        <div class="product_price">$410.00</div>
-                                                    </div>
-                                                </div>
-                                                <div class="red_button add_to_cart_button">
-                                                    <a href="#">add to cart</a>
-                                                </div>
-                                            </div>
-
-                                            <!-- Product 5 -->
-
-                                            <div class="col-3">
-                                                <div class="product product_filter">
-                                                    <div class="product_image">
-                                                        <img src="images/product_5.png" alt="" />
-                                                    </div>
-                                                    <div class="favorite"></div>
-                                                    <div class="product_info">
-                                                        <h6 class="product_name">
-                                                            <a href="single.html"
-                                                               >Pryma Headphones, Rose Gold & Grey</a
-                                                            >
-                                                        </h6>
-                                                        <div class="product_price">$180.00</div>
-                                                    </div>
-                                                </div>
-                                                <div class="red_button add_to_cart_button">
-                                                    <a href="#">add to cart</a>
-                                                </div>
-                                            </div>
-
-                                            <!-- Product 6 -->
-
-                                            <div class="col-3">
-                                                <div class="product discount product_filter">
-                                                    <div class="product_image">
-                                                        <img src="images/product_6.png" alt="" />
-                                                    </div>
-                                                    <div class="favorite favorite_left"></div>
-                                                    <div
-                                                        class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"
-                                                        >
-                                                        <span>-$20</span>
-                                                    </div>
-                                                    <div class="product_info">
-                                                        <h6 class="product_name">
-                                                            <a href="#single.html"
-                                                               >Fujifilm X100T 16 MP Digital Camera (Silver)</a
-                                                            >
-                                                        </h6>
-                                                        <div class="product_price">
-                                                            $520.00
+                                                            <div class="d-flex mt-2 pl-5 ml-md-0">
+                                                                <h5>160.000d</h5>
+                                                                <i class="fa fa-angle-down ml-3" aria-hidden="true"></i>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="red_button add_to_cart_button">
-                                                    <a href="#">add to cart</a>
-                                                </div>
-                                            </div>
 
-                                            <!-- Product 7 -->
-
-                                            <div class="col-3">
-                                                <div class="product product_filter">
-                                                    <div class="product_image">
-                                                        <img src="images/product_7.png" alt="" />
-                                                    </div>
-                                                    <div class="favorite"></div>
-                                                    <div class="product_info">
-                                                        <h6 class="product_name">
-                                                            <a href="single.html"
-                                                               >Samsung CF591 Series Curved 27-Inch FHD
-                                                                Monitor</a
-                                                            >
-                                                        </h6>
-                                                        <div class="product_price">$610.00</div>
-                                                    </div>
-                                                </div>
-                                                <div class="red_button add_to_cart_button">
-                                                    <a href="#">add to cart</a>
-                                                </div>
-                                            </div>
-
-                                            <!-- Product 8 -->
-
-                                            <div class="col-3">
-                                                <div class="product product_filter">
-                                                    <div class="product_image">
-                                                        <img src="images/product_8.png" alt="" />
-                                                    </div>
-                                                    <div class="favorite"></div>
-                                                    <div class="product_info">
-                                                        <h6 class="product_name">
-                                                            <a href="single.html"
-                                                               >Blue Yeti USB Microphone Blackout Edition</a
-                                                            >
-                                                        </h6>
-                                                        <div class="product_price">$120.00</div>
+                                                    <div class="collapse container" id="peter" data-parent="#accordion" >
+                                                        <div class="card-body d-flex justify-content-between align-items-center overflow-hidden pb-3">
+                                                            <!-- <div class="row cart-left d-flex align-items-center overflow-hidden " > -->
+                                                            <div class="col-md-3 ml-0 pl-0">
+                                                                <img src="images/banner_1.jpg" alt="" class="img-fluid rounded-0 " />
+                                                            </div>
+                                                            <div class="col-md-5">
+                                                                <span>3 san pham ga </span>
+                                                            </div>
+                                                            <div class="col-md-3 d-flex justify-content-end">
+                                                                <span>50000</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-body d-flex justify-content-between align-items-center overflow-hidden pb-3">
+                                                            <!-- <div class="row cart-left d-flex align-items-center overflow-hidden " > -->
+                                                            <div class="col-md-3 ml-0 pl-0">
+                                                                <img src="images/banner_1.jpg" alt="" class="img-fluid rounded-0 " />
+                                                            </div>
+                                                            <div class="col-md-5">
+                                                                 <span>2 san pham hambuger </span>
+                                                            </div>
+                                                            <div class="col-md-3 d-flex justify-content-end">
+                                                                <span>50000</span>
+                                                            </div>
+                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
-                                                <div class="red_button add_to_cart_button">
-                                                    <a href="#">add to cart</a>
+                                                
+                                                
+                                               <!--order 2-->
+                                                        <div class="card mb-3">
+                                                    <div class="card-header" role="tab"  id="peterhead" data-toggle="collapse" data-target="#2">
+                                                        <div class="d-flex justify-content-between align-items-center" >
+                                                            <div>
+                                                                <h5 class="mb-0">
+                                                                    <a> Ngay 20 thang 5 NAM 2023 </a>
+                                                                </h5>
+                                                            </div>
+
+                                                            <div class="d-flex mt-2 pl-5 ml-md-0">
+                                                                <h5>160.000d</h5>
+                                                                <i class="fa fa-angle-down ml-3" aria-hidden="true"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="collapse container" id="2" data-parent="#accordion" >
+                                                        <div class="card-body d-flex justify-content-between align-items-center overflow-hidden pb-3">
+                                                            <!-- <div class="row cart-left d-flex align-items-center overflow-hidden " > -->
+                                                            <div class="col-md-3 ml-0 pl-0">
+                                                                <img src="images/banner_1.jpg" alt="" class="img-fluid rounded-0 " />
+                                                            </div>
+                                                            <div class="col-md-5">
+                                                                <span>2 san pham hambuger </span>
+                                                            </div>
+                                                            <div class="col-md-3 d-flex justify-content-end">
+                                                                <span>50000</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-body d-flex justify-content-between align-items-center overflow-hidden pb-3">
+                                                            <!-- <div class="row cart-left d-flex align-items-center overflow-hidden " > -->
+                                                            <div class="col-md-3 ml-0 pl-0">
+                                                                <img src="images/banner_1.jpg" alt="" class="img-fluid rounded-0 " />
+                                                            </div>
+                                                            <div class="col-md-5">
+                                                                 <span>2 san pham hambuger </span>
+                                                            </div>
+                                                            <div class="col-md-3 d-flex justify-content-end">
+                                                                <span>50000</span>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </section>
                             </div>
                             <!-- favoriteorder -->
                             <div
@@ -709,22 +605,16 @@
                                                 </c:otherwise>
                                             </c:choose>    
                                             <div class="col-12 infor-detail">
-                                                <label class="label-detail"
-                                                       >Old Password:</label
-                                                >
-                                                <input class="input-detail" type="text" name="oldpass" />
+                                                <label class="label-detail">Old Password:</label>
+                                                <input class="input-detail" type="password" name="oldpass" required />
                                             </div>
                                             <div class="col-12 infor-detail">
-                                                <label class="label-detail" 
-                                                       >New Password:</label
-                                                >
-                                                <input class="input-detail" type="text" name="newpass" />
+                                                <label class="label-detail">New Password:</label><span class="txt_red" id="error_pass"></span>
+                                                <input class="input-detail" type="password" id="password" name="newpass" onblur="checkPass();"  oninput="checkRepass();"/>
                                             </div>
                                             <div class="col-12 infor-detail">
-                                                <label class="label-detail"
-                                                       >Repeat New Password:</label
-                                                >
-                                                <input class="input-detail" type="text" name="renewpass" />
+                                                <label class="label-detail" >Repeat New Password:</label > <span class="txt_red" id="error_repass"></span>
+                                                <input class="input-detail" type="password" id="repass" name="renewpass" oninput="checkRepass();"/>
                                             </div>
 
                                             <div class="col-12">
@@ -794,6 +684,8 @@
             </footer>
         </div>
 
+
+        <script src="js/signup.js"></script>
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="styles/bootstrap4/popper.js"></script>
         <script src="styles/bootstrap4/bootstrap.min.js"></script>
@@ -803,22 +695,33 @@
         <script src="plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
         <script src="js/categories_custom.js"></script>
         <script>
-                                                function changeColor(event) {
-                                                    event.preventDefault();
-                                                    var link = event.target;
+                                                    function changeColor(event) {
+                                                        event.preventDefault();
+                                                        var link = event.target;
 
-                                                    var links = document.getElementsByClassName("btn btn-link");
-                                                    for (var i = 0; i < links.length; i++) {
-                                                        links[i].classList.remove("active-link");
+                                                        var links = document.getElementsByClassName("btn btn-link");
+                                                        for (var i = 0; i < links.length; i++) {
+                                                            links[i].classList.remove("active-link");
+                                                        }
+
+                                                        link.classList.add("active-link");
                                                     }
 
-                                                    link.classList.add("active-link");
-                                                }
+                                                    document.addEventListener("DOMContentLoaded", function () {
+                                                        var accountDetailsLink = document.getElementById("accountdetails");
+                                                        accountDetailsLink.classList.add("active-link");
+                                                    });
 
-                                                document.addEventListener("DOMContentLoaded", function () {
-                                                    var accountDetailsLink = document.getElementById("accountdetails");
-                                                    accountDetailsLink.classList.add("active-link");
-                                                });
+                                                    function checkRepass() {
+                                                        var pass = document.getElementById("password").value;
+                                                        var repass = document.getElementById("repass").value;
+                                                        var checkRepass = document.getElementById("error_repass");
+                                                        if (pass !== repass) {
+                                                            checkRepass.innerHTML = "( Password is not the same as repassword! )";
+                                                        } else {
+                                                            checkRepass.innerHTML = "";
+                                                        }
+                                                    }
         </script>
     </body>
 </html>

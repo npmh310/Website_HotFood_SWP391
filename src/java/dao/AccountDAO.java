@@ -254,6 +254,7 @@ public class AccountDAO {
         return null;
     }
 
+
     public void addUser(String username, String password, String fullname, String phone, String email,
             String address, int role) {
         String query = "INSERT [dbo].Account([Username], [Password],  [Fullname], [PhoneNum], [Address],[Email],[Role])\n"
