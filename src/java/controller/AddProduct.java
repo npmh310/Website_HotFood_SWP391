@@ -6,10 +6,10 @@ package controller;
 
 import dao.ProductDAO;
 import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -19,15 +19,15 @@ public class AddProduct extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String name = request.getParameter("name");
-        String image = request.getParameter("image");
-        String price = request.getParameter("price");
-        String detail = request.getParameter("detail");
-        String category = request.getParameter("category"); 
+        String pname = request.getParameter("name");
+        String pimage = request.getParameter("image");
+        String pprice = request.getParameter("price");
+        String pdetail = request.getParameter("detail");
+        String pcategory = request.getParameter("category"); 
         
         ProductDAO p = new ProductDAO();
         
-        p.addProduct(name, category, detail, price, image);
+        p.addProduct(pname, pcategory, pdetail, pprice, pimage);
         
         response.sendRedirect("product");
         

@@ -32,7 +32,7 @@ public class login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+        request.getRequestDispatcher("login2.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -61,49 +61,26 @@ public class login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String opt = request.getParameter("opption");
-        if (opt.equalsIgnoreCase("login")) {
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
 
-            Account u = AccountDAO.login(username, password);
-            if (u != null) {
-                // start session
-                HttpSession session = request.getSession(true);
-                session.setAttribute("user", u);
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        Account u = AccountDAO.login(username, password);
+        if (u != null) {
+            // start session
+            HttpSession session = request.getSession(true);
+            session.setAttribute("user", u);
 //                    session.setMaxInactiveInterval(15 * 60);
-                response.sendRedirect("home");
+            response.sendRedirect("home");
 
-            } else {
-                request.setAttribute("mess", "Username or password is incorrect.");
-            }
+        } else {
+            request.setAttribute("mess", "Username or password is incorrect.");
+            request.getRequestDispatcher("login2.jsp").forward(request, response);
+            response.sendRedirect("login");
         }
 
-        if (opt.equalsIgnoreCase("register")) {
-            String name = request.getParameter("fullname");
-            String user = request.getParameter("username1");
-            String pass = request.getParameter("password1");
-            String email = request.getParameter("email");
-            String address = request.getParameter("address");
-            String phone = request.getParameter("phone");
-            AccountDAO ls = new AccountDAO();
-            Account acc = new Account(user, pass, name, phone, address, email);
+        
 
-            Account a = ls.checkUserExist(user);
-            Account b = ls.checkEmailExist(email);
-            if (a == null && b == null) {
-                ls.register(acc);
-                request.setAttribute("status", "Sign Up Success");
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-                response.sendRedirect("login");
-            } else {
-                request.setAttribute("status1", "Your username or email address already exists");
-                request.setAttribute("fullname", name);
-                request.setAttribute("phoneNum", phone);
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-                response.sendRedirect("login");
-            }
-        }
 //        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
