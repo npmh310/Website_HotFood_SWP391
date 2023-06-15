@@ -9,10 +9,12 @@ import entity.Category;
 import entity.Product;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 
 public class ManageProduct extends HttpServlet {
 
