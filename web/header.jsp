@@ -50,26 +50,33 @@
         <link rel="stylesheet" href="styles/myCss.css" />
         <style>
             /* Style the buttons that are used to open and close the accordion panel */
-            .accordion {
 
+            .input-group > .accordion {
                 background-color: #fff;
                 color: #444;
                 cursor: pointer;
-                padding: 18px;
-                width: 100%;
+
                 text-align: left;
                 border: none;
                 outline: none;
-                transition: 0.4s;
+                /*transition: 0.4s;*/
+
             }
 
+            .accordion:hover{
+                font-size: 18px;
+                color: #b5aec4;
+            }
+            
             /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-            .active, .accordion:hover {
+/*           .navbar_user > .accordion:hover {
                 background-color: #fff;
                 width: fit-content;
                 height: fit-content;
+                margin-top: 2px;
                 padding: 10px 10px 10px 10px;
-            }
+                border: none;
+            }*/
 
             /* Style the accordion panel. Note: hidden by default */
             .panel {
@@ -101,7 +108,7 @@
                                 <nav class="navbar">
                                     <ul class="navbar_menu">
                                         <li><a href="home">home</a></li>
-                                        <li><a href="#">Promotional</a></li>
+                                        <li><a href="managerPage.jsp">Promotional</a></li>
 
                                         <li><a href="category">categories</a></li>
                                         <li><a href="#">best seller</a></li>
@@ -109,13 +116,13 @@
                                     </ul>
                                     <ul class="navbar_user">
                                         <li>
-                                            <div class="input-group rounded">
+                                            <div class="input-group mr-2 rounded">
                                                 <button class="accordion"><i class="fa fa-search" aria-hidden="true"></i></button>
                                                 <div class="panel">
                                                     <form action="search" method="post">
                                                         <input name="txt" type="text" placeholder="search" maxlength="40" 
-                                                               style="width: 100px; font-family: unset !important;
-                                                               font-weight: normal; height: 28px; padding-left: 7px; font-size: 14px">
+                                                               style="width: 180px; font-family: unset !important;
+                                                               font-weight: normal; height: 30px; padding-left: 7px; font-size: 15px">
                                                     </form>
                                                 </div>
                                             </div>

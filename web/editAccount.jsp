@@ -51,7 +51,7 @@
         <div class="row">
             <div class="col-lg-6 mx-auto">
                 <div class="card ">
-                    <form action="saveedit" method="post">
+                    <form action="SaveEditAccount" method="post">
                         <div class="tab-content">
                             <!-- credit card info-->
                             <div id="credit-card" class="tab-pane fade show active pt-3">
@@ -59,7 +59,7 @@
                                     <label>ID</label>
                                     <input value="${acc.aId}" name="id" type="text" class="form-control" readonly required>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label>Username</label>
                                     <input value="${acc.aUsername}" name="name" type="text" class="form-control" readonly required>
@@ -84,12 +84,12 @@
                                     <input value="${acc.aAddress}" name="image" type="text" class="form-control" readonly required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Role</label>
-                                    <select name="category" class="form-select" aria-label="Default select example">                                      
-                                        <option value="${Role}">Customer</option>                                          
-                                        <option value="1">Manager</option>
-                                        <option value="2">Admin</option>
-                                    </select>
+                                    <label>Role</label>                                    
+                                    <select name="role" class="form-select" aria-label="Default select example">
+                                        <option value="0" ${acc.aRole == 0? "selected": ""}>Customer</option>
+                                        <option value="1" ${acc.aRole == 1? "selected": ""}>Manager</option>
+                                        <option value="2" ${acc.aRole == 2? "selected": ""}>Admin</option>
+                                    </select>                                   
                                 </div>
 
                                 <div class="card-footer">

@@ -59,7 +59,7 @@
                                     <label>ID</label>
                                     <input value="${newP.pId}" name="id" type="text" class="form-control" readonly required>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label>Name</label>
                                     <input value="${newP.pName}" name="name" type="text" class="form-control" required>
@@ -83,8 +83,9 @@
                                     <label>Category</label>
                                     <select name="category" class="form-select" aria-label="Default select example">                                      
                                         <c:forEach items="${cate}" var="o">                                           
-                                            <option value="${o.cId}">${o.cName}</option>
+                                            <option value="${o.cId}" >${o.cName}</option>                                           
                                         </c:forEach>
+                                        
                                     </select>
                                 </div>
 

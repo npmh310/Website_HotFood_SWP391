@@ -122,30 +122,7 @@
         </div>
         <div class="hamburger_menu_content text-right">
           <ul class="menu_top_nav">
-            <!-- <li class="menu_item has-children">
-					<a href="#">
-						usd
-						<i class="fa fa-angle-down"></i>
-					</a>
-					<ul class="menu_selection">
-						<li><a href="#">cad</a></li>
-						<li><a href="#">aud</a></li>
-						<li><a href="#">eur</a></li>
-						<li><a href="#">gbp</a></li>
-					</ul>
-				</li> -->
-            <!-- <li class="menu_item has-children">
-					<a href="#">
-						English
-						<i class="fa fa-angle-down"></i>
-					</a>
-					<ul class="menu_selection">
-						<li><a href="#">French</a></li>
-						<li><a href="#">Italian</a></li>
-						<li><a href="#">German</a></li>
-						<li><a href="#">Spanish</a></li>
-					</ul>
-				</li> -->
+      
             <li class="menu_item has-children">
               <a href="#">
                 My Account
@@ -227,21 +204,7 @@
                     </div>
                     <!--<div class="original_price">$629.99</div>-->
                     <div class="product_price">${product.pPrice}</div>
-                    <!-- <ul class="star_rating">
-                      <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                      <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                      <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                      <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                      <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                    </ul> -->
-                    <!-- <div class="product_color">
-                      <span>Select Color:</span>
-                      <ul>
-                        <li style="background: #e54e5d"></li>
-                        <li style="background: #252525"></li>
-                        <li style="background: #60b3f3"></li>
-                      </ul>
-                    </div> -->
+                 
                     <div
                       class="quantity d-flex flex-column flex-sm-row align-items-sm-center"
                     >
