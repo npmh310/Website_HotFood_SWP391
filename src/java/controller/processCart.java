@@ -4,13 +4,12 @@
  */
 package controller;
 
-import dao.AccountDAO;
 import dao.CartDAO;
-import entity.Account;
 import entity.CartDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -21,7 +20,8 @@ import java.util.ArrayList;
  *
  * @author linhp
  */
-public class login extends HttpServlet {
+@WebServlet(name = "processCart", urlPatterns = {"/processCart"})
+public class processCart extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,7 +35,21 @@ public class login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("login2.jsp").forward(request, response);
+        HttpSession session = request.getSession(false);
+        
+        int prodQty = Integer.parseInt(request.getParameter("quantity")); 
+        String cartId = request.getParameter("cartId");
+        String prodId = request.getParameter("pId");
+        CartDAO cd = new CartDAO();
+        
+//        System.out.println(listCart); 
+        
+        cd.updateToCart(cartId, prodId, prodQty);
+        ArrayList<CartDetail> listCart = cd.getAllCartItems(cartId);
+        session.setAttribute("listCart", listCart);
+        
+//        response.sendRedirect("cart");
+        request.getRequestDispatcher("cart").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,35 +78,7 @@ public class login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        Account u = AccountDAO.login(username, password);
-        if (u != null) {
-            // start session
-            HttpSession session = request.getSession(true);
-            session.setAttribute("user", u);
-            
-            String CartId = CartDAO.getCartId(u.getaId());
-            ArrayList<CartDetail> listItems = CartDAO.getAllCartItems(CartId);
-            session.setAttribute("listCart", listItems);
-            if(u.getaRole()==1){
-                response.sendRedirect("managerPage");
-            }
-            else{
-                response.sendRedirect("home");
-            }
-
-        } else {
-            request.setAttribute("mess", "Username or password is incorrect.");
-            request.getRequestDispatcher("login2.jsp").forward(request, response);
-            response.sendRedirect("login");
-        }
-
-        
-
-//        request.getRequestDispatcher("login.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

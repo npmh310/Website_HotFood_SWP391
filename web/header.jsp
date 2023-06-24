@@ -1,8 +1,7 @@
-<%-- 
-    Document   : top.jsp
+<!--    Document   : top.jsp
     Created on : May 16, 2023, 2:27:02 PM
     Author     : minhhieu
---%>
+--%>-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -108,7 +107,10 @@
                                 <nav class="navbar">
                                     <ul class="navbar_menu">
                                         <li><a href="home">home</a></li>
-                                        <li><a href="managerPage.jsp">Promotional</a></li>
+                                        <c:if test="${sessionScope.user.aRole == 1}">
+                                            <li><a href="managerPage">QL Bill</a></li>
+                                        </c:if>
+                                        <li><a href="">Promotional</a></li>
 
                                         <li><a href="category">categories</a></li>
                                         <li><a href="#">best seller</a></li>
@@ -132,19 +134,30 @@
                                                 <a href="login"
                                                    ><i class="fa fa-sign-in" aria-hidden="true"></i></a>
                                             </li>
+                                            <li>
+                                                <a href="login"
+                                                   ><i class="fa fa-shopping-cart" aria-hidden="true"></i
+                                                    ></a>
+                                            </li>
                                         </c:if>
 
                                         <c:if test="${not empty sessionScope.user}">
                                             <li>
-                                                <a href="profile.jsp"><i class="fa fa-user" aria-hidden="true"></i></a>
+                                                <a href="profile.jsp"
+                                                   ><i class="fa fa-user" aria-hidden="true"></i
+                                                    ></a>
+                                            </li>
+                                            <li class="checkout">
+                                                <a href="cart">
+                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                    <c:if test="${not empty sessionScope.user}">
+                                                        <span id="checkout_items" class="checkout_items"
+                                                              >${sessionScope.listCart.size()}</span
+                                                        >
+                                                    </c:if>
+                                                </a>
                                             </li>
                                         </c:if>
-                                        <li class="checkout">
-                                            <a href="cart.jsp">
-                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                <span id="checkout_items" class="checkout_items" >2</span>
-                                            </a>
-                                        </li>
                                     </ul>
                                     <div class="hamburger_container">
                                         <i class="fa fa-bars" aria-hidden="true"></i>
@@ -216,4 +229,3 @@
                 }
             </script>
     </body>
-

@@ -21,7 +21,7 @@ import java.util.ArrayList;
  *
  * @author linhp
  */
-public class login extends HttpServlet {
+public class cart extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,7 +35,26 @@ public class login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("login2.jsp").forward(request, response);
+        HttpSession session = request.getSession(false);
+        Account user = null;
+
+        if (session != null) {
+            user = (Account) session.getAttribute("user");
+        }
+
+        String CartId = CartDAO.getCartId(user.getaId());
+        ArrayList<CartDetail> listItems = CartDAO.getAllCartItems(CartId);
+        float totalMoney = 0;
+        for (CartDetail listItem : listItems) {
+            totalMoney += listItem.getQuantity()*listItem.getItems().getpPrice();
+        }
+
+        session.setAttribute("totalMoney", totalMoney);
+        session.setAttribute("listCart", listItems);
+       
+
+        request.getRequestDispatcher("cart.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,35 +83,7 @@ public class login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        Account u = AccountDAO.login(username, password);
-        if (u != null) {
-            // start session
-            HttpSession session = request.getSession(true);
-            session.setAttribute("user", u);
-            
-            String CartId = CartDAO.getCartId(u.getaId());
-            ArrayList<CartDetail> listItems = CartDAO.getAllCartItems(CartId);
-            session.setAttribute("listCart", listItems);
-            if(u.getaRole()==1){
-                response.sendRedirect("managerPage");
-            }
-            else{
-                response.sendRedirect("home");
-            }
-
-        } else {
-            request.setAttribute("mess", "Username or password is incorrect.");
-            request.getRequestDispatcher("login2.jsp").forward(request, response);
-            response.sendRedirect("login");
-        }
-
-        
-
-//        request.getRequestDispatcher("login.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

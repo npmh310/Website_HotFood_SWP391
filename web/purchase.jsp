@@ -111,37 +111,29 @@
                     <ul class="nav nav-tabs justify-content-center total-nav">
                         <li class="nav-item col-12 col-sm-6 col-md-3 own-item">
                             <a
-                                class="nav-link active text-center link-item"
-                                id="all-tab"
-                                data-toggle="tab"
-                                href="#all-content"
+                                class="nav-link text-center link-item ${tag==null?"active":""}"
+                                href="purchase"
                                 >All</a
                             >
                         </li>
                         <li class="nav-item col-12 col-sm-6 col-md-3 own-item">
                             <a
-                                class="nav-link text-center link-item"
-                                id="payment-tab"
-                                data-toggle="tab"
-                                href="#payment-content"
+                                class="nav-link text-center link-item ${tag==0?"active":""}"
+                                href="purchase?st=0"
                                 >Payment</a
                             >
                         </li>
                         <li class="nav-item col-12 col-sm-6 col-md-3 own-item">
                             <a
-                                class="nav-link text-center link-item"
-                                id="shipping-tab"
-                                data-toggle="tab"
-                                href="#shipping-content"
+                                class="nav-link text-center link-item ${tag==1?"active":""}"
+                                href="purchase?st=1"
                                 >Shipping</a
                             >
                         </li>
                         <li class="nav-item col-12 col-sm-6 col-md-3 own-item">
                             <a
-                                class="nav-link text-center link-item"
-                                id="completed-tab"
-                                data-toggle="tab"
-                                href="#completed-content"
+                                class="nav-link text-center link-item ${tag==2?"active":""}"
+                                href="purchase?st=2"
                                 >Completed</a
                             >
                         </li>
@@ -154,88 +146,105 @@
                                 <div class="container mt-3 total-product">
                                     <div class="col-12">
                                         <div id="accordion">
-                                            <div class="card mb-3">
-                                                <div
-                                                    class="card-header"
-                                                    role="tab"
-                                                    id="peterhead"
-                                                    data-toggle="collapse"
-                                                    data-target="#1"
-                                                    >
+                                            <!--forEach cua Order tu day-->
+                                            <c:forEach var="odr" items="${sessionScope.listOrder}">
+                                                <div class="card mb-3">
                                                     <div
-                                                        class="header-product d-flex justify-content-between align-items-center overflow-hidden"
+                                                        class="card-header"
+                                                        role="tab"
+                                                        id="peterhead"
+                                                        data-toggle="collapse"
+                                                        data-target="#${odr.getOrderID()}"
                                                         >
-                                                        <div>
-                                                            <h5 class="mb-0">Ngay 14 thang 6 NAM 2023</h5>
+                                                        <div
+                                                            class="header-product d-flex justify-content-between align-items-center overflow-hidden"
+                                                            >
+                                                            <div>
+                                                                <h5 class="mb-0">${odr.date}</h5>
+                                                            </div>
+                                                            <div class="col-4 status ml-2">
+                                                                <h5 style="text-align: end;
+                                                                    margin-bottom: 0">
+                                                                    <c:if test="${odr.status==-1}">
+                                                                        CANCELED
+                                                                    </c:if>
+                                                                    <c:if test="${odr.status==0}">
+                                                                        PAYMENT
+                                                                    </c:if>
+                                                                    <c:if test="${odr.status==1}">
+                                                                        SHIPPING
+                                                                    </c:if>
+                                                                    <c:if test="${odr.status==2}">
+                                                                        COMPLETED
+                                                                    </c:if>
+                                                                </h5>
+                                                            </div>
+                                                            <div class="d-flex mt-2 ml-md-0 overflow-hidden">
+                                                                <h5>${odr.totalPrice}d</h5>
+                                                                <i
+                                                                    class="fa fa-angle-down ml-3"
+                                                                    aria-hidden="true"
+                                                                    ></i>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-4 status ml-2">
-                                                            <h5 style="text-align: end;
-                                                                margin-bottom: 0">
-                                                                PAYMENT
-                                                            </h5>
+                                                    </div>
+                                                    <div
+                                                        class="collapse container"
+                                                        id="${odr.getOrderID()}"
+                                                        data-parent="#accordion"
+                                                        >
+                                                        <c:forEach var="p" items="${odr.items}">                
+                                                        <div
+                                                            class="card-body d-flex justify-content-between align-items-center overflow-hidden pb-3"
+                                                            >
+                                                            <div class="img-product col-md-2 ml-0 pl-0">
+                                                                <img
+                                                                    src="${p.items.pImg}"
+                                                                    alt=""
+                                                                    class="img-fluid rounded-0"
+                                                                    />
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <span class="name-product">${p.quantity} x ${p.items.pName}  </span>
+                                                            </div>
+
+                                                            <div
+                                                                class="col-md-2 d-flex justify-content-end overflow-hidden"
+                                                                >
+                                                                <span>
+                                                                    ${p.price}d x ${p.quantity} = ${p.price*p.quantity} 
+                                                                </span>
+                                                            </div>
                                                         </div>
-                                                        <div class="d-flex mt-2 ml-md-0 overflow-hidden">
-                                                            <h5>160.000d</h5>
-                                                            <i
-                                                                class="fa fa-angle-down ml-3"
-                                                                aria-hidden="true"
-                                                                ></i>
-                                                        </div>
+                                                        </c:forEach>  
+<!--                                                        <div
+                                                            class="card-body d-flex justify-content-between align-items-center overflow-hidden pb-3"
+                                                            >
+                                                            <div class="img-product col-md-2 ml-0 pl-0">
+                                                                <img
+                                                                    src="images/banner_1.jpg"
+                                                                    alt=""
+                                                                    class="img-fluid rounded-0"
+                                                                    />
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <span class="name-product">5 san pham ga </span>
+                                                            </div>
+                                                             <div class="center-status col-md-2 mr-1 pr-2 ml-3">
+                                                              <span>Payment</span>
+                                                            </div> 
+                                                            <div
+                                                                class="col-md-2 d-flex justify-content-end overflow-hidden"
+                                                                >
+                                                                <span>150000</span>
+                                                            </div>
+                                                        </div>-->
                                                     </div>
                                                 </div>
-
-                                                <div
-                                                    class="collapse container"
-                                                    id="1"
-                                                    data-parent="#accordion"
-                                                    >
-                                                    <div
-                                                        class="card-body d-flex justify-content-between align-items-center overflow-hidden pb-3"
-                                                        >
-                                                        <div class="img-product col-md-2 ml-0 pl-0">
-                                                            <img
-                                                                src="images/banner_1.jpg"
-                                                                alt=""
-                                                                class="img-fluid rounded-0"
-                                                                />
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            <span class="name-product">3 san pham ga </span>
-                                                        </div>
-
-                                                        <div
-                                                            class="col-md-2 d-flex justify-content-end overflow-hidden"
-                                                            >
-                                                            <span>50000</span>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="card-body d-flex justify-content-between align-items-center overflow-hidden pb-3"
-                                                        >
-                                                        <div class="img-product col-md-2 ml-0 pl-0">
-                                                            <img
-                                                                src="images/banner_1.jpg"
-                                                                alt=""
-                                                                class="img-fluid rounded-0"
-                                                                />
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            <span class="name-product">5 san pham ga </span>
-                                                        </div>
-                                                        <!-- <div class="center-status col-md-2 mr-1 pr-2 ml-3">
-                                                          <span>Payment</span>
-                                                        </div> -->
-                                                        <div
-                                                            class="col-md-2 d-flex justify-content-end overflow-hidden"
-                                                            >
-                                                            <span>150000</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            </c:forEach>
                                             <!-- order2 -->
                                             <!--order 2-->
-                                            <div class="card mb-3">
+<!--                                            <div class="card mb-3">
                                                 <div
                                                     class="card-header"
                                                     role="tab"
@@ -291,7 +300,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>-->
                                         </div>
                                     </div>
                                 </div>

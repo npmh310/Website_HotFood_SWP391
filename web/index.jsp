@@ -172,7 +172,7 @@
                                             <div class="product_image">
                                                 <img src="${p.pImg}" alt="" /> <!-- img -->
                                             </div>
-                                            <div class="favorite favorite_left"></div>
+                                                <div class="favorite favorite_left"></div>
                                             <!--                                            <div
                                                                                             class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"
                                                                                             >
@@ -191,7 +191,12 @@
                                             </div>
                                         </div>
                                         <div class="red_button add_to_cart_button">
-                                            <a href="#">add to cart</a>
+                                            <c:if test="${not empty sessionScope.user}">
+                                                <a href="AddtoCart?pid=${p.pId}">add to cart</a>
+                                            </c:if>
+                                            <c:if test="${empty sessionScope.user}">
+                                                <a href="login">add to cart</a>
+                                            </c:if>
                                         </div>
                                     </div>
                                 </c:forEach>    
