@@ -4,10 +4,9 @@
  */
 package controller;
 
-import dao.AccountDAO;
-import dao.CartDAO;
+import dao.OrderDAO;
 import entity.Account;
-import entity.CartDetail;
+import entity.Order;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -21,7 +20,7 @@ import java.util.ArrayList;
  *
  * @author linhp
  */
-public class login extends HttpServlet {
+public class managerPage extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,7 +34,37 @@ public class login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("login2.jsp").forward(request, response);
+        String stt = request.getParameter("stt");
+        String oId = request.getParameter("oID");
+        String status = request.getParameter("status");
+        HttpSession session = request.getSession(false);
+        Account user = (Account) session.getAttribute("user");
+        String URL = null;
+        if(user.getaRole() >= 1){
+            URL = "managerPage.jsp";
+        }else{
+            URL = "home";
+        }
+        
+//        System.out.println("oid=" + oId + " status="+status);
+        if(oId != null && status != null){
+            OrderDAO.updateStatusBill(oId, status);
+//            response.sendRedirect("managerPage");
+        }
+        
+        ArrayList<Order> listOrder = new ArrayList<>();
+        
+        if(stt == null){stt = "0";}
+        
+        listOrder = OrderDAO.getAllBill(stt);
+//        listOrder = OrderDAO.getAllBillById(user.getaId());
+        
+//        System.out.println(listOrder);
+        
+        session.setAttribute("listOrder", listOrder);
+        request.setAttribute("tag", stt);
+        
+        request.getRequestDispatcher(URL).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,35 +93,7 @@ public class login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        Account u = AccountDAO.login(username, password);
-        if (u != null) {
-            // start session
-            HttpSession session = request.getSession(true);
-            session.setAttribute("user", u);
-            
-            String CartId = CartDAO.getCartId(u.getaId());
-            ArrayList<CartDetail> listItems = CartDAO.getAllCartItems(CartId);
-            session.setAttribute("listCart", listItems);
-            if(u.getaRole()==1){
-                response.sendRedirect("managerPage");
-            }
-            else{
-                response.sendRedirect("home");
-            }
-
-        } else {
-            request.setAttribute("mess", "Username or password is incorrect.");
-            request.getRequestDispatcher("login2.jsp").forward(request, response);
-            response.sendRedirect("login");
-        }
-
-        
-
-//        request.getRequestDispatcher("login.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
