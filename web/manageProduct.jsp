@@ -27,6 +27,17 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="styles/main_styles.css" />
         
+        <style>
+               .btn-lg {
+                padding: 10px 12px ;
+            }
+            
+            tbody th{
+                font-weight: normal;
+                font-size: 14px;
+            }
+        </style>
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
@@ -34,8 +45,8 @@
         
             <div class="page-container" style="height: 100%;width: 100%;margin: 0;display: table;">
                 <!-- sidebar menu area start -->
-                <div class="sidebar-menu" style="background-color: whitesmoke">
-                    <div class="sidebar" style="position: absolute; padding: 50px 200px;background-color: whitesmoke;">
+                <div class="sidebar-menu" style="background-color: whitesmoke; ">
+                    <div class="sidebar" style="position: absolute; padding: 50px 200px;background-color: whitesmoke; margin: 0px 35px">
                         <div class="logo_container">
                             <a href="home">hot<span>food</span></a>
                         </div>
@@ -106,9 +117,8 @@
                                     <div class="col-12">
                                         <ul class="metismenu d-flex" id="menu">
                                             <li>
-                                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add">Add new product</button>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i><span>Delete</span></a></li>
+                                                <button type="button" class="btn btn-info btn-lg mb-3" data-toggle="modal" data-target="#add">Add new product</button>
+                                            </li>                                    
                                         </ul>
                                     </div>
                                 </div>
@@ -121,6 +131,7 @@
                                         <th>Image</th>
                                         <th>Detail</th>
                                         <th>Price</th>
+                                        <th>Category</th>
                                         <th>Edit</th>
                                     </tr>
                                 </thead>
@@ -130,13 +141,21 @@
                                             <th>${p.pId}</th>
                                             <th>${p.pName}</th>
                                             <th><img src="${p.pImg}" height="100px" width="90px"/></th> 
-                                            <th>${p.pDetail}</th> 
-                                            <th>${p.pPrice}</th>                                        
+                                            <th>${p.pDetail}</th>                                           
+                                            </th>
+                                            <th>${p.pPrice}</th>
                                             <th>
-                                                <a href="edit?eid=${p.pId}"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                                            <c:forEach items="${cate}" var="c">
+                                                <c:if test="${p.getCateID() == c.cId}">
+                                                    ${c.cName}
+                                                </c:if>
+                                            </c:forEach>
                                             </th>
                                             <th>
-                                                <a href="delete?pid=${p.pId}"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
+                                                <a href="edit?eid=${p.pId}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                            </th>
+                                            <th>
+                                                <a href="delete?pid=${p.pId}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                             </th>
                                         </tr>    
                                     </c:forEach>
@@ -206,8 +225,6 @@
 
             <div class="modal fade" id="add" role="dialog">
                 <div class="modal-dialog">
-
-                    <!-- Modal content-->
                     <div class="modal-content">
                         <form action="add" method="post">
                             <div class="modal-header">						
