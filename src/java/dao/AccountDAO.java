@@ -253,4 +253,20 @@ public class AccountDAO {
         }
         return null;
     }
+
+    // forgot password when
+    public static void changePassword(String email, String newpass) {
+        String query = "update Account set "
+                + "Password = ? where Email = ?";
+        try ( Connection con = getConnect()) {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, newpass);
+            ps.setString(2, email);
+            ps.executeUpdate();
+            System.out.println("thanhcong");
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+
+    }
 }

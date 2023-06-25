@@ -76,7 +76,7 @@ public class login extends HttpServlet {
         } else {
             request.setAttribute("mess", "Username or password is incorrect.");
             request.getRequestDispatcher("login2.jsp").forward(request, response);
-            response.sendRedirect("login");
+//            response.sendRedirect("login2.jsp");
         }
 
         
