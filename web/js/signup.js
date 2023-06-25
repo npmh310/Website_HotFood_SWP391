@@ -34,7 +34,7 @@ function checkPass() {
     var regexPass = /^(?=.*[A-Z])(?=.*[!@#$&*_+=\-?.])(?=.*[0-9]).{8,}$/;
 
     if (!regexPass.test(pass)) {
-        checkPass.innerHTML = "( Password is not strong! )";
+        checkPass.innerHTML = "( Password is not strong!  Must have at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character  )";
     } else {
         checkPass.innerHTML = "";
     }

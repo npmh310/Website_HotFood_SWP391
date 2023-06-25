@@ -1,27 +1,23 @@
+package sendmail;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller;
 
 import dao.AccountDAO;
-import dao.CartDAO;
-import entity.Account;
-import entity.CartDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.util.ArrayList;
 
 /**
  *
- * @author linhp
+ * @author minhhieu
  */
-public class login extends HttpServlet {
+public class changePassSuccess extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,7 +31,16 @@ public class login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("login2.jsp").forward(request, response);
+     String email = request.getParameter("email");
+        String newpass = request.getParameter("newpass");
+        String repeat = request.getParameter("repeatpass");
+        AccountDAO.changePassword(email, newpass);
+        request.setAttribute("note", "Change password successfull");
+        System.out.println(email + newpass + repeat);
+        request.setAttribute("email", email);
+        request.getRequestDispatcher("changeEmailPass.jsp").forward(request, response);
+        System.out.println("2: " + email + newpass + repeat);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,35 +69,7 @@ public class login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        Account u = AccountDAO.login(username, password);
-        if (u != null) {
-            // start session
-            HttpSession session = request.getSession(true);
-            session.setAttribute("user", u);
-            
-            String CartId = CartDAO.getCartId(u.getaId());
-            ArrayList<CartDetail> listItems = CartDAO.getAllCartItems(CartId);
-            session.setAttribute("listCart", listItems);
-            if(u.getaRole()==1){
-                response.sendRedirect("managerPage");
-            }
-            else{
-                response.sendRedirect("home");
-            }
-
-        } else {
-            request.setAttribute("mess", "Username or password is incorrect.");
-            request.getRequestDispatcher("login2.jsp").forward(request, response);
-//            response.sendRedirect("login2.jsp");
-        }
-
-        
-
-//        request.getRequestDispatcher("login.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
