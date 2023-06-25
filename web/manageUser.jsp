@@ -26,6 +26,12 @@
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="styles/main_styles.css" />
+        <style>
+           tbody th{
+                font-weight: normal;
+                font-size: 14px;
+            }
+        </style>
     </head>
     <body>
         <div class="page-container" style="height: 100%;width: 100%;margin: 0;display: table;">
