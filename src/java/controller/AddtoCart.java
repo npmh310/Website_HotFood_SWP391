@@ -4,13 +4,14 @@
  */
 package controller;
 
-import dao.AccountDAO;
 import dao.CartDAO;
 import entity.Account;
 import entity.CartDetail;
+import entity.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -21,7 +22,8 @@ import java.util.ArrayList;
  *
  * @author linhp
  */
-public class login extends HttpServlet {
+@WebServlet(name = "AddtoCart", urlPatterns = {"/AddtoCart"})
+public class AddtoCart extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,7 +37,72 @@ public class login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("login2.jsp").forward(request, response);
+        
+        HttpSession session = request.getSession(false);
+        String pID = request.getParameter("pid");
+        CartDAO c = new CartDAO();
+//        String check = request.getParameter("checkWeb");
+//        String URL = "home";
+        
+//        if(check.equals("cate")){
+//            URL = "category";
+//        }
+        
+        Account user = null;
+        if (session != null){
+            user = (Account) session.getAttribute("user");
+            String CartId = c.getCartId(user.getaId());
+            if(CartId == null){
+                c.setCartId(user.getaId());
+                CartId = c.getCartId(user.getaId());
+            }
+
+            c.addToCart(CartId, pID, 1);
+            ArrayList<CartDetail> listItems = c.getAllCartItems(CartId);
+            
+//            System.out.println(listItems);
+            
+            
+            session.setAttribute("listCart", listItems);
+        }else{
+            response.sendRedirect("login");
+        }
+            
+//        String CartId = c.getCartId(user.getaId());
+//        if(CartId == null){
+//            c.setCartId(user.getaId());
+//            CartId = c.getCartId(user.getaId());
+//        }
+//        
+//        c.addToCart(CartId, pID, 1);
+        request.getRequestDispatcher("home").forward(request, response);
+        
+//        System.out.println(CartId);
+        
+//        ArrayList<CartDetail> items = c.getAllCartItems(CartId);
+//        int countItems = items.size();
+//        ArrayList<Product> listProd = new ArrayList();
+//        for (CartDetail cd : items) {
+//            Product p = cd.getItems();
+//            listProd.add(p);
+//        }
+//        
+//        
+//        System.out.println(countItems);
+        
+//        for (Product product : listProd) {
+//            if(pID.equals(product.getpId())){
+//                
+//            }
+//            
+//        }
+        
+//        c.addToCart(CartId, pID, 1);
+        
+//        request.setAttribute("countItems", countItems);
+//        response.sendRedirect("home");
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,35 +131,7 @@ public class login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        Account u = AccountDAO.login(username, password);
-        if (u != null) {
-            // start session
-            HttpSession session = request.getSession(true);
-            session.setAttribute("user", u);
-            
-            String CartId = CartDAO.getCartId(u.getaId());
-            ArrayList<CartDetail> listItems = CartDAO.getAllCartItems(CartId);
-            session.setAttribute("listCart", listItems);
-            if(u.getaRole()==1){
-                response.sendRedirect("managerPage");
-            }
-            else{
-                response.sendRedirect("home");
-            }
-
-        } else {
-            request.setAttribute("mess", "Username or password is incorrect.");
-            request.getRequestDispatcher("login2.jsp").forward(request, response);
-//            response.sendRedirect("login2.jsp");
-        }
-
-        
-
-//        request.getRequestDispatcher("login.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

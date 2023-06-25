@@ -4,25 +4,62 @@
  */
 package controller;
 
-import dao.AccountDAO;
+import dao.CartDAO;
+import dao.OrderDAO;
+import entity.Account;
+import entity.CartDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
 
+/**
+ *
+ * @author linhp
+ */
+public class Checkout extends HttpServlet {
 
-public class SaveEditAccount extends HttpServlet {
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String id = request.getParameter("id");
-        int role = Integer.parseInt(request.getParameter("role"));
-        AccountDAO dao = new AccountDAO();
-        dao.editRole(id, role);
-        response.sendRedirect("user");
+        
+        HttpSession session = request.getSession(false);
+        CartDAO cdao = new CartDAO();
+        OrderDAO odr = new OrderDAO();
+        Account user = null;
+        user = (Account) session.getAttribute("user");
+        float totalPrice = (Float) session.getAttribute("totalMoney");
+        
+        String CartId = cdao.getCartId(user.getaId());       
+        String code = request.getParameter("code");
+        
+        ArrayList<CartDetail> listCart = cdao.getAllCartItems(CartId);
+        odr.addToBill(CartId, user.getaId(), code, totalPrice, 0);
+        for (CartDetail items : listCart) {
+            odr.addToOrderDetail(CartId, items.getItems().getpId(), items.getQuantity(), items.getItems().getpPrice());
+//            System.out.println(items.getpId());
+//            System.out.println(items.getQuantity());
+//            System.out.println(items.getItems().getpPrice());
+        }
+        
+        cdao.deleteAllCart(CartId); //tu tu
+        listCart = cdao.getAllCartItems(cdao.getCartId(user.getaId()));
+        
+        session.setAttribute("listcart", listCart);
+               
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,3 +101,4 @@ public class SaveEditAccount extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+}

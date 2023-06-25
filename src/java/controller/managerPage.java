@@ -4,25 +4,67 @@
  */
 package controller;
 
-import dao.AccountDAO;
+import dao.OrderDAO;
+import entity.Account;
+import entity.Order;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
 
+/**
+ *
+ * @author linhp
+ */
+public class managerPage extends HttpServlet {
 
-public class SaveEditAccount extends HttpServlet {
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String id = request.getParameter("id");
-        int role = Integer.parseInt(request.getParameter("role"));
-        AccountDAO dao = new AccountDAO();
-        dao.editRole(id, role);
-        response.sendRedirect("user");
+        String stt = request.getParameter("stt");
+        String oId = request.getParameter("oID");
+        String status = request.getParameter("status");
+        HttpSession session = request.getSession(false);
+        Account user = (Account) session.getAttribute("user");
+        String URL = null;
+        if(user.getaRole() >= 1){
+            URL = "managerPage.jsp";
+        }else{
+            URL = "home";
+        }
+        
+//        System.out.println("oid=" + oId + " status="+status);
+        if(oId != null && status != null){
+            OrderDAO.updateStatusBill(oId, status);
+//            response.sendRedirect("managerPage");
+        }
+        
+        ArrayList<Order> listOrder = new ArrayList<>();
+        
+        if(stt == null){stt = "0";}
+        
+        listOrder = OrderDAO.getAllBill(stt);
+//        listOrder = OrderDAO.getAllBillById(user.getaId());
+        
+//        System.out.println(listOrder);
+        
+        session.setAttribute("listOrder", listOrder);
+        request.setAttribute("tag", stt);
+        
+        request.getRequestDispatcher(URL).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,3 +106,4 @@ public class SaveEditAccount extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+}

@@ -4,25 +4,50 @@
  */
 package controller;
 
-import dao.AccountDAO;
+import dao.CartDAO;
+import entity.CartDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
 
+/**
+ *
+ * @author linhp
+ */
+@WebServlet(name = "deleteCart", urlPatterns = {"/deleteCart"})
+public class deleteCart extends HttpServlet {
 
-public class SaveEditAccount extends HttpServlet {
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String id = request.getParameter("id");
-        int role = Integer.parseInt(request.getParameter("role"));
-        AccountDAO dao = new AccountDAO();
-        dao.editRole(id, role);
-        response.sendRedirect("user");
+        HttpSession session = request.getSession(false);
+        
+        String cartId = request.getParameter("cartId");
+        String prodId = request.getParameter("pId");
+        CartDAO cd = new CartDAO();
+        
+//        System.out.println(listCart); 
+        
+        cd.deleteToCart(cartId, prodId);
+        ArrayList<CartDetail> listCart = cd.getAllCartItems(cartId);
+        session.setAttribute("listCart", listCart);
+        
+        request.getRequestDispatcher("cart").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,3 +89,4 @@ public class SaveEditAccount extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+}
