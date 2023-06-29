@@ -1,3 +1,4 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
     <head>
@@ -117,9 +118,7 @@
                                     <div class="col-12">
                                         <ul class="metismenu d-flex" id="menu">
                                             <li>
-
                                                 <button type="button" class="btn btn-info btn-lg mb-3" data-toggle="modal" data-target="#add">Add new product</button>
-
                                             </li>                                    
                                         </ul>
                                     </div>
@@ -146,7 +145,6 @@
                                             <th>${p.pDetail}</th>                                           
                                             </th>
                                             <th>${p.pPrice}</th>
-
                                             <th>
                                             <c:forEach items="${cate}" var="c">
                                                 <c:if test="${p.getCateID() == c.cId}">
@@ -158,7 +156,6 @@
                                                 <a href="edit?eid=${p.pId}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                             </th>
                                             <th>
-
                                                 <a href="delete?pid=${p.pId}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                             </th>
                                         </tr>    

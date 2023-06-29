@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -21,12 +22,6 @@ public class Account {
     public Account() {
     }
 
-    public Account(int aRole) {
-        this.aRole = aRole;
-    }
-
-    
-    
     public Account(int aId, String aUsername, String aPassword, String aFullname, String aPhone, String aEmail, String aAddress, int aRole) {
         this.aId = aId;
         this.aUsername = aUsername;
@@ -47,7 +42,7 @@ public class Account {
         this.aAddress = aAddress;
     }
 
-    public Account(int aRole) {
+     public Account(int aRole) {
         this.aRole = aRole;
     }
     

@@ -233,7 +233,7 @@ public class AccountDAO {
         }
     }
 
-    public Account getAccountById(String id) {
+    public static Account getAccountById(String id) {
         String query = "Select * from Account where ID = ?";
         try ( Connection con = getConnect()) {
             PreparedStatement ps = con.prepareStatement(query);

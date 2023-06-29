@@ -1,3 +1,4 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
     <head>
@@ -254,5 +255,4 @@
         <script src="styles/assets/js/plugins.js"></script>
         <script src="styles/assets/js/scripts.js"></script>
     </body>
-
 </html>

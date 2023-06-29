@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -89,10 +90,28 @@
         .quantity_selector button{
             background-color: white;
             border: none;
-
+            cursor: pointer;
         }
         .quantity_selector{
             padding-top: 5px !important;
+            width: 114px;
+        }
+        .quantity_value{
+            margin: 0 5px;
+        }
+        .btn-order{
+            background-color: #fe4c50;
+
+        }
+        .btn-order a{
+            color: white;
+        }
+        .btn-order:hover{
+            background-color:  #1e1e27;
+
+        }
+        .summary{
+            max-height: none;
         }
     </style>
     <body>
@@ -140,25 +159,31 @@
                                     </div>
                                     <div class="col">
                                         <div class="quantity_selector p-1">
-                                            <button><span class="minus pl-2"><a href="processCart?quantity=${p.quantity-1}&pId=${p.items.pId}&cartId=${p.getCartId()}">-
-                                                    </a></span></button>
+                                            <button><span class="minus pl-2"><a href="processCart?quantity=${p.quantity-1}&pId=${p.items.pId}&cartId=${p.getCartId()}">
+                                                        -</a></span></button>
 
                                             <span class="quantity_value">${p.quantity}</span>
-                                            <button><span class="plus pr-2"><a href="processCart?quantity=${p.quantity+1}&pId=${p.items.pId}&cartId=${p.getCartId()}">+
-                                                    </a></span></button>
+                                            <button><span class="plus pr-2"><a href="processCart?quantity=${p.quantity+1}&pId=${p.items.pId}&cartId=${p.getCartId()}">
+                                                        +</a></span></button>
 
                                         </div>
                                     </div>
                                     <div class="col">
-                                        ${p.items.pPrice * p.quantity}&#8363; <span class="close">
-                                            <button style="border: none"><i class="fa fa-times" style="font-size: 18px" aria-hidden="true"></i><a href="deleteCart?pId=${p.items.pId}&cartId=${p.getCartId()}"></a></button></span>
+                                        ${p.items.pPrice * p.quantity}&#8363; 
+                                        <span class="close">
+                                            <button style="border: none">
+                                                <a href="deleteCart?pId=${p.items.pId}&cartId=${p.getCartId()}">
+                                                    <i class="fa fa-times" style="font-size: 18px" aria-hidden="true"> </i>
+                                                </a>
+                                            </button>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                         </c:forEach>
                         <div class="back-to-shop">
-                            <a href="home">&leftarrow;</a
-                            ><span class="text-muted">Back to shop</span>
+                            <a href="home"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> <span class="text-muted">Back to shop</span></a
+                            >
                         </div>
                     </div>
                     <div class="col-md-4 summary">
@@ -172,7 +197,7 @@
                                 <div class="col text-right">${p.items.pPrice * p.quantity}&#8363;</div>
                             </div>
                         </c:forEach>
-                        
+
                         <form>
                             <p style="color: black">DISCOUNT CODE</p>
                             <input id="code" placeholder="Enter your code" />
@@ -184,7 +209,13 @@
                             <div class="col">TOTAL PRICE</div>
                             <div class="col text-right">${totalMoney}&#8363</div>
                         </div>
-                        <button class="btn"><a href="checkout">CHECKOUT</a></button>
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-order"><a href="checkout">ORDER</a></button>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
             </div>

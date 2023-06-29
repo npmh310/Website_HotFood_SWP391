@@ -44,7 +44,9 @@ public class OrderDAO {
             
             return ls;
         } catch (Exception e) {
-            System.out.println("loi roi");
+
+            System.out.println("loi roi 1");
+
         }
         return null;
     }
@@ -59,7 +61,9 @@ public class OrderDAO {
                 System.out.println("update Bill success");
             
         } catch (Exception ex) {
-            System.out.println("loi roi");
+
+            System.out.println("loi roi 2");
+
         }
     }
     
@@ -78,7 +82,9 @@ public class OrderDAO {
             System.out.println("add to Order success");
             
         } catch (Exception ex) {
-            System.out.println("loi roi");
+
+            System.out.println("loi roi 3");
+
         }
     }
     
@@ -97,7 +103,9 @@ public class OrderDAO {
             
             return ls;
         } catch (Exception e) {
-            System.out.println("loi roi");
+
+            System.out.println("loi roi 4");
+
         }
         return null;
     }
@@ -118,7 +126,9 @@ public class OrderDAO {
             
             return ls;
         } catch (Exception e) {
-            System.out.println("loi roi");
+
+            System.out.println("loi roi 5");
+
         }
         return null;
     }
@@ -141,32 +151,14 @@ public class OrderDAO {
             
             return ls;
         } catch (Exception e) {
-            System.out.println("loi roi");
+
+            System.out.println("loi roi 6");
+
         }
         return null;
     }
     
-//    public static ArrayList<OrderDetail> getAllOrderItemsByStatus(String OrderID, String status) {
-//
-//        ArrayList<OrderDetail> ls = new ArrayList<>();
-//
-//        try ( Connection con = getConnect()) {
-//            PreparedStatement ps = con.prepareStatement("select * from OrderDetail where OrderID=? and status=?");
-//            ps.setString(1, OrderID);
-//            ps.setString(2, status);
-//            ResultSet rs = ps.executeQuery();
-//            while (rs.next()) {
-//                Product prod = ProductDAO.getProductById(rs.getString(2));
-//                OrderDetail items = new OrderDetail(rs.getString(1), prod, rs.getInt(3), rs.getFloat(4));
-//                ls.add(items);
-//            }
-//            
-//            return ls;
-//        } catch (Exception e) {
-//            System.out.println("loi roi");
-//        }
-//        return null;
-//    }
+
     
     public static void addToOrderDetail(String CartId, int pId, int ProdQty, float price) {
 //        ProdQty = 1;
