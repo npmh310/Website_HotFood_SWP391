@@ -159,7 +159,7 @@ Author     : minhhieu
                                     <li class="nav-item">
                                         <a
                                             class="btn btn-link"
-                                            href="purchase.jsp"
+                                            href="purchase"
                                             >Orders Placed</a
                                         >
                                     </li>

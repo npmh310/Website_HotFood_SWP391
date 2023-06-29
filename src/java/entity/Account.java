@@ -41,6 +41,10 @@ public class Account {
         this.aAddress = aAddress;
     }
 
+     public Account(int aRole) {
+        this.aRole = aRole;
+    }
+    
     public int getaId() {
         return aId;
     }

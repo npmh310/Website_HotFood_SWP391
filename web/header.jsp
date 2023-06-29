@@ -1,8 +1,7 @@
-<%-- 
-    Document   : top.jsp
+<!--    Document   : top.jsp
     Created on : May 16, 2023, 2:27:02 PM
     Author     : minhhieu
---%>
+--%>-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -45,10 +44,12 @@
             type="text/css"
             href="plugins/OwlCarousel2-2.2.1/animate.css"
             />
-        <link rel="stylesheet" type="text/css" href="styles/main_styles.css" />
+        <!--<link rel="stylesheet" type="text/css" href="styles/main_styles.css" />-->
         <link rel="stylesheet" type="text/css" href="styles/responsive.css" />
         <link rel="stylesheet" href="styles/myCss.css" />
         <style>
+            /* Style the buttons that are used to open and close the accordion panel */
+
             /* Style the buttons that are used to open and close the accordion panel */
 
             .input-group > .accordion {
@@ -67,23 +68,16 @@
                 font-size: 18px;
                 color: #b5aec4;
             }
-            
-            /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-/*           .navbar_user > .accordion:hover {
-                background-color: #fff;
-                width: fit-content;
-                height: fit-content;
-                margin-top: 2px;
-                padding: 10px 10px 10px 10px;
-                border: none;
-            }*/
 
-            /* Style the accordion panel. Note: hidden by default */
+     
             .panel {
                 padding: 10px 10px;
                 background-color: white;
                 display: none;
                 overflow: hidden;
+            }
+            .logo_container a{
+                font-size: 30px !important;
             }
         </style>
     </head>
@@ -108,10 +102,13 @@
                                 <nav class="navbar">
                                     <ul class="navbar_menu">
                                         <li><a href="home">home</a></li>
-                                        <li><a href="managerPage.jsp">Promotional</a></li>
+                                            <c:if test="${sessionScope.user.aRole == 1}">
+                                            <li><a href="managerPage">QL Bill</a></li>
+                                            </c:if>
+                                        <li><a href="promotional.jsp">Promotional</a></li>
 
                                         <li><a href="category">categories</a></li>
-                                        <li><a href="#">best seller</a></li>
+<!--                                        <li><a href="#">best seller</a></li>-->
 
                                     </ul>
                                     <ul class="navbar_user">
@@ -132,19 +129,32 @@
                                                 <a href="login"
                                                    ><i class="fa fa-sign-in" aria-hidden="true"></i></a>
                                             </li>
+                                            <li>
+                                                <a href="login"
+                                                   ><i class="fa fa-shopping-cart" aria-hidden="true"></i
+                                                    ></a>
+                                            </li>
                                         </c:if>
 
                                         <c:if test="${not empty sessionScope.user}">
                                             <li>
-                                                <a href="profile.jsp"><i class="fa fa-user" aria-hidden="true"></i></a>
+                                                <a href="profile.jsp"
+                                                   ><i class="fa fa-user" aria-hidden="true"></i
+                                                    ></a>
+                                            </li>
+                                            <li class="checkout">
+                                                <a href="cart">
+                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                    <c:if test="${not empty sessionScope.user}">
+                                                        <c:if test="${not empty sessionScope.listCart.size()}">
+                                                            <span id="checkout_items" class="checkout_items">
+                                                                ${sessionScope.listCart.size()}</span>
+                                                            </c:if>
+
+                                                    </c:if>
+                                                </a>
                                             </li>
                                         </c:if>
-                                        <li class="checkout">
-                                            <a href="cart.jsp">
-                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                <span id="checkout_items" class="checkout_items" >2</span>
-                                            </a>
-                                        </li>
                                     </ul>
                                     <div class="hamburger_container">
                                         <i class="fa fa-bars" aria-hidden="true"></i>
@@ -184,10 +194,10 @@
                             </ul>
                         </li>
                         <li class="menu_item"><a href="home">home</a></li>
-                        <li class="menu_item"><a href="#">Promotional</a></li>
+                        <li class="menu_item"><a href="promotional.jsp">Promotional</a></li>
 
                         <li class="menu_item"><a href="category">Categories</a></li>
-                        <li class="menu_item"><a href="#">Best Seller</a></li>
+<!--                        <li class="menu_item"><a href="#">Best Seller</a></li>-->
 
                     </ul>
                 </div>
@@ -216,4 +226,3 @@
                 }
             </script>
     </body>
-

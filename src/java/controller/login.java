@@ -5,7 +5,9 @@
 package controller;
 
 import dao.AccountDAO;
+import dao.CartDAO;
 import entity.Account;
+import entity.CartDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,6 +15,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 /**
  *
@@ -70,8 +73,16 @@ public class login extends HttpServlet {
             // start session
             HttpSession session = request.getSession(true);
             session.setAttribute("user", u);
-//                    session.setMaxInactiveInterval(15 * 60);
-            response.sendRedirect("home");
+            
+            String CartId = CartDAO.getCartId(u.getaId());
+            ArrayList<CartDetail> listItems = CartDAO.getAllCartItems(CartId);
+            session.setAttribute("listCart", listItems);
+            if(u.getaRole()==1){
+                response.sendRedirect("managerPage");
+            }
+            else{
+                response.sendRedirect("home");
+            }
 
         } else {
             request.setAttribute("mess", "Username or password is incorrect.");

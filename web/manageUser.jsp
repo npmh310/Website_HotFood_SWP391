@@ -26,12 +26,18 @@
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="styles/main_styles.css" />
+        <style>
+           tbody th{
+                font-weight: normal;
+                font-size: 14px;
+            }
+        </style>
     </head>
     <body>
         <div class="page-container" style="height: 100%;width: 100%;margin: 0;display: table;">
             <!-- sidebar menu area start -->
             <div class="sidebar-menu" style="background-color: whitesmoke">
-                <div class="sidebar" style="position: absolute; padding: 50px 200px;background-color: whitesmoke;">
+                <div class="sidebar" style="position: absolute; padding: 50px 200px;background-color: whitesmoke;margin: 0px 35px">
                     <div class="logo_container">
                         <a href="home">hot<span>food</span></a>
                     </div>
@@ -97,26 +103,27 @@
 
                 <div class="content" style="padding: 20px 30px">
                     <div class="table-wrapper" >
-<!--                        <div class="table-title">
-                            <div class="row">                                
-                                <div class="col-12">
-                                    <ul class="metismenu d-flex" id="menu">
-                                        <li><a href="addAdminManager.jsp"><i class="fa fa-plus-circle" aria-hidden="true"></i><span>Add new admin/manager</span></a></li>
-                                        <li><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i><span>Delete</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>-->
+                        <!--                        <div class="table-title">
+                                                    <div class="row">                                
+                                                        <div class="col-12">
+                                                            <ul class="metismenu d-flex" id="menu">
+                                                                <li><a href="addAdminManager.jsp"><i class="fa fa-plus-circle" aria-hidden="true"></i><span>Add new admin/manager</span></a></li>
+                                                                <li><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i><span>Delete</span></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>-->
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
-                                   
+
                                     <th>ID</th>
                                     <th>Username</th>
                                     <th>Full name</th>
                                     <th>Phone number</th>                                   
                                     <th>Email</th>
                                     <th>Role</th>
+                                    <th>Edit</th>
                                 </tr>
                             <tbody>
                                 <c:forEach items="${user}" var="p">
@@ -126,12 +133,24 @@
                                         <th>${p.aFullname}</th> 
                                         <th>${p.aPhone}</th> 
                                         <th>${p.aEmail}</th>   
-                                        <th>${p.aRole}</th>
                                         <th>
-                                            <a href="editUser?aid=${p.aId}"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                                            <c:choose>
+                                                <c:when test="${p.aRole == 0}">
+                                                    <p>Customer</p>
+                                                </c:when>
+                                                <c:when test="${p.aRole == 1}">
+                                                    <p>Manager</p>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <p>Admin</p>
+                                                </c:otherwise>
+                                            </c:choose>
                                         </th>
                                         <th>
-                                            <a href="DeleteUser?aid=${p.aId}"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
+                                            <a href="editUser?aid=${p.aId}"><i class="fa fa-pencil-square-o " aria-hidden="true"></i></a>
+                                        </th>
+                                        <th>
+                                            <a href="DeleteUser?aid=${p.aId}"><i class="fa fa-trash-o " aria-hidden="true"></i></a>
                                         </th>
                                     </tr>    
                                 </c:forEach>

@@ -89,10 +89,28 @@
         .quantity_selector button{
             background-color: white;
             border: none;
-
+            cursor: pointer;
         }
         .quantity_selector{
             padding-top: 5px !important;
+            width: 114px;
+        }
+        .quantity_value{
+            margin: 0 5px;
+        }
+        .btn-order{
+            background-color: #fe4c50;
+
+        }
+        .btn-order a{
+            color: white;
+        }
+        .btn-order:hover{
+            background-color:  #1e1e27;
+
+        }
+        .summary{
+            max-height: none;
         }
     </style>
     <body>
@@ -121,67 +139,50 @@
                                     </div>
                                 </div>
                                 <div class="col align-self-center text-right text-muted">
-                                    3 items
+                                    ${sessionScope.listCart.size()} items
                                 </div>
                             </div>
                         </div>
+                        <c:forEach items="${sessionScope.listCart}" var="p">
+                            <div class="row product-row">
+                                <div class="row main align-items-center">
+                                    <div class="col-2">
+                                        <img
+                                            class="img-fluid"
+                                            src="${p.items.pImg}"
+                                            />
+                                    </div>
+                                    <div class="col">
+                                        <div class="row text-muted">Shirt</div>
+                                        <div class="row">${p.items.pName}</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="quantity_selector p-1">
+                                            <button><span class="minus pl-2"><a href="processCart?quantity=${p.quantity-1}&pId=${p.items.pId}&cartId=${p.getCartId()}">
+                                                        -</a></span></button>
 
+                                            <span class="quantity_value">${p.quantity}</span>
+                                            <button><span class="plus pr-2"><a href="processCart?quantity=${p.quantity+1}&pId=${p.items.pId}&cartId=${p.getCartId()}">
+                                                        +</a></span></button>
 
-                        <div class="row product-row">
-                            <div class="row main align-items-center">
-                                <div class="col-2">
-                                    <img
-                                        class="img-fluid"
-                                        src="https://i.imgur.com/pHQ3xT3.jpg"
-                                        />
-                                </div>
-                                <div class="col">
-                                    <div class="row text-muted">Shirt</div>
-                                    <div class="row">Cotton T-shirt</div>
-                                </div>
-                                <div class="col">
-                                    <div class="quantity_selector p-1">
-                                        <button><span class="minus pl-2">-</span></button>
-
-                                        <span class="quantity_value">1</span>
-                                        <button><span class="plus pr-2">+</span></button>
-
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        ${p.items.pPrice * p.quantity}&#8363; 
+                                        <span class="close">
+                                            <button style="border: none">
+                                                <a href="deleteCart?pId=${p.items.pId}&cartId=${p.getCartId()}">
+                                                    <i class="fa fa-times" style="font-size: 18px" aria-hidden="true"> </i>
+                                                </a>
+                                            </button>
+                                        </span>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    &euro; 44.00 <span class="close"><button style="border: none"><i class="fa fa-times" style="font-size: 18px" aria-hidden="true"></i></button></span>
-                                </div>
                             </div>
-                        </div>
-                        <div class="row product-row">
-                            <div class="row main align-items-center">
-                                <div class="col-2">
-                                    <img
-                                        class="img-fluid"
-                                        src="https://i.imgur.com/pHQ3xT3.jpg"
-                                        />
-                                </div>
-                                <div class="col">
-                                    <div class="row text-muted">Shirt</div>
-                                    <div class="row">Cotton T-shirt</div>
-                                </div>
-                                <div class="col">
-                                    <div class="quantity_selector p-1">
-                                        <button><span class="minus pl-2">-</span></button>
-
-                                        <span class="quantity_value">1</span>
-                                        <button><span class="plus pr-2">+</span></button>
-
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    &euro; 44.00 <span class="close"><button style="border: none"><i class="fa fa-times" style="font-size: 18px" aria-hidden="true"></i></button></span>
-                                </div>
-                            </div>
-                        </div>
+                        </c:forEach>
                         <div class="back-to-shop">
-                            <a href="home">&leftarrow;</a
-                            ><span class="text-muted">Back to shop</span>
+                            <a href="home"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> <span class="text-muted">Back to shop</span></a
+                            >
                         </div>
                     </div>
                     <div class="col-md-4 summary">
@@ -189,10 +190,13 @@
                             <h5><b>Summary</b></h5>
                         </div>
                         <hr />
-                        <div class="row" style="margin-bottom: 10px">
-                            <div class="col pl-3">ITEMS 3</div>
-                            <div class="col text-right">&euro; 132.00</div>
-                        </div>
+                        <c:forEach items="${sessionScope.listCart}" var="p">
+                            <div class="row" style="margin-bottom: 10px">
+                                <div class="col pl-3">${p.items.pName}</div>
+                                <div class="col text-right">${p.items.pPrice * p.quantity}&#8363;</div>
+                            </div>
+                        </c:forEach>
+
                         <form>
                             <p style="color: black">DISCOUNT CODE</p>
                             <input id="code" placeholder="Enter your code" />
@@ -202,9 +206,15 @@
                             style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding: 2vh 0"
                             >
                             <div class="col">TOTAL PRICE</div>
-                            <div class="col text-right">&euro; 137.00</div>
+                            <div class="col text-right">${totalMoney}&#8363</div>
                         </div>
-                        <button class="btn">CHECKOUT</button>
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-order"><a href="checkout">ORDER</a></button>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
