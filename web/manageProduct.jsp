@@ -1,3 +1,4 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
     <head>
@@ -30,7 +31,7 @@
        
 
         <style>
-            /*            Ngoài th? style còn fix thêm background trong th? user-profile,style trong button add product,style trong 2 icon edit delete*/
+            /*            Ngoï¿½i th? style cï¿½n fix thï¿½m background trong th? user-profile,style trong button add product,style trong 2 icon edit delete*/
             tbody th{
                 font-weight: normal !important;
             }

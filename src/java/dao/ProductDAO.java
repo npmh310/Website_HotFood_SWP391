@@ -36,7 +36,7 @@ public class ProductDAO implements DatabaseInfo {
         return null;
     }
 
-    public Product getProductById(String id) {
+    public static Product getProductById(String id) {
 
         String query = "Select * from Product where pID = ?";
         try ( Connection con = getConnect()) {

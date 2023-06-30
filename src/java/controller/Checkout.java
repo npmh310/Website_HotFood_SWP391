@@ -1,23 +1,27 @@
-  /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package controller;
 
-import dao.AccountDAO;
+import dao.CartDAO;
+import dao.OrderDAO;
 import entity.Account;
+import entity.CartDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 /**
  *
- * @author minhhieu
+ * @author linhp
  */
-public class signup extends HttpServlet {
+public class Checkout extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,7 +35,31 @@ public class signup extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("signup.jsp").forward(request, response);
+        
+        HttpSession session = request.getSession(false);
+        CartDAO cdao = new CartDAO();
+        OrderDAO odr = new OrderDAO();
+        Account user = null;
+        user = (Account) session.getAttribute("user");
+        float totalPrice = (Float) session.getAttribute("totalMoney");
+        
+        String CartId = cdao.getCartId(user.getaId());       
+        String code = request.getParameter("code");
+        
+        ArrayList<CartDetail> listCart = cdao.getAllCartItems(CartId);
+        odr.addToBill(CartId, user.getaId(), code, totalPrice, 0);
+        for (CartDetail items : listCart) {
+            odr.addToOrderDetail(CartId, items.getItems().getpId(), items.getQuantity(), items.getItems().getpPrice());
+//            System.out.println(items.getpId());
+//            System.out.println(items.getQuantity());
+//            System.out.println(items.getItems().getpPrice());
+        }
+        
+        cdao.deleteAllCart(CartId); //tu tu
+        listCart = cdao.getAllCartItems(cdao.getCartId(user.getaId()));
+        
+        session.setAttribute("listcart", listCart);
+               
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,35 +88,10 @@ public class signup extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String name = request.getParameter("fullname");
-        String user = request.getParameter("username1");
-        String pass = request.getParameter("password1");
-        String email = request.getParameter("email");
-        String address = request.getParameter("address");
-        String phone = request.getParameter("phone");
-        AccountDAO ls = new AccountDAO();
-        Account acc = new Account(user, pass, name, phone, address, email);
-
-        Account a = ls.checkUserExist(user);
-        Account b = ls.checkEmailExist(email);
-
-        if (a == null && b == null) {
-            ls.register(acc);
-            request.setAttribute("status", "Sign Up Success");
-//            request.getRequestDispatcher("login2.jsp").forward(request, response);
-            response.sendRedirect("login");
-        } else {
-            request.setAttribute("status1", "Your username or email address already exists");
-            request.setAttribute("fullname", name);
-            request.setAttribute("phoneNum", phone);
-            request.setAttribute("address", address);
-            request.getRequestDispatcher("signup.jsp").forward(request, response);
-            response.sendRedirect("signup");
-        }
+        processRequest(request, response);
     }
 
-    /**       
+    /**
      * Returns a short description of the servlet.
      *
      * @return a String containing servlet description

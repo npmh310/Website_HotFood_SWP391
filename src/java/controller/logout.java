@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
@@ -34,6 +35,7 @@ public class logout extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         session.removeAttribute("user");
+        session.removeAttribute("listCart");
         response.sendRedirect("home");
     }
 
@@ -77,3 +79,4 @@ public class logout extends HttpServlet {
     }// </editor-fold>
 
 }
+

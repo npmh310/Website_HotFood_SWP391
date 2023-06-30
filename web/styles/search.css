@@ -7,12 +7,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : taing
 */
 
-.abc, .accordion:hover {
+/*.abc, .accordion:hover {
     background-color: #ffffff;
     width: fit-content;
     height: fit-content;
     padding: 10px 10px 10px 10px;
-}
+}*/
 accordion {
     border: none;
     background-color: #fff;

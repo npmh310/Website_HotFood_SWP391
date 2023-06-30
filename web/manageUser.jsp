@@ -1,3 +1,4 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
     <head>
@@ -28,7 +29,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="styles/main_styles.css" />
         <style>
-            /*            Ngoài th? style còn fix thêm background trong th? user-profile,style trong button add product,style trong 2 icon edit delete*/
+            /*            Ngoï¿½i th? style cï¿½n fix thï¿½m background trong th? user-profile,style trong button add product,style trong 2 icon edit delete*/
             tbody th{
                 font-weight: normal !important;
             }
@@ -341,5 +342,6 @@
         <script src="styles/assets/js/plugins.js"></script>
         <script src="styles/assets/js/scripts.js"></script>
     </body>
+
 
 </html>

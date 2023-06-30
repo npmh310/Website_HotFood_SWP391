@@ -1,3 +1,4 @@
+
 <%-- 
 Document   : profile
 Created on : May 31, 2023, 12:39:06 AM
@@ -9,6 +10,7 @@ Author     : minhhieu
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        
         <jsp:include page="header.jsp" />
         <title>Hot Food</title>
         <meta charset="utf-8" />
@@ -51,7 +53,8 @@ Author     : minhhieu
             type="text/css"
             href="plugins/jquery-ui-1.12.1.custom/jquery-ui.css"
             />
-        <link
+     
+           <link
             rel="stylesheet"
             type="text/css"
             href="styles/categories_styles.css"
@@ -61,7 +64,6 @@ Author     : minhhieu
             type="text/css"
             href="styles/categories_responsive.css"
             />
-
 
         <!-- font  -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -158,11 +160,7 @@ Author     : minhhieu
                                     <li class="nav-item">
                                         <a
                                             class="btn btn-link"
-                                            id="orderplaced"
-                                            data-toggle="tab"
-                                            href="#order_placed"
-                                            role="tab"
-                                            onclick="changeColor(event)"
+                                            href="purchase"
                                             >Orders Placed</a
                                         >
                                     </li>
@@ -215,116 +213,116 @@ Author     : minhhieu
                         <div class="tab-content">
                             <!-- Để các thẻ container không xuống hàng-->
 
-                            <div
-                                class="container tab-pane fade"
-                                id="order_placed"
-                                role="tabpanel"
-                                aria-labelledby="orderplaced" >
-                                <div class="card-body pl-2 pt-2">
-                                    <h3>orders placed</h3>
-                                </div>
-
-                                <section>
-                                    <!--<div class="card-title pt-4">-->
-                                    <div class="container">
-                                        <div class="col-12">
-                                            <div id="accordion" style="margin-bottom: 30px">
-                                                <div class="card mb-3">
-                                                    <div class="card-header" role="tab"  id="peterhead" data-toggle="collapse" data-target="#peter">
-                                                        <div class="d-flex justify-content-between align-items-center" >
-                                                            <div>
-                                                                <h5 class="mb-0">
-                                                                    <a> Ngay 14 thang 6 NAM 2023 </a>
-                                                                </h5>
+                            <!--                            <div
+                                                            class="container tab-pane fade"
+                                                            id="order_placed"
+                                                            role="tabpanel"
+                                                            aria-labelledby="orderplaced" >
+                                                            <div class="card-body pl-2 pt-2">
+                                                                <h3>orders placed</h3>
                                                             </div>
-
-                                                            <div class="d-flex mt-2 pl-5 ml-md-0">
-                                                                <h5>160.000d</h5>
-                                                                <i class="fa fa-angle-down ml-3" aria-hidden="true"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="collapse container" id="peter" data-parent="#accordion" >
-                                                        <div class="card-body d-flex justify-content-between align-items-center overflow-hidden pb-3">
-                                                            <!-- <div class="row cart-left d-flex align-items-center overflow-hidden " > -->
-                                                            <div class="col-md-3 ml-0 pl-0">
-                                                                <img src="images/banner_1.jpg" alt="" class="img-fluid rounded-0 " />
-                                                            </div>
-                                                            <div class="col-md-5">
-                                                                <span>3 san pham ga </span>
-                                                            </div>
-                                                            <div class="col-md-3 d-flex justify-content-end">
-                                                                <span>50000</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="card-body d-flex justify-content-between align-items-center overflow-hidden pb-3">
-                                                            <!-- <div class="row cart-left d-flex align-items-center overflow-hidden " > -->
-                                                            <div class="col-md-3 ml-0 pl-0">
-                                                                <img src="images/banner_1.jpg" alt="" class="img-fluid rounded-0 " />
-                                                            </div>
-                                                            <div class="col-md-5">
-                                                                 <span>2 san pham hambuger </span>
-                                                            </div>
-                                                            <div class="col-md-3 d-flex justify-content-end">
-                                                                <span>50000</span>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>
-                                                
-                                                
-                                               <!--order 2-->
-                                                        <div class="card mb-3">
-                                                    <div class="card-header" role="tab"  id="peterhead" data-toggle="collapse" data-target="#2">
-                                                        <div class="d-flex justify-content-between align-items-center" >
-                                                            <div>
-                                                                <h5 class="mb-0">
-                                                                    <a> Ngay 20 thang 5 NAM 2023 </a>
-                                                                </h5>
-                                                            </div>
-
-                                                            <div class="d-flex mt-2 pl-5 ml-md-0">
-                                                                <h5>160.000d</h5>
-                                                                <i class="fa fa-angle-down ml-3" aria-hidden="true"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="collapse container" id="2" data-parent="#accordion" >
-                                                        <div class="card-body d-flex justify-content-between align-items-center overflow-hidden pb-3">
-                                                            <!-- <div class="row cart-left d-flex align-items-center overflow-hidden " > -->
-                                                            <div class="col-md-3 ml-0 pl-0">
-                                                                <img src="images/banner_1.jpg" alt="" class="img-fluid rounded-0 " />
-                                                            </div>
-                                                            <div class="col-md-5">
-                                                                <span>2 san pham hambuger </span>
-                                                            </div>
-                                                            <div class="col-md-3 d-flex justify-content-end">
-                                                                <span>50000</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="card-body d-flex justify-content-between align-items-center overflow-hidden pb-3">
-                                                            <!-- <div class="row cart-left d-flex align-items-center overflow-hidden " > -->
-                                                            <div class="col-md-3 ml-0 pl-0">
-                                                                <img src="images/banner_1.jpg" alt="" class="img-fluid rounded-0 " />
-                                                            </div>
-                                                            <div class="col-md-5">
-                                                                 <span>2 san pham hambuger </span>
-                                                            </div>
-                                                            <div class="col-md-3 d-flex justify-content-end">
-                                                                <span>50000</span>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
+                            
+                                                            <section>
+                                                                <div class="card-title pt-4">
+                                                                <div class="container">
+                                                                    <div class="col-12">
+                                                                        <div id="accordion" style="margin-bottom: 30px">
+                                                                            <div class="card mb-3">
+                                                                                <div class="card-header" role="tab"  id="peterhead" data-toggle="collapse" data-target="#peter">
+                                                                                    <div class="d-flex justify-content-between align-items-center" >
+                                                                                        <div>
+                                                                                            <h5 class="mb-0">
+                                                                                                <a> Ngay 14 thang 6 NAM 2023 </a>
+                                                                                            </h5>
+                                                                                        </div>
+                            
+                                                                                        <div class="d-flex mt-2 pl-5 ml-md-0">
+                                                                                            <h5>160.000d</h5>
+                                                                                            <i class="fa fa-angle-down ml-3" aria-hidden="true"></i>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                            
+                                                                                <div class="collapse container" id="peter" data-parent="#accordion" >
+                                                                                    <div class="card-body d-flex justify-content-between align-items-center overflow-hidden pb-3">
+                                                                                         <div class="row cart-left d-flex align-items-center overflow-hidden " > 
+                                                                                        <div class="col-md-3 ml-0 pl-0">
+                                                                                            <img src="images/banner_1.jpg" alt="" class="img-fluid rounded-0 " />
+                                                                                        </div>
+                                                                                        <div class="col-md-5">
+                                                                                            <span>3 san pham ga </span>
+                                                                                        </div>
+                                                                                        <div class="col-md-3 d-flex justify-content-end">
+                                                                                            <span>50000</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="card-body d-flex justify-content-between align-items-center overflow-hidden pb-3">
+                                                                                         <div class="row cart-left d-flex align-items-center overflow-hidden " > 
+                                                                                        <div class="col-md-3 ml-0 pl-0">
+                                                                                            <img src="images/banner_1.jpg" alt="" class="img-fluid rounded-0 " />
+                                                                                        </div>
+                                                                                        <div class="col-md-5">
+                                                                                            <span>2 san pham hambuger </span>
+                                                                                        </div>
+                                                                                        <div class="col-md-3 d-flex justify-content-end">
+                                                                                            <span>50000</span>
+                                                                                        </div>
+                                                                                    </div>
+                            
+                                                                                </div>
+                                                                            </div>
+                            
+                            
+                                                                            order 2
+                                                                            <div class="card mb-3">
+                                                                                <div class="card-header" role="tab"  id="peterhead" data-toggle="collapse" data-target="#2">
+                                                                                    <div class="d-flex justify-content-between align-items-center" >
+                                                                                        <div>
+                                                                                            <h5 class="mb-0">
+                                                                                                <a> Ngay 20 thang 5 NAM 2023 </a>
+                                                                                            </h5>
+                                                                                        </div>
+                            
+                                                                                        <div class="d-flex mt-2 pl-5 ml-md-0">
+                                                                                            <h5>160.000d</h5>
+                                                                                            <i class="fa fa-angle-down ml-3" aria-hidden="true"></i>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                            
+                                                                                <div class="collapse container" id="2" data-parent="#accordion" >
+                                                                                    <div class="card-body d-flex justify-content-between align-items-center overflow-hidden pb-3">
+                                                                                         <div class="row cart-left d-flex align-items-center overflow-hidden " > 
+                                                                                        <div class="col-md-3 ml-0 pl-0">
+                                                                                            <img src="images/banner_1.jpg" alt="" class="img-fluid rounded-0 " />
+                                                                                        </div>
+                                                                                        <div class="col-md-5">
+                                                                                            <span>2 san pham hambuger </span>
+                                                                                        </div>
+                                                                                        <div class="col-md-3 d-flex justify-content-end">
+                                                                                            <span>50000</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="card-body d-flex justify-content-between align-items-center overflow-hidden pb-3">
+                                                                                         <div class="row cart-left d-flex align-items-center overflow-hidden " > 
+                                                                                        <div class="col-md-3 ml-0 pl-0">
+                                                                                            <img src="images/banner_1.jpg" alt="" class="img-fluid rounded-0 " />
+                                                                                        </div>
+                                                                                        <div class="col-md-5">
+                                                                                            <span>2 san pham hambuger </span>
+                                                                                        </div>
+                                                                                        <div class="col-md-3 d-flex justify-content-end">
+                                                                                            <span>50000</span>
+                                                                                        </div>
+                                                                                    </div>
+                            
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </section>
+                                                        </div>-->
                             <!-- favoriteorder -->
                             <div
                                 class="container tab-pane fade"
@@ -725,4 +723,5 @@ Author     : minhhieu
         </script>
     </body>
 </html>
+
 
