@@ -27,6 +27,8 @@
         <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js" nonce="9884653e-feac-4169-bfe0-db365dd1d36d"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="styles/main_styles.css" />
+       
+
         <style>
             /*            Ngoài th? style còn fix thêm background trong th? user-profile,style trong button add product,style trong 2 icon edit delete*/
             tbody th{
@@ -51,13 +53,13 @@
                 background-color: #fe4c50;
             }
         </style>
-        
     </head>
     <body>
+
         <div class="page-container" style="height: 100%;width: 100%;margin: 0;display: table;">
             <!-- sidebar menu area start -->
-            <div class="sidebar-menu" style="background-color: whitesmoke">
-                <div class="sidebar" style="position: absolute; padding: 50px 200px;background-color: whitesmoke;margin: 0px 35px">
+            <div class="sidebar-menu" style="background-color: whitesmoke; ">
+                <div class="sidebar" style="position: absolute; padding: 50px 200px;background-color: whitesmoke; margin: 0px 35px">
                     <div class="logo_container">
                         <a href="home">hot<span>food</span></a>
                     </div>
@@ -75,6 +77,7 @@
                         </nav>
                     </div>
                 </div>
+
             </div>
 
             <div class="main-content" style="background-color: white">
@@ -89,8 +92,8 @@
                                 <span></span>
                             </div>
                             <div class="search-box pull-left">
-                                <form action="#">
-                                    <input type="text" name="search" placeholder="Search..." required>
+                                <form action="SearchProduct" method="post">
+                                    <input oninput="searchProduct(this)" type="text" name="txt" placeholder="Search..." required>
                                     <i class="fa fa-search" aria-hidden="true"></i>
                                 </form>
                             </div>
@@ -107,7 +110,7 @@
                             <div class="breadcrumbs-area clearfix">
                                 <h4 class="page-title pull-left">Management Page</h4>                              
                                 <ul class="breadcrumbs pull-left">
-                                    <li><span>Manage User</span></li>
+                                    <li><span>Manage Discount</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -131,7 +134,7 @@
                                 <div class="col-12">
                                     <ul class="metismenu d-flex" id="menu">
                                         <li>
-                                            <button type="button" class="btn btn-info btn-md" data-toggle="modal" style="background-color: #fe4c50 !important;" data-target="#addUser">Add new account</button>
+                                            <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#add" style="background-color: #fe4c50 !important;">Add new discount</button>
                                         </li>                                    
                                     </ul>
                                 </div>
@@ -140,61 +143,40 @@
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
-
-                                    <th>ID</th>
-                                    <th>Username</th>
-                                    <th>Full name</th>
-                                    <th>Phone number</th>                                   
-                                    <th>Email</th>
-                                    <th>Role</th>
+                                    <th>Code</th>  
+                                    <th>Discount</th>                                                                                                       
+                                    <th>Start date</th>
+                                    <th>End date</th>
+                                    <th>Remaining days</th>
                                     <th>Edit</th>
                                 </tr>
-                            <tbody>
-                                <c:forEach items="${user}" var="p">
-                                    <tr>
-                                        <c:if test="${p.aRole == 0}">
-                                            <th>${p.aId}</th>
-                                            <th>${p.aUsername}</th>
-                                            <th>${p.aFullname}</th> 
-                                            <th>${p.aPhone}</th> 
-                                            <th>${p.aEmail}</th>  
-                                            <th><p>Customer</p></th>
-                                    <th>
-                                        <a href="editUser?aid=${p.aId}"><i class="fa fa-pencil-square-o " aria-hidden="true"></i></a>
-                                    </th>
-                                    <th>
-                                        <a href="DeleteUser?aid=${p.aId}"><i class="fa fa-trash-o " aria-hidden="true"></i></a>
-                                    </th>
-                                </c:if>                                      
-
-                                <c:if test="${p.aRole == 1}">
-                                    <th>${p.aId}</th>
-                                    <th>${p.aUsername}</th>
-                                    <th>${p.aFullname}</th> 
-                                    <th>${p.aPhone}</th> 
-                                    <th>${p.aEmail}</th>  
-                                    <th><p>Manager</p></th>
-                                    <th>
-                                        <a href="editUser?aid=${p.aId}"><i class="fa fa-pencil-square-o " aria-hidden="true"></i></a>
-                                    </th>
-                                    <th>
-                                        <a href="DeleteUser?aid=${p.aId}"><i class="fa fa-trash-o " aria-hidden="true"></i></a>
-                                    </th>
-                                </c:if>
-
-
-                                </tr>    
-                            </c:forEach>
-                            </tbody>
                             </thead>
+                            <tbody>
+                                <c:forEach items="${discount}" var="d">
+                                    <tr>                                       
+                                        <th name="code">${d.code}</th>
+                                        <th>${d.discount}</th>
+                                        <th>${d.startDate}</th>
+                                        <th>${d.endDate}</th>
+                                        <th>${d.remaining}</th>
+                                        
+                                        <th>
+                                            <a href="EditDiscount?edid=${d.code}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                        </th>
+                                        <th>
+                                            <a href="DeleteDiscount?edid=${d.code}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                        </th>
+                                    </tr>
+                                </c:forEach>
+                                
+                                    
+                            </tbody>
                         </table>
                     </div>
                 </div>
             </div>
 
-
-
-            <footer style="background-color: #f3f3f3;display: table-row;height: 0;">
+            <footer style="display: table-row;height: 0;background-color: #f3f3f3">
                 <div class="container">
                     <hr
                         _ngcontent-ng-cli-universal-c81=""
@@ -251,69 +233,50 @@
 
         </div>
 
-        
-        <div class="modal fade" id="addUser" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form action="AddUser" method="post">
-                            <div class="modal-header">						
-                                <h4 class="modal-title">Add Product</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+        <div class="modal fade" id="add" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="AddDiscount" method="post">
+                        <div class="modal-header">						
+                            <h4 class="modal-title">Add Discount</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">					
+                            <div class="form-group">
+                                <label>Code</label>
+                                <input name="acode" type="text" class="form-control" required>
                             </div>
-                            <div class="modal-body">					
-                                <div class="form-group">
-                                    <label>Username</label>
-                                    <input name="username" type="text" class="form-control" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input name="password" type="text" class="form-control" required>
-                                </div>
 
-                                <div class="form-group">
-                                    <label>Full name</label>
-                                    <input name="fullname" type="text" class="form-control" required>
-                                </div>
-
-
-                                <div class="form-group">
-                                    <label>Phone</label>
-                                    <input name="phone" type="text" class="form-control" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>Address</label>
-                                    <input name="address" type="text" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input name="email" type="text" class="form-control" required>
-                                </div>
-                               <div class="form-group">
-                                    <label>Role</label>
-                                    <select name="role" class="form-select" aria-label="Default select example">
-                                        <option value="0" ${acc.aRole == 0? "selected": ""}>Customer</option>
-                                        <option value="1" ${acc.aRole == 1? "selected": ""}>Manager</option>
-                                    </select>    
-                                </div>
-
+                            <div class="form-group">
+                                <label>Discount</label>
+                                <input name="adiscount" type="text" class="form-control" required>
                             </div>
-                            <div class="modal-footer">
-                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btn btn-success" value="Add">
+
+
+                            <div class="form-group">
+                                <label>Start Date</label>
+                                <input name="astartdate" type="text" class="form-control" required>
                             </div>
-                        </form>
-                    </div>
+                            <div class="form-group">
+                                <label>End Date</label>
+                                <input name="aenddate" type="text" class="form-control" required>
+                            </div>
+                           
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                            <input type="submit" class="btn btn-success" value="Add">
+                        </div>
+                    </form>
                 </div>
             </div>
+        </div>
 
 
-
-
-
-
-        <!-- jquery latest version -->
+       
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <script src="styles/assets/js/vendor/jquery-2.2.4.min.js"></script>
         <!-- bootstrap 4 js -->
         <script src="styles/assets/js/popper.min.js"></script>

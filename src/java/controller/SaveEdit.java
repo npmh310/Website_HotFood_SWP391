@@ -9,10 +9,10 @@ import entity.Product;
 
 import java.io.IOException;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -33,7 +33,7 @@ public class SaveEdit extends HttpServlet {
 
         ProductDAO dao = new ProductDAO();
 
-        dao.editProduct(name, image, price, detail, category, id);
+        dao.editProduct(name, "images/"+image, price, detail, category, id);
            
         response.sendRedirect("product");
     }

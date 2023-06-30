@@ -4,32 +4,26 @@
  */
 package controller;
 
-import dao.AccountDAO;
-import entity.Account;
+import dao.DiscountDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.w3c.dom.UserDataHandler;
 
 /**
  *
  * @author taing
  */
-public class EditUser extends HttpServlet {
+public class DeleteDiscount extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String id = request.getParameter("aid");
-        AccountDAO dao = new AccountDAO();
-        Account acc = dao.getAccountById(id);        
-        
-        request.setAttribute("acc", acc);
-
-        request.getRequestDispatcher("editAccount.jsp").forward(request, response);
+        String code = request.getParameter("edid");
+        DiscountDAO dao = new DiscountDAO();
+        dao.deleteDiscount(code);
+        response.sendRedirect("ManageDiscount");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -55,43 +55,31 @@
         <div class="row">
             <div class="col-lg-6 mx-auto">
                 <div class="card ">
-                    <form action="saveedit" method="post">
+                    <form action="SaveEditDiscount" method="post">
                         <div class="tab-content">
                             <!-- credit card info-->
                             <div id="credit-card" class="tab-pane fade show active pt-3">
                                 <div class="form-group">
-                                    <label>ID</label>
-                                    <input value="${newP.pId}" name="id" type="text" class="form-control" readonly required>
+                                    <label>Code</label>
+                                    <input value="${dis.code}" name="code" type="text" class="form-control" readonly required>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Name</label>
-                                    <input value="${newP.pName}" name="name" type="text" class="form-control" required>
+                                    <label>Discount</label>
+                                    <input value="${dis.discount}" name="discount" type="text" class="form-control" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Detail</label>
-                                    <input value="${newP.pDetail}" name="detail" type="text" class="form-control" required>
+                                    <label>Start Date (Year-Month-Day)</label>
+                                    <input value="${dis.startDate}" name="startDate" type="text" class="form-control" required>
                                 </div>
 
 
                                 <div class="form-group">
-                                    <label>Price</label>
-                                    <input value="${newP.pPrice}" name="price" type="text" class="form-control" required>
+                                    <label>End Date (Year-Month-Day)</label>
+                                    <input value="${dis.endDate}" name="endDate" type="text" class="form-control" required>
                                 </div>
-                                <div class="form-group">
-                                    <label>Image</label>
-                                    <input value="${newP.pImg}" name="image" type="file" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Category</label>
-                                    <select name="category" class="form-select" aria-label="Default select example">                                      
-                                        <c:forEach items="${cate}" var="o">                                           
-                                            <option value="${o.cId}" >${o.cName}</option>                                           
-                                        </c:forEach>
-                                        
-                                    </select>
-                                </div>
+                                
 
                                 <div class="card-footer">
                                     <input type="submit" class="btn btn-success" value="Edit">

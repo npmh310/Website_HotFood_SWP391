@@ -52,7 +52,7 @@ public class ProductDAO implements DatabaseInfo {
     }
 //    
 
-    public ArrayList<Product> getAllProduct() {
+    public static ArrayList<Product> getAllProduct() {
 
         ArrayList<Product> ls = new ArrayList<>();
         String query = "Select * from Product";
