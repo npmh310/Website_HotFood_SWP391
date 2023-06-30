@@ -48,52 +48,38 @@
 
         <div class="row mb-4">
             <div class="col-lg-8 mx-auto text-center">
-                <h1 class="display-6" style="padding-top: 30px">Edit Account</h1>
-                <a href="user"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></a>
+                <h1 class="display-6" style="padding-top: 30px">Edit Product</h1>
+                <a href="product"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></a>
             </div>
         </div> <!-- End -->
         <div class="row">
             <div class="col-lg-6 mx-auto">
                 <div class="card ">
-                    <form action="SaveEditAccount" method="post">
+                    <form action="SaveEditDiscount" method="post">
                         <div class="tab-content">
                             <!-- credit card info-->
                             <div id="credit-card" class="tab-pane fade show active pt-3">
                                 <div class="form-group">
-                                    <label>ID</label>
-                                    <input value="${acc.aId}" name="id" type="text" class="form-control" readonly required>
+                                    <label>Code</label>
+                                    <input value="${dis.code}" name="code" type="text" class="form-control" readonly required>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Username</label>
-                                    <input value="${acc.aUsername}" name="name" type="text" class="form-control" readonly required>
+                                    <label>Discount</label>
+                                    <input value="${dis.discount}" name="discount" type="text" class="form-control" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Full name</label>
-                                    <input value="${acc.aFullname}" name="detail" type="text" class="form-control" readonly required>
+                                    <label>Start Date (Year-Month-Day)</label>
+                                    <input value="${dis.startDate}" name="startDate" type="text" class="form-control" required>
                                 </div>
 
 
                                 <div class="form-group">
-                                    <label>Phone</label>
-                                    <input value="${acc.aPhone}" name="price" type="text" class="form-control" readonly required>
+                                    <label>End Date (Year-Month-Day)</label>
+                                    <input value="${dis.endDate}" name="endDate" type="text" class="form-control" required>
                                 </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input value="${acc.aEmail}" name="image" type="text" class="form-control" readonly required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Address</label>
-                                    <input value="${acc.aAddress}" name="image" type="text" class="form-control" readonly required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Role</label>                                    
-                                    <select name="role" class="form-select" aria-label="Default select example">
-                                        <option value="0" ${acc.aRole == 0? "selected": ""}>Customer</option>
-                                        <option value="1" ${acc.aRole == 1? "selected": ""}>Manager</option>
-                                    </select>                                   
-                                </div>
+                                
 
                                 <div class="card-footer">
                                     <input type="submit" class="btn btn-success" value="Edit">

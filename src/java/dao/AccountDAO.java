@@ -143,7 +143,7 @@ public class AccountDAO {
             System.out.println("loi");
         }
         return true;
-    }
+    }//sai
 
 //    public static boolean resetPass(Account acc) {
 //        String query = "UPDATE Account SET Password=?\n"
@@ -253,4 +253,24 @@ public class AccountDAO {
         }
         return null;
     }
+
+
+    public void addUser(String username, String password, String fullname, String phone, String email,
+            String address, int role) {
+        String query = "INSERT [dbo].Account([Username], [Password],  [Fullname], [PhoneNum], [Address],[Email],[Role])\n"
+                + "VALUES (?,?,?,?,?,?,?)";
+        try ( Connection con = getConnect()) {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ps.setString(3, fullname);
+            ps.setString(4, phone);
+            ps.setString(5, email);
+            ps.setString(6, address);
+            ps.setInt(7, role);
+            ps.executeUpdate(); // không trả về bản result nên dùng executeUpdate()
+        } catch (Exception e) {
+        }
+    }
+
 }
