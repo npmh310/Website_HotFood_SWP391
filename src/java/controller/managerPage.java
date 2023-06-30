@@ -34,8 +34,9 @@ public class managerPage extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String stt = request.getParameter("stt");
+        String tag = request.getParameter("stt");
         String oId = request.getParameter("oID");
+        String mId = request.getParameter("mID");
         String status = request.getParameter("status");
         HttpSession session = request.getSession(false);
         Account user = (Account) session.getAttribute("user");
@@ -48,21 +49,25 @@ public class managerPage extends HttpServlet {
         
 //        System.out.println("oid=" + oId + " status="+status);
         if(oId != null && status != null){
-            OrderDAO.updateStatusBill(oId, status);
+            OrderDAO.updateStatusBill(oId, status, mId);
 //            response.sendRedirect("managerPage");
         }
         
         ArrayList<Order> listOrder = new ArrayList<>();
         
-        if(stt == null){stt = "0";}
+        if(tag == null){tag = "0";}
         
-        listOrder = OrderDAO.getAllBill(stt);
+        listOrder = OrderDAO.getAllBill(tag);
+        
+        if(tag.equals("3")){
+            listOrder = OrderDAO.getAllBillHistory(user.getaId());
+        }
 //        listOrder = OrderDAO.getAllBillById(user.getaId());
-        
-//        System.out.println(listOrder);
+        System.out.println(tag);
+        System.out.println(listOrder);
         
         session.setAttribute("listOrder", listOrder);
-        request.setAttribute("tag", stt);
+        request.setAttribute("tag", tag);
         
         request.getRequestDispatcher(URL).forward(request, response);
     }

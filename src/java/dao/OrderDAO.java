@@ -20,7 +20,35 @@ import java.util.ArrayList;
  */
 public class OrderDAO {
     /////////////////     *Manager*     //////////////////
-        public static ArrayList<Order> getAllBill(String status) {
+    public static ArrayList<Order> getAllBillHistory(int id) {
+
+        ArrayList<Order> ls = new ArrayList<>();
+        try ( Connection con = getConnect()) {
+            PreparedStatement ps = con.prepareStatement("select * from [Order] where managerID =?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Account user = AccountDAO.getAccountById(rs.getString(4));
+                Order items = new Order(rs.getString(1), 
+                        getAllOrderItems(rs.getString(1)), 
+                        user, 
+                        rs.getString(4), 
+                        rs.getString(5), 
+                        rs.getDate(2), 
+                        rs.getFloat(6), 
+                        rs.getInt(3),
+                        rs.getString(7));
+                ls.add(items);
+            }
+            
+            return ls;
+        } catch (Exception e) {
+            System.out.println("loi roi");
+        }
+        return null;
+    }
+    
+    public static ArrayList<Order> getAllBill(String status) {
 
         ArrayList<Order> ls = new ArrayList<>();
 //        int status = 0;
@@ -48,16 +76,26 @@ public class OrderDAO {
         }
         return null;
     }
-    public static void updateStatusBill(String orderId, String status) {
+    
+    public static void updateStatusBill(String orderId, String status, String mID) {
         try ( Connection con = getConnect()) {
-        
+            if(mID == null){
                 PreparedStatement ps = con.prepareStatement("UPDATE [Order] SET Status = ? where OrderID=? ");
-                ps.setString(2, orderId);
                 ps.setString(1, status);
+                ps.setString(2, orderId);
                 ps.executeUpdate();
 
                 System.out.println("update Bill success");
-            
+            }
+            else{
+                PreparedStatement ps = con.prepareStatement("UPDATE [Order] SET Status = ?, managerID = ? where OrderID=? ");
+                ps.setString(1, status);
+                ps.setString(2, mID);
+                ps.setString(3, orderId);
+                ps.executeUpdate();
+
+                System.out.println("update Bill success");
+            }
         } catch (Exception ex) {
             System.out.println("loi roi");
         }
@@ -98,6 +136,26 @@ public class OrderDAO {
             return ls;
         } catch (Exception e) {
             System.out.println("loi roi");
+        }
+        return null;
+    }
+    
+    public static ArrayList<Order> getAllBillByManagerID(int mId) {
+
+        ArrayList<Order> ls = new ArrayList<>();
+        try ( Connection con = getConnect()) {
+            PreparedStatement ps = con.prepareStatement("select * from [Order] where managerID=? ORDER BY OrderID DESC");
+            ps.setInt(1, mId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Order items = new Order(rs.getString(1), getAllOrderItems(rs.getString(1)), rs.getString(4), rs.getString(5), 
+                        rs.getDate(2), rs.getFloat(6), rs.getInt(3));
+                ls.add(items);
+            }   
+            
+            return ls;
+        } catch (Exception e) {
+            System.out.println("get all bill manager :loi roi");
         }
         return null;
     }

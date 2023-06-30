@@ -58,7 +58,8 @@ public class Checkout extends HttpServlet {
         cdao.deleteAllCart(CartId); //tu tu
         listCart = cdao.getAllCartItems(cdao.getCartId(user.getaId()));
         
-        session.setAttribute("listcart", listCart);
+        session.setAttribute("listCart", listCart);
+        response.sendRedirect("home");
                
     }
 

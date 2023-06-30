@@ -162,6 +162,13 @@
                 >Confirming delivery</a
               >
             </li>
+            <li class="nav-item col-12 col-sm-6 col-md-3 own-item">
+              <a
+                class="nav-link text-center link-item ${tag==3?"active":""}"
+                href="managerPage?stt=3"
+                >History</a
+              >
+            </li>
           </ul>
           <div class="tab-content mt-5 around-content">
               <!--forEach-->
@@ -279,15 +286,15 @@
                       <div class="row justify-content-center align-content-center">
                           <c:if test="${tag == 0 || tag ==null}">
                               <div class="col-3">
-                                <button type="button" class="btn acp-btn"><a href="managerPage?oID=${o.getOrderID()}&status=1">Accept</a></button>
+                                <button type="button" class="btn acp-btn"><a href="managerPage?oID=${o.getOrderID()}&status=1&mID=${sessionScope.user.aId}">Accept</a></button>
                             </div>
                             <div class="col-3">
-                                <button type="button" class="btn cancel-btn"><a href="managerPage?oID=${o.getOrderID()}&status=-1">Reject</a></button>
+                                <button type="button" class="btn cancel-btn"><a href="managerPage?oID=${o.getOrderID()}&status=-1&mID=${sessionScope.user.aId}">Reject</a></button>
                             </div>
                           </c:if>
                           <c:if test="${tag == 1}">
                               <div class="col-3">
-                                <button type="button" class="btn acp-btn"><a href="managerPage?oID=${o.getOrderID()}&status=2">Completed</a></button>
+                                <button type="button" class="btn acp-btn"><a href="managerPage?oID=${o.getOrderID()}&status=2&">Completed</a></button>
                             </div>
                           </c:if>
                         

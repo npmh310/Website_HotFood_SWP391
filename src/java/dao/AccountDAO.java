@@ -39,7 +39,7 @@ public class AccountDAO {
         }
         try {
             Connection con = DriverManager.getConnection(DBURL, USERDB, PASSDB);
-            System.out.println("Connect database success!");
+//            System.out.println("Connect database success!");
             return con;
         } catch (SQLException e) {
             System.out.println("Error: " + e);
@@ -233,7 +233,7 @@ public class AccountDAO {
         }
     }
 
-    public Account getAccountById(String id) {
+    public static Account getAccountById(String id) {
         String query = "Select * from Account where ID = ?";
         try ( Connection con = getConnect()) {
             PreparedStatement ps = con.prepareStatement(query);
