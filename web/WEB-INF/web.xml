@@ -1,23 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    
-  <servlet>
+    <servlet>
         <servlet-name>home</servlet-name>
         <servlet-class>controller.home</servlet-class>
     </servlet>
-   <servlet-mapping>
+    <servlet>
+        <servlet-name>SaveEditAccount</servlet-name>
+        <servlet-class>controller.SaveEditAccount</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddUser</servlet-name>
+        <servlet-class>controller.AddUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageDiscount</servlet-name>
+        <servlet-class>controller.ManageDiscount</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditDiscount</servlet-name>
+        <servlet-class>controller.EditDiscount</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SaveEditDiscount</servlet-name>
+        <servlet-class>controller.SaveEditDiscount</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteDiscount</servlet-name>
+        <servlet-class>controller.DeleteDiscount</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddDiscount</servlet-name>
+        <servlet-class>controller.AddDiscount</servlet-class>
+    </servlet>
+    <servlet-mapping>
         <servlet-name>home</servlet-name>
         <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>category</servlet-name>
         <servlet-class>controller.category</servlet-class>
-  </servlet>
+    </servlet>
     <servlet-mapping>
         <servlet-name>category</servlet-name>
         <url-pattern>/category</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>SearchServlet</servlet-name>
         <servlet-class>controller.SearchServlet</servlet-class>
@@ -26,9 +52,7 @@
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/search</url-pattern>
     </servlet-mapping>
-    
-
-     <servlet>
+    <servlet>
         <servlet-name>ManageProduct</servlet-name>
         <servlet-class>controller.ManageProduct</servlet-class>
     </servlet>
@@ -36,7 +60,6 @@
         <servlet-name>ManageProduct</servlet-name>
         <url-pattern>/product</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>DeleteProduct</servlet-name>
         <servlet-class>controller.DeleteProduct</servlet-class>
@@ -45,7 +68,7 @@
         <servlet-name>DeleteProduct</servlet-name>
         <url-pattern>/delete</url-pattern>
     </servlet-mapping>
- <servlet>
+    <servlet>
         <servlet-name>EditProduct</servlet-name>
         <servlet-class>controller.EditProduct</servlet-class>
     </servlet>
@@ -69,7 +92,7 @@
         <servlet-name>SaveEdit</servlet-name>
         <url-pattern>/saveedit</url-pattern>
     </servlet-mapping>
-  <servlet>
+    <servlet>
         <servlet-name>ManageUser</servlet-name>
         <servlet-class>controller.ManageUser</servlet-class>
     </servlet>
@@ -96,13 +119,12 @@
     <servlet>
         <servlet-name>DeleteUser</servlet-name>
         <servlet-class>controller.DeleteUser</servlet-class>
-     </servlet>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DeleteUser</servlet-name>
         <url-pattern>/DeleteUser</url-pattern>
     </servlet-mapping>
- 
-    <servlet> 
+    <servlet>
         <servlet-name>detail</servlet-name>
         <servlet-class>controller.detail</servlet-class>
     </servlet>
@@ -126,22 +148,49 @@
         <servlet-name>GoogleSignInServlet</servlet-name>
         <url-pattern>/GoogleSignInServlet</url-pattern>
     </servlet-mapping>
-   <servlet>
+    <servlet>
         <servlet-name>profile</servlet-name>
         <servlet-class>controller.profile</servlet-class>
-    </servlet>  
+    </servlet>
     <servlet-mapping>
         <servlet-name>profile</servlet-name>
         <url-pattern>/profile</url-pattern>
     </servlet-mapping>
-
-      <servlet>
+    <servlet>
         <servlet-name>ResetPass</servlet-name>
         <servlet-class>controller.ResetPass</servlet-class>
-      </servlet>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ResetPass</servlet-name>
         <url-pattern>/ResetPass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SaveEditAccount</servlet-name>
+        <url-pattern>/SaveEditAccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddUser</servlet-name>
+        <url-pattern>/AddUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageDiscount</servlet-name>
+        <url-pattern>/ManageDiscount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditDiscount</servlet-name>
+        <url-pattern>/EditDiscount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SaveEditDiscount</servlet-name>
+        <url-pattern>/SaveEditDiscount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteDiscount</servlet-name>
+        <url-pattern>/DeleteDiscount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddDiscount</servlet-name>
+        <url-pattern>/AddDiscount</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
