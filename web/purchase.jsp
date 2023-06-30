@@ -120,7 +120,9 @@
                             <a
                                 class="nav-link text-center link-item ${tag==0?"active":""}"
                                 href="purchase?st=0"
+
                                 >Preparing</a
+
                             >
                         </li>
                         <li class="nav-item col-12 col-sm-6 col-md-2 own-item">
@@ -169,6 +171,7 @@
                                                             <div>
                                                                 <h5 class="mb-0">${odr.date}</h5>
                                                             </div>
+
                                                             <div class="col-4 status ml-2 pr-2">
                                                                 <h5 style="text-align: center;
                                                                     margin-bottom: 0">
@@ -183,6 +186,7 @@
                                                                     </c:if>
                                                                     <c:if test="${odr.status==2}">
                                                                         <span style="color: #00c45c">COMPLETED</span> 
+
                                                                     </c:if>
                                                                 </h5>
                                                             </div>
@@ -201,6 +205,7 @@
                                                         data-parent="#accordion"
                                                         >
                                                         <c:forEach var="p" items="${odr.items}">                
+
                                                             <div
                                                                 class="card-body d-flex justify-content-between align-items-center overflow-hidden pb-3"
                                                                 >
@@ -215,6 +220,7 @@
                                                                     <span class="name-product">${p.quantity} x ${p.items.pName}  </span>
                                                                 </div>
 
+
                                                                 <div
                                                                     class="col-md-2 d-flex justify-content-end overflow-hidden"
                                                                     >
@@ -226,7 +232,9 @@
                                                         </c:forEach>  
                                                     </div>
                                                 </div>
+
                                             </c:forEach>
+
 
                                         </div>
                                     </div>

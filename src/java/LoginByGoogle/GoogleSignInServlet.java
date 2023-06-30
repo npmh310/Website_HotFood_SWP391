@@ -1,7 +1,10 @@
+
 package LoginByGoogle;
 
 import dao.AccountDAO;
+import dao.CartDAO;
 import entity.Account;
+import entity.CartDetail;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -9,12 +12,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class GoogleSignInServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String URL = null;
         try {
             if (request.getSession(false).getAttribute("user") == null) {
                 String code = request.getParameter("code");
@@ -22,6 +27,7 @@ public class GoogleSignInServlet extends HttpServlet {
                 GoogleDTO userToken = GoogleSupport.getUserInfo(accessToken);
                 String username = userToken.getId();
                 String email = userToken.getEmail();
+                
                 
                 Account user = dao.AccountDAO.checkUserExist(username);
                 Account usermail = dao.AccountDAO.checkEmailExist(email);
@@ -40,12 +46,23 @@ public class GoogleSignInServlet extends HttpServlet {
  
                 HttpSession session = request.getSession(true);
                 session.setAttribute("user", user);
+                String CartId = CartDAO.getCartId(user.getaId());
+                ArrayList<CartDetail> listItems = CartDAO.getAllCartItems(CartId);
+                session.setAttribute("listCart", listItems);
+                if(user.getaRole() == 1){
+                    URL = "managerPage";
+                }
+                else{
+                    URL = "home";
+                }
+                
+                
 //                session.setMaxInactiveInterval(15*60);
                 System.out.println("dang nhap thanh cong");
                
             }
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher("home");
+            RequestDispatcher rd = request.getRequestDispatcher(URL);
             rd.forward(request, response);
         }
     }
@@ -90,3 +107,4 @@ public class GoogleSignInServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+

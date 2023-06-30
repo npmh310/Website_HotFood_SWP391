@@ -83,23 +83,192 @@ Author     : minhhieu
             <header class="header trans_300">
                 <!-- Top Navigation -->
 
-                <!-- Main Navigation -->
+      <div class="hamburger_menu">
+        <div class="hamburger_close">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <div class="hamburger_menu_content text-right">
+          <ul class="menu_top_nav">
+            <li class="menu_item has-children">
+              <a href="#">
+                My Account
+                <i class="fa fa-angle-down"></i>
+              </a>
+              <ul class="menu_selection">
+                <li>
+                  <a href="#"
+                    ><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a
+                  >
+                </li>
+                <li>
+                  <a href="#"
+                    ><i class="fa fa-user-plus" aria-hidden="true"></i
+                    >Register</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="menu_item">
+              <a href="#">manager order</a>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-                <!--  -->
-                <div class="main_nav_container header-manager">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-3">
-                                <div class="logo_container">
-                                    <a href="home">hot<span>food</span></a>
-                                </div>
+      <div class="super_container">
+        <div
+          class="container manager-order"
+          style="height: 500px; margin-top: 200px"
+        >
+          <ul class="nav nav-tabs justify-content-center total-nav">
+            <li class="nav-item col-12 col-sm-6 col-md-3 own-item">
+              <a
+                class="nav-link text-center link-item ${tag==0?"active":""}"
+                href="managerPage?stt=0"
+                >Confirming</a
+              >
+            </li>
+            <li class="nav-item col-12 col-sm-6 col-md-3 own-item">
+              <a
+                class="nav-link text-center link-item ${tag==1?"active":""}"
+                href="managerPage?stt=1"
+                >Confirming delivery</a
+              >
+            </li>
+            <li class="nav-item col-12 col-sm-6 col-md-3 own-item">
+              <a
+                class="nav-link text-center link-item ${tag==3?"active":""}"
+                href="managerPage?stt=3"
+                >History</a
+              >
+            </li>
+          </ul>
+          <div class="tab-content mt-5 around-content">
+              <!--forEach-->
+              <c:forEach var="o" items="${sessionScope.listOrder}">
+            <div class="tab-pane fade show active" id="confirming">
+              <section>
+                <div class="row d-flex justify-content-center align-content-center order-confirm" id="${o.getOrderID()}">
+                  <div class="col-md-2 infor-user d-flex align-content-center justify-content-center overflow-hidden"
+                  >
+                    <img
+                      class="img-fluid rounded-0"
+                      src="images/istockphoto-1223671392-612x612.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div class="col-md-3 infor-user d-flex align-content-center">
+                    <span>${o.user.aFullname}</span>
+                  </div>
+                  <div class="col-md-2 infor-user d-flex align-content-center">
+                    <span>${o.user.aPhone}</span>
+                  </div>
+                  <div class="col-md-3 infor-user d-flex align-content-center">
+                    <span>${o.user.aAddress}</span>
+                  </div>
+                  <div class="col-md-2 infor-user d-flex align-content-center">
+                    <span>${o.totalPrice}</span>
+                  </div>
+                </div>
+              </section>
+
+              <!-- modal  -->
+              <div
+                class="modal fade"
+                id="modal${o.getOrderID()}"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-lg mt-5" role="document">
+                  <div class="modal-content ">
+                    <!-- header  -->
+                    <div class="modal-header">
+                      <span class="modal-title header-user" id="myModalLabel"
+                        >${o.user.aFullname}'s Orders</span
+                      >
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+
+                    <!-- body -->
+                    
+                    <div class="modal-body">
+                      <!-- Thêm nội dung thông tin người dùng vào đây -->
+                       
+                      <div class="container total-product ">
+                          <c:forEach var="p" items="${o.items}">
+                            <div class="row own-product h-50 ">
+                              <div class="col-md-3 product-infor pb-2">
+                               <img class="img-fluid rounded-0" src="${p.items.pImg}" alt="">
+                              </div>
+                              <div class="col-md-4 product-infor">
+                               <span>${p.items.pName}</span>
+                              </div>
+                              <div class="col-md-2 product-infor">
+                               <span>${p.quantity}</span>
+                              </div>
+                              <div class="col-md-3 product-infor">
+                               ${p.items.pPrice*p.quantity}d
+                              </div>
+                             </div>
+                           </c:forEach>
+<!--                         <div class="row own-product h-50">
+                           <div class="col-md-3 product-infor pb-2">
+                            <img class="img-fluid rounded-0" src="images/product_7.png" alt="">
+                           </div>
+                           <div class="col-md-4 product-infor">
+                            <span>Hamburger</span>
+                           </div>
+                           <div class="col-md-2 product-infor">
+                            <span>2</span>
+                           </div>
+                           <div class="col-md-3 product-infor">
+                            250.000d
+                           </div>
+                          </div>-->
+                      </div>
+                      <div class="container product-price">
+                        <div class="row d-flex justify-content-between discount-code">
+                          <div class="col-5  ml-3">
+                            <h5>DISCOUNT: </h5> 
+                          </div>
+                          <div class="col-4 mr-5 pr-2 d-flex align-content-center justify-content-end">
+                            <h5>0d</h5>
+                          </div>
+                        </div>
+                        <div class="row mt-4 d-flex justify-content-between discount-code">
+                          <div class="col-5  ml-3">
+                            <h5>TOTAL PRICE: </h5> 
+                          </div>
+                          <div class="col-4 mr-5 pr-2 d-flex align-content-center justify-content-end">
+                            <h5>${o.totalPrice}d</h5>
+                          </div>
+                        </div>
+                      </div>
+                      
+                     </div>
+                    <div class="container footer-modal ">
+                      <div class="row justify-content-center align-content-center">
+                          <c:if test="${tag == 0 || tag ==null}">
+                              <div class="col-3">
+                                <button type="button" class="btn acp-btn"><a href="managerPage?oID=${o.getOrderID()}&status=1&mID=${sessionScope.user.aId}">Accept</a></button>
                             </div>
-                            <div
-                                class="col-6 d-flex justify-content-center align-items-center"
-                                >
-                                <ul class="navbar_menu">
-                                    <li><a href="#" class="manager-center">manager order</a></li>
-                                </ul>
+                            <div class="col-3">
+                                <button type="button" class="btn cancel-btn"><a href="managerPage?oID=${o.getOrderID()}&status=-1&mID=${sessionScope.user.aId}">Reject</a></button>
+                            </div>
+                          </c:if>
+                          <c:if test="${tag == 1}">
+                              <div class="col-3">
+                                <button type="button" class="btn acp-btn"><a href="managerPage?oID=${o.getOrderID()}&status=2&">Completed</a></button>
+
                             </div>
                             <div
                                 class="col-3 d-flex justify-content-end align-items-center profile-button"
@@ -149,6 +318,7 @@ Author     : minhhieu
                     </ul>
                 </div>
             </div>
+
 
             <div class="super_container">
                 <div
@@ -249,6 +419,7 @@ Author     : minhhieu
                                                         </div>
                                                     </c:forEach>
 
+
                                                 </div>
                                                 <div class="container product-price">
                                                     <div class="row d-flex justify-content-between discount-code">
@@ -316,4 +487,5 @@ Author     : minhhieu
                 </c:forEach>
                 </body>
                 </html>
+
 
