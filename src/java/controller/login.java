@@ -80,6 +80,9 @@ public class login extends HttpServlet {
             if(u.getaRole()==1){
                 response.sendRedirect("managerPage");
             }
+            else if(u.getaRole() == 2){
+                response.sendRedirect("product");
+            }
             else{
                 response.sendRedirect("home");
             }
