@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- 
     Document   : index.jsp
@@ -200,9 +199,34 @@
                                             </c:if>
                                         </div>
                                     </div>
-                                </c:forEach>    
+                                </c:forEach>
+                               </div> 
+     
+                                                           
+                            <!--Phân trang-->
+                            <div class="product_sorting_container product_sorting_container_bottom clearfix">
+                                <style>
+                                    li {
+                                        list-style: none;
+                                    }
+                                </style>
+                                <div class="pages d-flex flex-row align-items-center" style="margin-left: 40%;">
 
-
+                                    <c:if test="${tag > 1}">
+                                        <li class="page-item disabled"><a href="home?num=${tag-1}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a></li>
+                                    </c:if>
+                                        <c:forEach begin="1" end="${page}" var="p">
+                                        <div class="page_current" style="border-radius: 5px;">
+                                            <a href="home?num=${p}" style="color: white;">${p}</a>
+                                        </div>
+                                        </c:forEach>
+                                    <c:if test="${tag < page}">
+                                        <li class="page-item"><a href="home?num=${tag+1}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>
+                                    </c:if>
+                                </div>
+                            </div>  
+                          
+                          <!-- Phan trang --> 
                             </div>
                         </div>
                     </div>
@@ -555,4 +579,5 @@
         <script src="js/custom.js"></script>
     </body>
 </html>
+
 

@@ -60,6 +60,8 @@
             type="text/css"
             href="styles/categories_responsive.css"
             />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-MT5ETmjtu3Ff6z0xGJC2LWspUSkdDkaif/4muvRn1mz2r0xSKr+VRg6UizPTT4rS" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="styles/myCss.css" />
     </head>
 
@@ -68,8 +70,6 @@
             <!-- Header -->
 
             <jsp:include page="header.jsp"></jsp:include>
-
-
                 <!--categories-->
 
                 <div class="container product_section_container">
@@ -121,16 +121,10 @@
                                                   ${c.cName}</a>
                                             </li>
                                         </c:forEach>
-
-
-
                                     </ul>
                                 </div>
-
                             </div>
-
                             <!-- Main Content -->
-
                             <div class="main_content">
                                 <!-- Products -->
 
@@ -179,97 +173,85 @@
                                                       </ul>
                                                     </li> -->
                                                 </ul>
-                                                <div class="pages d-flex flex-row align-items-center">
-                                                    <div class="page_current">
-                                                        <span>1</span>
-                                                        <ul class="page_selection">
-                                                            <li><a href="#">1</a></li>
-                                                            <li><a href="#">2</a></li>
-                                                            <li><a href="#">3</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="page_total"><span>of</span> 3</div>
-                                                    <div id="next_page" class="page_next">
-                                                        <a href="#"
-                                                           ><i
-                                                                class="fa fa-long-arrow-right"
-                                                                aria-hidden="true"
-                                                                ></i
-                                                            ></a>
+                                                <div class="product_sorting_container product_sorting_container_bottom clearfix">
+                                                    <style>
+                                                        li {
+                                                            list-style: none;
+                                                        }
+                                                    </style>
+                                                    <div class="pages d-flex flex-row align-items-center" style="margin-left: 70%;">
+
+                                                        <c:if test="${tag > 1}">
+                                                            <li class="page-item disabled"><a href="category?num=${tag-1}"><i class="fa-light fa fa-arrow-left"></i></a></li>
+                                                        </c:if>
+                                                        <c:forEach begin="1" end="${page}" var="p">
+                                                            <div class="page_current" style="border-radius: 5px;">
+                                                                <a href="category?num=${p}" style="color: white;">${p}</a>
+                                                            </div>
+                                                        </c:forEach>
+                                                        <c:if test="${tag < page}">
+                                                            <li class="page-item"><a href="category?num=${tag+1}"><i class="fa-light fa fa-arrow-right"></i></a></li>
+                                                        </c:if>
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <!-- Product Grid -->
+                                                <!-- Product Grid -->
 
-                                            <div class="product-grid">
-                                                <!-- Product 1 -->
-                                                <c:forEach items="${listProductByCid}" var="p">
-                                                    <div class="product-item men">
-                                                        <div class="product discount product_filter">
-                                                            <div class="product_image">
-                                                                <img src="${p.pImg}" alt="" />
-                                                            </div>
-                                                            <div class="favorite favorite_left"></div>
-
-                                                            <div class="product_info">
-                                                                <h6 class="product_name">
-                                                                    <a href="detail?pId=${p.pId}"
-                                                                       >${p.pName}</a
-                                                                    >
-                                                                </h6>
-                                                                <div class="product_price">
-                                                                    ${p.pPrice}
+                                                <div class="product-grid"> 
+                                                    <!-- Product 1 -->
+                                                    <c:forEach items="${product}" var="p" >
+                                                        <div class="product-item hh${p.getCateID()}"> <!-- fix name "men" to CateName -->
+                                                            <div class="product discount product_filter">
+                                                                <div class="product_image">
+                                                                    <img src="${p.pImg}" alt="" /> <!-- img -->
+                                                                </div>
+                                                                <div class="favorite favorite_left"></div>
+                                                                <!--                              <div
+                                                                 class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center" >
+                                                                 <span>-$20</span>   
+                                                                 </div>--> <!-- Giam gia -->
+                                                                <div class="product_info">
+                                                                    <h6 class="product_name">
+                                                                        <a href="detail?pId=${p.pId}"
+                                                                           >${p.pName}</a 
+                                                                        > <!-- Pname -->
+                                                                    </h6>
+                                                                    <div class="product_price">
+                                                                        ${p.pPrice} VNÐ 
+                                                                        <!--   <span>$590.00</span>-->
+                                                                    </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="red_button add_to_cart_button">
+                                                                <a href="#">add to cart</a>
+                                                            </div>
                                                         </div>
-                                                        <div class="red_button add_to_cart_button">
-                                                            <a href="#">add to cart</a>
-                                                        </div>
-                                                    </div>
-                                                </c:forEach>
+                                                    </c:forEach> 
 
-                                            </div>
+                                                </div>
 
-                                            <!-- Product Sorting -->
+                                                <!-- Product Sorting -->
 
-                                            <div
-                                                class="product_sorting_container product_sorting_container_bottom clearfix"
-                                                >
-                                                <!-- <ul class="product_sorting">
-                                                  <li>
-                                                    <span>Show:</span>
-                                                    <span class="num_sorting_text">04</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                    <ul class="sorting_num">
-                                                      <li class="num_sorting_btn"><span>01</span></li>
-                                                      <li class="num_sorting_btn"><span>02</span></li>
-                                                      <li class="num_sorting_btn"><span>03</span></li>
-                                                      <li class="num_sorting_btn"><span>04</span></li>
-                                                    </ul>
-                                                  </li>
-                                                </ul> -->
-                                                <!-- <span class="showing_results"
-                                                  >Showing 1–3 of 12 results</span
-                                                > -->
-                                                <div class="pages d-flex flex-row align-items-center">
-                                                    <div class="page_current">
-                                                        <span>1</span>
-                                                        <ul class="page_selection">
-                                                            <li><a href="#">1</a></li>
-                                                            <li><a href="#">2</a></li>
-                                                            <li><a href="#">3</a></li>
+                                                <div
+                                                    class="product_sorting_container product_sorting_container_bottom clearfix"
+                                                    >
+                                                    <!-- <ul class="product_sorting">
+                                                      <li>
+                                                        <span>Show:</span>
+                                                        <span class="num_sorting_text">04</span>
+                                                        <i class="fa fa-angle-down"></i>
+                                                        <ul class="sorting_num">
+                                                          <li class="num_sorting_btn"><span>01</span></li>
+                                                          <li class="num_sorting_btn"><span>02</span></li>
+                                                          <li class="num_sorting_btn"><span>03</span></li>
+                                                          <li class="num_sorting_btn"><span>04</span></li>
                                                         </ul>
-                                                    </div>
-                                                    <div class="page_total"><span>of</span> 3</div>
-                                                    <div id="next_page_1" class="page_next">
-                                                        <a href="#"
-                                                           ><i
-                                                                class="fa fa-long-arrow-right"
-                                                                aria-hidden="true"
-                                                                ></i
-                                                            ></a>
-                                                    </div>
+                                                      </li>
+                                                    </ul> -->
+                                                    <!-- <span class="showing_results"
+                                                      >Showing 1–3 of 12 results</span
+                                                    > -->
+
                                                 </div>
                                             </div>
                                         </div>
@@ -278,21 +260,20 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- FOOTER VS BENEFIT -->
+                    <jsp:include page="footer.jsp"></jsp:include>
+
                 </div>
 
-                <!-- FOOTER VS BENEFIT -->
-                <jsp:include page="footer.jsp"></jsp:include>
-
-            </div>
-
-            <script src="js/jquery-3.2.1.min.js"></script>
-            <script src="styles/bootstrap4/popper.js"></script>
-            <script src="styles/bootstrap4/bootstrap.min.js"></script>
-            <script src="plugins/Isotope/isotope.pkgd.min.js"></script>
-            <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-            <script src="plugins/easing/easing.js"></script>
-            <script src="plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-            <script src="js/categories_custom.js"></script>
+                <script src="js/jquery-3.2.1.min.js"></script>
+                <script src="styles/bootstrap4/popper.js"></script>
+                <script src="styles/bootstrap4/bootstrap.min.js"></script>
+                <script src="plugins/Isotope/isotope.pkgd.min.js"></script>
+                <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+                <script src="plugins/easing/easing.js"></script>
+                <script src="plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+                <script src="js/categories_custom.js"></script>
         </body>
     </html>
 

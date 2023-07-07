@@ -14,10 +14,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
- * @author linhp
+ * @author ASUS
  */
 public class category extends HttpServlet {
 
@@ -32,26 +33,28 @@ public class category extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String cateId = request.getParameter("cId");
-        ProductDAO p = new ProductDAO();
-
-        ArrayList<Category> cate = p.getAllCate();
-        ArrayList<Product> productList;
-        Category cateByCId = p.getNameCateById(cateId);
-        
-        if (cateId == null) {
-            productList = p.getAllProduct();
-        } else {
-            productList = p.getProductByIdCate(cateId);
+        String numPage = request.getParameter("num");
+        if (numPage == null) {
+            numPage = "1";
         }
+        int num = Integer.parseInt(numPage);
 
-//         response.getWriter().print(listProductByCid);
+        ProductDAO p = new ProductDAO();
+        ArrayList<Category> cate = p.getAllCate();
+//        ArrayList<Product> prd = p.getAllProduct(); (Khong get all Product. Ma get product theo tung trang)                                             
+        int count = p.getTotalProduct();       
+        int page = count / 10;                 //(Tinh so trang can phan ra)                             
+        if (count % 10 != 0) {                                                      
+            page++;                                                        
+        }                                                                           
+        List<Product> prd = p.getPage(num);    //(List ra dung product theo page (Moi page 10 product))
+
+        System.out.println(cate + "hi");
+//        System.out.println(prd);
         request.setAttribute("cate", cate);
-        request.setAttribute("tag", cateId);
-        request.setAttribute("cateByCId", cateByCId);
-//        request.setAttribute("product", prd);
-        request.setAttribute("listProductByCid", productList);
+        request.setAttribute("product", prd);
+        request.setAttribute("page", page);     
+        request.setAttribute("tag", num);
         request.getRequestDispatcher("categories.jsp").forward(request, response);
     }
 

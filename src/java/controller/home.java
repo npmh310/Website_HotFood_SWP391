@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -48,16 +49,28 @@ public class home extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String numPage = request.getParameter("num");
+        if (numPage == null) {
+            numPage = "1";
+        }
+        int num = Integer.parseInt(numPage);
+
         ProductDAO p = new ProductDAO();
         ArrayList<Category> cate = p.getAllCate();
-        ArrayList<Product> prd = p.getAllProduct();
-        
-        
-//        System.out.println(cate + "hi");
+//        ArrayList<Product> prd = p.getAllProduct(); (Khong get all Product. Ma get product theo tung trang)                                             
+        int count = p.getTotalProduct();       
+        int page = count / 10;                 //(Tinh so trang can phan ra)                             
+        if (count % 10 != 0) {                                                      
+            page++;                                                        
+        }                                                                           
+        List<Product> prd = p.getPage(num);    //(List ra dung product theo page (Moi page 10 product))
+
+        System.out.println(cate + "hi");
 //        System.out.println(prd);
-        
         request.setAttribute("cate", cate);
         request.setAttribute("product", prd);
+        request.setAttribute("page", page);  
+        request.setAttribute("tag", num);
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
