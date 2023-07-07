@@ -13,13 +13,16 @@ import java.util.ArrayList;
 import entity.Product;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
  * @author linhp
  */
 public class ProductDAO implements DatabaseInfo {
-
+    PreparedStatement ps;
+    ResultSet rs;
+    Connection con;
     public static Connection getConnect() {
         try {
             Class.forName(DRIVERNAME);
@@ -36,7 +39,7 @@ public class ProductDAO implements DatabaseInfo {
         return null;
     }
 
-    public Product getProductById(String id) {
+    public static Product getProductById(String id) {
 
         String query = "Select * from Product where pID = ?";
         try ( Connection con = getConnect()) {
@@ -77,7 +80,7 @@ public class ProductDAO implements DatabaseInfo {
         try ( Connection con = getConnect()) {
             PreparedStatement ps = con.prepareStatement(query);
 
-            ps.setString(1, id);
+            ps.setString(1, cId);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -190,6 +193,37 @@ public class ProductDAO implements DatabaseInfo {
         }
     }
 
+    //dem so luong product trong database//
+
+    public int getTotalProduct() {
+        String query = "select count(*) from product";
+        try ( Connection con = getConnect()) {
+            ps = con.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+
+        return 0;
+    }
+
+    public List<Product> getPage(int numPage) {
+        List<Product> list = new ArrayList<>();
+        String query = "select * from Product order by pID offset ? ROWS FETCH next 10 ROWS only;";
+        try ( Connection con = getConnect()) {
+            PreparedStatement ps = con.prepareStatement(query);                  //Chuyen cau lenh o Query vao
+            ps.setInt(1, (numPage - 1) * 10);
+            rs = ps.executeQuery();                             //Chay cau lenh Query
+            while (rs.next()) {
+                list.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(6), rs.getFloat(5), rs.getString(4), rs.getString(3)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
     
     
 }
+
