@@ -8,6 +8,8 @@ import dao.CartDAO;
 import dao.OrderDAO;
 import entity.Account;
 import entity.CartDetail;
+import entity.Discount;
+import entity.Order;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -41,25 +43,36 @@ public class Checkout extends HttpServlet {
         OrderDAO odr = new OrderDAO();
         Account user = null;
         user = (Account) session.getAttribute("user");
-        float totalPrice = (Float) session.getAttribute("totalMoney");
+        Discount discount = null;
+        discount = (Discount) session.getAttribute("discount");
+        String CartId = cdao.getCartId(user.getaId());
+        float totalPrice;
+        if(discount != null){
+            totalPrice = (Float) session.getAttribute("totalMoney2");
+            odr.addToBill(CartId, user.getaId(), discount.getCode(), totalPrice, 0);
+        }else{
+            totalPrice = (Float) session.getAttribute("totalMoney");
+            odr.addToBill(CartId, user.getaId(), null, totalPrice, 0);
+        }
         
-        String CartId = cdao.getCartId(user.getaId());       
-        String code = request.getParameter("code");
-        
+//        String code = request.getParameter("code");
         ArrayList<CartDetail> listCart = cdao.getAllCartItems(CartId);
-        odr.addToBill(CartId, user.getaId(), code, totalPrice, 0);
         for (CartDetail items : listCart) {
             odr.addToOrderDetail(CartId, items.getItems().getpId(), items.getQuantity(), items.getItems().getpPrice());
 //            System.out.println(items.getpId());
 //            System.out.println(items.getQuantity());
 //            System.out.println(items.getItems().getpPrice());
         }
-        
         cdao.deleteAllCart(CartId); //tu tu
         listCart = cdao.getAllCartItems(cdao.getCartId(user.getaId()));
+        Order bill = odr.getBillbyOrderId(CartId);
+        System.out.println(bill);
         
+        request.setAttribute("bill", bill);
+        session.removeAttribute("discount");
         session.setAttribute("listCart", listCart);
-        response.sendRedirect("home");
+        request.getRequestDispatcher("orderSuccess.jsp").forward(request, response);
+//        response.sendRedirect("home");
                
     }
 

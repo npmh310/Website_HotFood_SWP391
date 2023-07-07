@@ -5,6 +5,7 @@
 package controller;
 
 import dao.ProductDAO;
+import entity.Account;
 import entity.Category;
 import entity.Product;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 /**
@@ -33,7 +35,6 @@ public class home extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -51,7 +52,21 @@ public class home extends HttpServlet {
         ProductDAO p = new ProductDAO();
         ArrayList<Category> cate = p.getAllCate();
         ArrayList<Product> prd = p.getAllProduct();
-        
+//        String URL = "home";
+//        HttpSession session = request.getSession(false);
+//        Account user = null;
+//
+//        if (session.getAttribute("user") != null) {
+//            user = (Account) session.getAttribute("user");
+//            if(user.getaId() == 1){
+//                URL = "managerPage";
+//            }
+//            else if(user.getaId() == 2){
+//                URL = "product";
+//            }else{
+//                URL = "home";
+//            }
+//        }
         
 //        System.out.println(cate + "hi");
 //        System.out.println(prd);

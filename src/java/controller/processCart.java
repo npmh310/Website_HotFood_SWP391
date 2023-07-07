@@ -5,7 +5,9 @@
 package controller;
 
 import dao.CartDAO;
+import dao.DiscountDAO;
 import entity.CartDetail;
+import entity.Discount;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -40,13 +42,17 @@ public class processCart extends HttpServlet {
         int prodQty = Integer.parseInt(request.getParameter("quantity")); 
         String cartId = request.getParameter("cartId");
         String prodId = request.getParameter("pId");
+        String code = request.getParameter("code");
         CartDAO cd = new CartDAO();
         
 //        System.out.println(listCart); 
+        DiscountDAO discountDao = new DiscountDAO();
+        Discount discount = discountDao.checkCodeExists(code);
         
         cd.updateToCart(cartId, prodId, prodQty);
         ArrayList<CartDetail> listCart = cd.getAllCartItems(cartId);
         session.setAttribute("listCart", listCart);
+        session.setAttribute("discount", discount);
         
 //        response.sendRedirect("cart");
         request.getRequestDispatcher("cart").forward(request, response);
@@ -79,6 +85,8 @@ public class processCart extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        response.sendRedirect("cart");
+
     }
 
     /**

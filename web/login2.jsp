@@ -120,12 +120,12 @@
                                                 class="input-detail"
                                                 type="text"
                                                 id="username"
-                                                 name="username"
+                                                name="username"
                                                 required
-                                                
+
                                                 />
                                         </div>
-                                        <div class="col-12 infor-detail pb-5">
+                                        <div class="col-12 infor-detail pb-4">
                                             <label class="label-detail" for="username">
                                                 Password:
                                             </label>
@@ -137,8 +137,18 @@
                                                 required
                                                 />
                                         </div>
+                                        <div class="container d-flex justify-content-center align-content-center mb-3 mt-3">
+                                            <a href="sendEmail.jsp" style="text-align: center; color: #282828; margin-bottom: 10px
+                                               ">Forgot your password?</a>
+                                        </div>
 
-
+                                        <c:choose>
+                                            <c:when test="${mess == null}">
+                                            </c:when>
+                                            <c:otherwise>
+                                                <p style=" font-size: 12px;color: #4c5057 ;padding: 15px 20px; margin-bottom: 30px;  background-color: rgba(255, 102, 102, 0.5); border-radius: 10px; text-align: center">${mess}</p>
+                                            </c:otherwise>
+                                        </c:choose>  
                                         <div class="col-12">
                                             <button class="btn btn-primary w-100 button-detail">
                                                 Login
@@ -178,8 +188,8 @@
                                         Enter your personal information and start ordering our food
                                     </p>
                                     <div class="login-btn">
-                                        <button class="btn" onclick="window.location.href='signup.jsp'">
-                                           Sign Up
+                                        <button class="btn" onclick="window.location.href = 'signup.jsp'">
+                                            Sign Up
                                         </button>
                                     </div>
                                 </div>

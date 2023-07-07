@@ -63,8 +63,8 @@ public class managerPage extends HttpServlet {
             listOrder = OrderDAO.getAllBillHistory(user.getaId());
         }
 //        listOrder = OrderDAO.getAllBillById(user.getaId());
-        System.out.println(tag);
-        System.out.println(listOrder);
+//        System.out.println(tag);
+//        System.out.println(listOrder);
         
         session.setAttribute("listOrder", listOrder);
         request.setAttribute("tag", tag);

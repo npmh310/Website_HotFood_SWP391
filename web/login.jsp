@@ -29,11 +29,15 @@
         <title>Login Hot Food</title>
         <style>
             #container{
-                height: 670px;
+                height: 690px;
             }
             input{
                 padding: 12px 15px;
-                margin: 8px 0;
+                margin: 15px 0;
+                /*width: 300px;  Đặt chiều rộng của trường input */
+                height: 35px;
+                border-radius: 5px;
+                border-: none;
             }
             .social-container {
                 margin: 10px 0 10px 0;
@@ -44,7 +48,7 @@
         <div class="container" id="container">
             <div class="form-container sign-up-container">
                 <form action="login" method="post">
-                    <h1 style="margin-bottom: 10px; color: #3b3b4d">Create Account</h1>
+                    <h1 style="margin-bottom: 5px; color: #3b3b4d; padding-top: 20px">Create Account</h1>
                     <div class="social-container mb-0">
                         <!--            <a href="#" class="social"
                                       ><i class="fa fa-facebook" aria-hidden="true"></i
@@ -59,18 +63,19 @@
                         <c:when test="${status1 == null}">
                         </c:when>
                         <c:otherwise>
-                            <p style=" color: #4c5057 ;padding: 10px 12px; margin: 5px 0px 10px 0px;  background-color: rgba(255, 102, 102, 0.5); border-radius: 10px; text-align: center">${status1}${status}</p>
+                            <p style=" font-size: 12px;color: #4c5057 ;padding: 10px 25px; margin: 5px 0;  background-color: rgba(255, 102, 102, 0.5); border-radius: 10px; text-align: center">${status1}${status}</p>
                         </c:otherwise>
                     </c:choose>    
-                    <span style="margin-bottom: 10px;">or use your email for registration</span>
+                    <span style="margin:10px 0;">or use your email for registration</span>
                     <input type="hidden" name="opption" value="register"/>
-                    <input type="text" value="${fullname}" name="fullname" placeholder="Full-Name" />
+                    <input type="text" value="${fullname}" name="fullname" placeholder="Full-Name" oninput="checkFullname();" />
                     <input type="text" name="username1" placeholder="Username" required/>
                     <input type="password" name="password1" placeholder="New password" required/>
                     <input type="email" name="email" placeholder="Email" required/>
-                    <input type="text" name="address" placeholder="Address" required/>
-                    <input type="tel" value="${phoneNum}" name="phone" placeholder="Phone number" required/>
-                    <button style="margin-top: 15px;">Sign Up</button>
+                    <input type="text" value="${address}"name="address" placeholder="Address" required/>
+                    <input type="tel" value="${phoneNum}" name="phone" placeholder="Phone number" oninput="checkInput();" id="txt_phone"required/>
+                    <span id="error"></span>
+                    <button style="margin-top: 5px;">Sign Up</button>
                 </form>
             </div>
             <div class="form-container sign-in-container">
@@ -87,11 +92,17 @@
                             ></a>
                     </div>
                     <span style="margin: 5px 0 20px 0;">or use your account</span>
-                    <p>${mess}${status}</p>
+                    <c:choose>
+                        <c:when test="${status == null && mess == null}">
+                        </c:when>
+                        <c:otherwise>
+                            <p style=" font-size: 12px;color: #4c5057 ;padding: 10px 20px; margin: 5px 0;  background-color: rgba(255, 102, 102, 0.5); border-radius: 10px; text-align: center">${status}${mess}</p>
+                        </c:otherwise>
+                    </c:choose>  
                     <input type="hidden" name="opption" value="login"/>
                     <input type="text" name="username" placeholder="Username or email address" required />
                     <input type="password" name="password" placeholder="Password" required />
-                    <a href="#" style="margin: 30px 0">Forgot your password?</a>
+                    <a href="sendEmail.jsp" style="margin: 30px 0">Forgot your password?</a>
                     <button>Sign In</button>
                 </form>
             </div>
@@ -105,14 +116,16 @@
                         <button class="ghost" id="signIn">Sign In</button>
                     </div>
                     <div class="overlay-panel overlay-right">
-                        <h1><a href="index.jsp">hot<span>food</span></a></h1>
+                        <h1><a href="home">hot<span>food</span></a></h1>
                         <p>Enter your personal information and start ordering our food</p>
                         <button class="ghost" id="signUp">Sign Up</button>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
 
+        </script>
         <script src="js/login.js"></script>
     </body>
 </html>

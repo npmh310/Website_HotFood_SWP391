@@ -145,7 +145,7 @@
       <div class="super_container">
         <div
           class="container manager-order"
-          style="height: 500px; margin-top: 200px"
+          style=" margin-top: 200px"
         >
           <ul class="nav nav-tabs justify-content-center total-nav">
             <li class="nav-item col-12 col-sm-6 col-md-3 own-item">

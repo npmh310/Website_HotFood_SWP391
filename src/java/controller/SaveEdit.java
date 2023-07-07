@@ -33,7 +33,7 @@ public class SaveEdit extends HttpServlet {
 
         ProductDAO dao = new ProductDAO();
 
-        dao.editProduct(name, image, price, detail, category, id);
+        dao.editProduct(name, "images/"+image, price, detail, category, id);
            
         response.sendRedirect("product");
     }

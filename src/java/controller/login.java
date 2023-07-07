@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package controller;
 
 import dao.AccountDAO;
@@ -80,6 +76,9 @@ public class login extends HttpServlet {
             if(u.getaRole()==1){
                 response.sendRedirect("managerPage");
             }
+            else if(u.getaRole()==2){
+                response.sendRedirect("product");
+            }
             else{
                 response.sendRedirect("home");
             }
@@ -87,7 +86,7 @@ public class login extends HttpServlet {
         } else {
             request.setAttribute("mess", "Username or password is incorrect.");
             request.getRequestDispatcher("login2.jsp").forward(request, response);
-            response.sendRedirect("login");
+//            response.sendRedirect("login2.jsp");
         }
 
         
@@ -106,3 +105,4 @@ public class login extends HttpServlet {
     }// </editor-fold>
 
 }
+

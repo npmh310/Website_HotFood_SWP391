@@ -21,8 +21,15 @@ public class Order {
     private float totalPrice;
     private int status;
     private ArrayList<OrderDetail> items = new ArrayList<>();
-
+    private String mID;
+    private int status_Pay;
+    
     public Order() {
+    }
+
+    public Order(String OrderID, float totalPrice) {
+        this.OrderID = OrderID;
+        this.totalPrice = totalPrice;
     }
 
     public Order(String OrderID, String id, String code, Date date, float totalPrice, int status) {
@@ -63,6 +70,18 @@ public class Order {
         this.date = date;
         this.totalPrice = totalPrice;
         this.status = status;
+    }
+    
+    public Order(String OrderID, ArrayList<OrderDetail> items, Account user,String id, String code, Date date, float totalPrice, int status, String mID) {
+        this.OrderID = OrderID;
+        this.items = items;
+        this.user = user;
+        this.id = id;
+        this.code = code;
+        this.date = date;
+        this.totalPrice = totalPrice;
+        this.status = status;
+        this.mID = mID;
     }
     
     
@@ -138,9 +157,14 @@ public class Order {
 //        return "Order{" + "OrderID=" + OrderID + ", id=" + id + ", code=" + code + ", date=" + date + ", totalPrice=" + totalPrice + ", status=" + status + '}' + "\n";
 //    }
 
+//    @Override
+//    public String toString() {
+//        return "Order{" + "OrderID=" + OrderID + ", id=" + id + ", code=" + code + ", date=" + date + ", user=" + user + ", totalPrice=" + totalPrice + ", status=" + status + ", items=" + items + '}';
+//    }
+
     @Override
     public String toString() {
-        return "Order{" + "OrderID=" + OrderID + ", id=" + id + ", code=" + code + ", date=" + date + ", user=" + user + ", totalPrice=" + totalPrice + ", status=" + status + ", items=" + items + '}';
+        return "Order{" + "OrderID=" + OrderID + ", id=" + id + ", code=" + code + ", date=" + date + ", user=" + user + ", totalPrice=" + totalPrice + ", status=" + status + ", items=" + items + ", mID=" + mID + ", status_Pay=" + status_Pay + '}';
     }
     
     

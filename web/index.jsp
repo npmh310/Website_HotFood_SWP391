@@ -1,3 +1,4 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- 
     Document   : index.jsp
@@ -172,7 +173,9 @@
                                             <div class="product_image">
                                                 <img src="${p.pImg}" alt="" /> <!-- img -->
                                             </div>
+                                            <a href="AddFavourite?pid=${p.getpId()}">
                                                 <div class="favorite favorite_left"></div>
+                                            </a>
                                             <!--                                            <div
                                                                                             class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"
                                                                                             >

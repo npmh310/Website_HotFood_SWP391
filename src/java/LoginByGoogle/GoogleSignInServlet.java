@@ -51,6 +51,9 @@ public class GoogleSignInServlet extends HttpServlet {
                 if(user.getaRole() == 1){
                     URL = "managerPage";
                 }
+                else if(user.getaRole() == 2){
+                    URL = "product";
+                }
                 else{
                     URL = "home";
                 }

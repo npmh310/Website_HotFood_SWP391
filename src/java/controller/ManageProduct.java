@@ -22,7 +22,7 @@ public class ManageProduct extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         ProductDAO p = new ProductDAO();
-        ArrayList<Product> prd = p.getAllProduct();
+        ArrayList<Product> prd = ProductDAO.getAllProduct();
         ArrayList<Category> cate = p.getAllCate();
         
 
@@ -73,3 +73,4 @@ public class ManageProduct extends HttpServlet {
     }// </editor-fold>
 
 }
+ 

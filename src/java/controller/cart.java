@@ -4,12 +4,10 @@
  */
 package controller;
 
-import dao.AccountDAO;
 import dao.CartDAO;
 import entity.Account;
 import entity.CartDetail;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -48,7 +46,7 @@ public class cart extends HttpServlet {
         for (CartDetail listItem : listItems) {
             totalMoney += listItem.getQuantity()*listItem.getItems().getpPrice();
         }
-
+       
         session.setAttribute("totalMoney", totalMoney);
         session.setAttribute("listCart", listItems);
        

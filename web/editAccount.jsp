@@ -39,13 +39,17 @@
                 padding: 0 20px;
                 margin: 0 20px;
             }
+            .form-group{
+                padding: 0 20px;
+            }
         </style>
     </head>
     <body>
 
         <div class="row mb-4">
             <div class="col-lg-8 mx-auto text-center">
-                <h1 class="display-6">Edit Product</h1>
+                <h1 class="display-6" style="padding-top: 30px">Edit Account</h1>
+                <a href="user"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></a>
             </div>
         </div> <!-- End -->
         <div class="row">
@@ -88,7 +92,6 @@
                                     <select name="role" class="form-select" aria-label="Default select example">
                                         <option value="0" ${acc.aRole == 0? "selected": ""}>Customer</option>
                                         <option value="1" ${acc.aRole == 1? "selected": ""}>Manager</option>
-                                        <option value="2" ${acc.aRole == 2? "selected": ""}>Admin</option>
                                     </select>                                   
                                 </div>
 

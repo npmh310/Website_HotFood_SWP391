@@ -1,3 +1,4 @@
+
 <%-- 
 Document   : profile
 Created on : May 31, 2023, 12:39:06 AM
@@ -9,7 +10,7 @@ Author     : minhhieu
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        
+
         <jsp:include page="header.jsp" />
         <title>Hot Food</title>
         <meta charset="utf-8" />
@@ -52,8 +53,8 @@ Author     : minhhieu
             type="text/css"
             href="plugins/jquery-ui-1.12.1.custom/jquery-ui.css"
             />
-     
-           <link
+
+        <link
             rel="stylesheet"
             type="text/css"
             href="styles/categories_styles.css"
@@ -336,390 +337,392 @@ Author     : minhhieu
                                     <div class="container">
                                         <div class="row">
                                             <!-- Product 1 -->
+                                            <c:forEach items="${sessionScope.listF}" var="p">       
+                                                <div class="col-3">
+                                                    <div class="product discount product_filter">
+                                                        <div class="product_image">
+                                                            <img src="${p.items.pImg}" alt="" />
+                                                        </div>
 
-                                            <div class="col-3">
-                                                <div class="product discount product_filter">
-                                                    <div class="product_image">
-                                                        <img src="images/product_1.png" alt="" />
-                                                    </div>
-                                                    <div class="favorite favorite_left"></div>
-                                                    <div
-                                                        class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"
-                                                        >
-                                                        <span>-$20</span>
-                                                    </div>
-                                                    <div class="product_info">
-                                                        <h6 class="product_name">
-                                                            <a href="single.html"
-                                                               >Fujifilm X100T 16 MP Digital Camera (Silver)</a
+                                                        <div class="favorite favorite_left"></div>
+<!--                                                        <div
+                                                            class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"
                                                             >
-                                                        </h6>
-                                                        <div class="product_price">$520.00</div>
-                                                    </div>
-                                                </div>
-                                                <div class="red_button add_to_cart_button">
-                                                    <a href="#">add to cart</a>
-                                                </div>
-                                            </div>
-
-                                            <!-- Product 2 -->
-
-                                            <div class="col-3">
-                                                <div class="product product_filter">
-                                                    <div class="product_image">
-                                                        <img src="images/product_2.png" alt="" />
-                                                    </div>
-                                                    <div class="favorite"></div>
-                                                    <div
-                                                        class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"
-                                                        >
-                                                        <span>new</span>
-                                                    </div>
-                                                    <div class="product_info">
-                                                        <h6 class="product_name">
-                                                            <a href="single.html"
-                                                               >Samsung CF591 Series Curved 27-Inch FHD
-                                                                Monitor</a
-                                                            >
-                                                        </h6>
-                                                        <div class="product_price">$610.00</div>
-                                                    </div>
-                                                </div>
-                                                <div class="red_button add_to_cart_button">
-                                                    <a href="#">add to cart</a>
-                                                </div>
-                                            </div>
-
-                                            <!-- Product 3 -->
-
-                                            <div class="col-3">
-                                                <div class="product product_filter">
-                                                    <div class="product_image">
-                                                        <img src="images/product_3.png" alt="" />
-                                                    </div>
-                                                    <div class="favorite"></div>
-                                                    <div class="product_info">
-                                                        <h6 class="product_name">
-                                                            <a href="single.html"
-                                                               >Blue Yeti USB Microphone Blackout Edition</a
-                                                            >
-                                                        </h6>
-                                                        <div class="product_price">$120.00</div>
-                                                    </div>
-                                                </div>
-                                                <div class="red_button add_to_cart_button">
-                                                    <a href="#">add to cart</a>
-                                                </div>
-                                            </div>
-
-                                            <!-- Product 4 -->
-
-                                            <div class="col-3">
-                                                <div class="product product_filter">
-                                                    <div class="product_image">
-                                                        <img src="images/product_4.png" alt="" />
-                                                    </div>
-                                                    <div
-                                                        class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"
-                                                        >
-                                                        <span>sale</span>
-                                                    </div>
-                                                    <div class="favorite favorite_left"></div>
-                                                    <div class="product_info">
-                                                        <h6 class="product_name">
-                                                            <a href="single.html"
-                                                               >DYMO LabelWriter 450 Turbo Thermal Label
-                                                                Printer</a
-                                                            >
-                                                        </h6>
-                                                        <div class="product_price">$410.00</div>
-                                                    </div>
-                                                </div>
-                                                <div class="red_button add_to_cart_button">
-                                                    <a href="#">add to cart</a>
-                                                </div>
-                                            </div>
-
-                                            <!-- Product 5 -->
-
-                                            <div class="col-3">
-                                                <div class="product product_filter">
-                                                    <div class="product_image">
-                                                        <img src="images/product_5.png" alt="" />
-                                                    </div>
-                                                    <div class="favorite"></div>
-                                                    <div class="product_info">
-                                                        <h6 class="product_name">
-                                                            <a href="single.html"
-                                                               >Pryma Headphones, Rose Gold & Grey</a
-                                                            >
-                                                        </h6>
-                                                        <div class="product_price">$180.00</div>
-                                                    </div>
-                                                </div>
-                                                <div class="red_button add_to_cart_button">
-                                                    <a href="#">add to cart</a>
-                                                </div>
-                                            </div>
-
-                                            <!-- Product 6 -->
-
-                                            <div class="col-3">
-                                                <div class="product discount product_filter">
-                                                    <div class="product_image">
-                                                        <img src="images/product_6.png" alt="" />
-                                                    </div>
-                                                    <div class="favorite favorite_left"></div>
-                                                    <div
-                                                        class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"
-                                                        >
-                                                        <span>-$20</span>
-                                                    </div>
-                                                    <div class="product_info">
-                                                        <h6 class="product_name">
-                                                            <a href="#single.html"
-                                                               >Fujifilm X100T 16 MP Digital Camera (Silver)</a
-                                                            >
-                                                        </h6>
-                                                        <div class="product_price">
-                                                            $520.00
+                                                            <span>-$20</span>
+                                                        </div>-->
+                                                        <div class="product_info">
+                                                            <h6 class="product_name">
+                                                                <a href="detail?pId=${p.items.pId}"
+                                                                   >${p.items.pName}</a
+                                                                >
+                                                            </h6>
+                                                            <div class="product_price">${p.items.pPrice}</div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="red_button add_to_cart_button">
-                                                    <a href="#">add to cart</a>
-                                                </div>
-                                            </div>
-
-                                            <!-- Product 7 -->
-
-                                            <div class="col-3">
-                                                <div class="product product_filter">
-                                                    <div class="product_image">
-                                                        <img src="images/product_7.png" alt="" />
-                                                    </div>
-                                                    <div class="favorite"></div>
-                                                    <div class="product_info">
-                                                        <h6 class="product_name">
-                                                            <a href="single.html"
-                                                               >Samsung CF591 Series Curved 27-Inch FHD
-                                                                Monitor</a
-                                                            >
-                                                        </h6>
-                                                        <div class="product_price">$610.00</div>
+                                                    <div class="red_button add_to_cart_button">
+                                                        <a href="#">add to cart</a>
                                                     </div>
                                                 </div>
-                                                <div class="red_button add_to_cart_button">
-                                                    <a href="#">add to cart</a>
-                                                </div>
-                                            </div>
+                                        </c:forEach>    
+                                        <!-- Product 2 -->
 
-                                            <!-- Product 8 -->
-
-                                            <div class="col-3">
-                                                <div class="product product_filter">
-                                                    <div class="product_image">
-                                                        <img src="images/product_8.png" alt="" />
-                                                    </div>
-                                                    <div class="favorite"></div>
-                                                    <div class="product_info">
-                                                        <h6 class="product_name">
-                                                            <a href="single.html"
-                                                               >Blue Yeti USB Microphone Blackout Edition</a
-                                                            >
-                                                        </h6>
-                                                        <div class="product_price">$120.00</div>
-                                                    </div>
-                                                </div>
-                                                <div class="red_button add_to_cart_button">
-                                                    <a href="#">add to cart</a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <!--                                            <div class="col-3">
+                                                                                        <div class="product product_filter">
+                                                                                            <div class="product_image">
+                                                                                                <img src="images/product_2.png" alt="" />
+                                                                                            </div>
+                                                                                            <div class="favorite"></div>
+                                                                                            <div
+                                                                                                class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"
+                                                                                                >
+                                                                                                <span>new</span>
+                                                                                            </div>
+                                                                                            <div class="product_info">
+                                                                                                <h6 class="product_name">
+                                                                                                    <a href="single.html"
+                                                                                                       >Samsung CF591 Series Curved 27-Inch FHD
+                                                                                                        Monitor</a
+                                                                                                    >
+                                                                                                </h6>
+                                                                                                <div class="product_price">$610.00</div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="red_button add_to_cart_button">
+                                                                                            <a href="#">add to cart</a>
+                                                                                        </div>
+                                                                                    </div>
+                                        
+                                                                                     Product 3 
+                                        
+                                                                                    <div class="col-3">
+                                                                                        <div class="product product_filter">
+                                                                                            <div class="product_image">
+                                                                                                <img src="images/product_3.png" alt="" />
+                                                                                            </div>
+                                                                                            <div class="favorite"></div>
+                                                                                            <div class="product_info">
+                                                                                                <h6 class="product_name">
+                                                                                                    <a href="single.html"
+                                                                                                       >Blue Yeti USB Microphone Blackout Edition</a
+                                                                                                    >
+                                                                                                </h6>
+                                                                                                <div class="product_price">$120.00</div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="red_button add_to_cart_button">
+                                                                                            <a href="#">add to cart</a>
+                                                                                        </div>
+                                                                                    </div>
+                                        
+                                                                                     Product 4 
+                                        
+                                                                                    <div class="col-3">
+                                                                                        <div class="product product_filter">
+                                                                                            <div class="product_image">
+                                                                                                <img src="images/product_4.png" alt="" />
+                                                                                            </div>
+                                                                                            <div
+                                                                                                class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"
+                                                                                                >
+                                                                                                <span>sale</span>
+                                                                                            </div>
+                                                                                            <div class="favorite favorite_left"></div>
+                                                                                            <div class="product_info">
+                                                                                                <h6 class="product_name">
+                                                                                                    <a href="single.html"
+                                                                                                       >DYMO LabelWriter 450 Turbo Thermal Label
+                                                                                                        Printer</a
+                                                                                                    >
+                                                                                                </h6>
+                                                                                                <div class="product_price">$410.00</div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="red_button add_to_cart_button">
+                                                                                            <a href="#">add to cart</a>
+                                                                                        </div>
+                                                                                    </div>
+                                        
+                                                                                     Product 5 
+                                        
+                                                                                    <div class="col-3">
+                                                                                        <div class="product product_filter">
+                                                                                            <div class="product_image">
+                                                                                                <img src="images/product_5.png" alt="" />
+                                                                                            </div>
+                                                                                            <div class="favorite"></div>
+                                                                                            <div class="product_info">
+                                                                                                <h6 class="product_name">
+                                                                                                    <a href="single.html"
+                                                                                                       >Pryma Headphones, Rose Gold & Grey</a
+                                                                                                    >
+                                                                                                </h6>
+                                                                                                <div class="product_price">$180.00</div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="red_button add_to_cart_button">
+                                                                                            <a href="#">add to cart</a>
+                                                                                        </div>
+                                                                                    </div>
+                                        
+                                                                                     Product 6 
+                                        
+                                                                                    <div class="col-3">
+                                                                                        <div class="product discount product_filter">
+                                                                                            <div class="product_image">
+                                                                                                <img src="images/product_6.png" alt="" />
+                                                                                            </div>
+                                                                                            <div class="favorite favorite_left"></div>
+                                                                                            <div
+                                                                                                class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"
+                                                                                                >
+                                                                                                <span>-$20</span>
+                                                                                            </div>
+                                                                                            <div class="product_info">
+                                                                                                <h6 class="product_name">
+                                                                                                    <a href="#single.html"
+                                                                                                       >Fujifilm X100T 16 MP Digital Camera (Silver)</a
+                                                                                                    >
+                                                                                                </h6>
+                                                                                                <div class="product_price">
+                                                                                                    $520.00
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="red_button add_to_cart_button">
+                                                                                            <a href="#">add to cart</a>
+                                                                                        </div>
+                                                                                    </div>
+                                        
+                                                                                     Product 7 
+                                        
+                                                                                    <div class="col-3">
+                                                                                        <div class="product product_filter">
+                                                                                            <div class="product_image">
+                                                                                                <img src="images/product_7.png" alt="" />
+                                                                                            </div>
+                                                                                            <div class="favorite"></div>
+                                                                                            <div class="product_info">
+                                                                                                <h6 class="product_name">
+                                                                                                    <a href="single.html"
+                                                                                                       >Samsung CF591 Series Curved 27-Inch FHD
+                                                                                                        Monitor</a
+                                                                                                    >
+                                                                                                </h6>
+                                                                                                <div class="product_price">$610.00</div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="red_button add_to_cart_button">
+                                                                                            <a href="#">add to cart</a>
+                                                                                        </div>
+                                                                                    </div>
+                                        
+                                                                                     Product 8 
+                                        
+                                                                                    <div class="col-3">
+                                                                                        <div class="product product_filter">
+                                                                                            <div class="product_image">
+                                                                                                <img src="images/product_8.png" alt="" />
+                                                                                            </div>
+                                                                                            <div class="favorite"></div>
+                                                                                            <div class="product_info">
+                                                                                                <h6 class="product_name">
+                                                                                                    <a href="single.html"
+                                                                                                       >Blue Yeti USB Microphone Blackout Edition</a
+                                                                                                    >
+                                                                                                </h6>
+                                                                                                <div class="product_price">$120.00</div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="red_button add_to_cart_button">
+                                                                                            <a href="#">add to cart</a>
+                                                                                        </div>
+                                                                                    </div>-->
                                     </div>
                                 </div>
                             </div>
-                            <!-- account detail -->
-                            <div
-                                class="container tab-pane fade show active"
-                                id="account_details"
-                                role="tabpanel"
-                                aria-labelledby="accountdetails"
-                                >
-                                <div class="card-body pl-2 pt-2">
-                                    <h3>account details</h3>
-                                </div>
-                                <div class="card-title pt-4">
-                                    <form action="UpdateProfile" method="" enctype="multipart/form-data">
-                                        <div class="form-group">
-                                            <div class="col-12 infor-detail">
-                                                <label class="label-detail">Full Name: </label>
-                                                <input class="input-detail" type="text" name="fullname"  value="${sessionScope.user.aFullname}" />
-                                            </div>
-                                            <div class="col-12 infor-detail">
-                                                <label class="label-detail">Phone Number:</label>
-                                                <input class="input-detail" type="text" name="phone" value="${sessionScope.user.aPhone}" />
-                                            </div>
-                                            <div class="col-12 infor-detail">
-                                                <label class="label-detail">Address:</label>
-                                                <input class="input-detail" type="text" name="address" value="${sessionScope.user.aAddress}" />
-                                            </div>
-                                            <div class="col-12 infor-detail mb-4">
-                                                <label class="label-detail">Email:</label>
-                                                <input class="input-detail" type="text" name="email" value="${sessionScope.user.aEmail}" />
-                                            </div>
-                                            <div class="col-12">
-                                                <button class="btn btn-primary w-100 button-detail">
-                                                    Update
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                        </div>
+                        <!-- account detail -->
+                        <div
+                            class="container tab-pane fade show active"
+                            id="account_details"
+                            role="tabpanel"
+                            aria-labelledby="accountdetails"
+                            >
+                            <div class="card-body pl-2 pt-2">
+                                <h3>account details</h3>
                             </div>
-
-                            <!-- resetpassword -->
-                            <div
-                                class="container tab-pane fade"
-                                id="set_password"
-                                role="tabpanel"
-                                aria-labelledby="setpassword"
-                                >
-                                <div class="card-body pl-2 pt-2">
-                                    <h3>Reset Password</h3>
-                                </div>
-                                <div class="card-title pt-4">
-                                    <form action="ResetPass" method="">
-                                        <div class="form-group">
-                                            <!--<p style=" color: #848a96 ;padding: 10px 0; margin: 0 100px 40px 100px;  background-color: rgba(255, 102, 102, 0.5); border-radius: 10px; text-align: center">${mess}</p>-->
-                                            <c:choose>
-                                                <c:when test="${mess == null}">
-
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <p style=" color: #4c5057 ;padding: 10px 0; margin: 0 100px 40px 100px;  background-color: rgba(255, 102, 102, 0.5); border-radius: 10px; text-align: center">${mess}</p>
-
-                                                </c:otherwise>
-                                            </c:choose>    
-                                            <div class="col-12 infor-detail">
-                                                <label class="label-detail">Old Password:</label>
-                                                <input class="input-detail" type="password" name="oldpass" required />
-                                            </div>
-                                            <div class="col-12 infor-detail">
-                                                <label class="label-detail">New Password:</label><span class="txt_red" id="error_pass"></span>
-                                                <input class="input-detail" type="password" id="password" name="newpass" onblur="checkPass();"  oninput="checkRepass();"/>
-                                            </div>
-                                            <div class="col-12 infor-detail">
-                                                <label class="label-detail" >Repeat New Password:</label > <span class="txt_red" id="error_repass"></span>
-                                                <input class="input-detail" type="password" id="repass" name="renewpass" oninput="checkRepass();"/>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <button class="btn btn-primary w-100 button-detail">
-                                                    Reset
-                                                </button>
-                                            </div>
+                            <div class="card-title pt-4">
+                                <form action="UpdateProfile" method="" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <div class="col-12 infor-detail">
+                                            <label class="label-detail">Full Name: </label>
+                                            <input class="input-detail" type="text" name="fullname"  value="${sessionScope.user.aFullname}" />
                                         </div>
-                                    </form>
-                                </div>
+                                        <div class="col-12 infor-detail">
+                                            <label class="label-detail">Phone Number:</label>
+                                            <input class="input-detail" type="text" name="phone" value="${sessionScope.user.aPhone}" />
+                                        </div>
+                                        <div class="col-12 infor-detail">
+                                            <label class="label-detail">Address:</label>
+                                            <input class="input-detail" type="text" name="address" value="${sessionScope.user.aAddress}" />
+                                        </div>
+                                        <div class="col-12 infor-detail mb-4">
+                                            <label class="label-detail">Email:</label>
+                                            <input class="input-detail" type="text" name="email" value="${sessionScope.user.aEmail}" />
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn btn-primary w-100 button-detail">
+                                                Update
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- resetpassword -->
+                        <div
+                            class="container tab-pane fade"
+                            id="set_password"
+                            role="tabpanel"
+                            aria-labelledby="setpassword"
+                            >
+                            <div class="card-body pl-2 pt-2">
+                                <h3>Reset Password</h3>
+                            </div>
+                            <div class="card-title pt-4">
+                                <form action="ResetPass" method="">
+                                    <div class="form-group">
+                                        <!--<p style=" color: #848a96 ;padding: 10px 0; margin: 0 100px 40px 100px;  background-color: rgba(255, 102, 102, 0.5); border-radius: 10px; text-align: center">${mess}</p>-->
+                                        <c:choose>
+                                            <c:when test="${mess == null}">
+
+                                            </c:when>
+                                            <c:otherwise>
+                                                <p style=" color: #4c5057 ;padding: 10px 0; margin: 0 100px 40px 100px;  background-color: rgba(255, 102, 102, 0.5); border-radius: 10px; text-align: center">${mess}</p>
+
+                                            </c:otherwise>
+                                        </c:choose>    
+                                        <div class="col-12 infor-detail">
+                                            <label class="label-detail">Old Password:</label>
+                                            <input class="input-detail" type="password" name="oldpass" required />
+                                        </div>
+                                        <div class="col-12 infor-detail">
+                                            <label class="label-detail">New Password:</label><span class="txt_red" id="error_pass"></span>
+                                            <input class="input-detail" type="password" id="password" name="newpass" onblur="checkPass();"  oninput="checkRepass();"/>
+                                        </div>
+                                        <div class="col-12 infor-detail">
+                                            <label class="label-detail" >Repeat New Password:</label > <span class="txt_red" id="error_repass"></span>
+                                            <input class="input-detail" type="password" id="repass" name="renewpass" oninput="checkRepass();"/>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <button class="btn btn-primary w-100 button-detail">
+                                                Reset
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Footer -->
+        </div>
+        <!-- Footer -->
 
-            <footer class="footer" style="background-color: #f3f3f3">
-                <div class="container" style="margin-top: 50px">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div
-                                class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center"
-                                >
-                                <ul class="footer_nav">
-                                    <li><a href="#">Blog</a></li>
-                                    <li><a href="#">FAQs</a></li>
-                                    <li><a href="contact.html">Contact us</a></li>
-                                </ul>
-                            </div>
+        <footer class="footer" style="background-color: #f3f3f3">
+            <div class="container" style="margin-top: 50px">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div
+                            class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center"
+                            >
+                            <ul class="footer_nav">
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">FAQs</a></li>
+                                <li><a href="contact.html">Contact us</a></li>
+                            </ul>
                         </div>
-                        <div class="col-lg-6">
-                            <div
-                                class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center"
-                                >
-                                <ul>
-                                    <li>
-                                        <a href="#"
-                                           ><i class="fa fa-facebook" aria-hidden="true"></i
-                                            ></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                           ><i class="fa fa-twitter" aria-hidden="true"></i
-                                            ></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                           ><i class="fa fa-instagram" aria-hidden="true"></i
-                                            ></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                           ><i class="fa fa-skype" aria-hidden="true"></i
-                                            ></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                           ><i class="fa fa-pinterest" aria-hidden="true"></i
-                                            ></a>
-                                    </li>
-                                </ul>
-                            </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div
+                            class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center"
+                            >
+                            <ul>
+                                <li>
+                                    <a href="#"
+                                       ><i class="fa fa-facebook" aria-hidden="true"></i
+                                        ></a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                       ><i class="fa fa-twitter" aria-hidden="true"></i
+                                        ></a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                       ><i class="fa fa-instagram" aria-hidden="true"></i
+                                        ></a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                       ><i class="fa fa-skype" aria-hidden="true"></i
+                                        ></a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                       ><i class="fa fa-pinterest" aria-hidden="true"></i
+                                        ></a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
+    </div>
 
 
-        <script src="js/signup.js"></script>
-        <script src="js/jquery-3.2.1.min.js"></script>
-        <script src="styles/bootstrap4/popper.js"></script>
-        <script src="styles/bootstrap4/bootstrap.min.js"></script>
-        <script src="plugins/Isotope/isotope.pkgd.min.js"></script>
-        <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-        <script src="plugins/easing/easing.js"></script>
-        <script src="plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-        <script src="js/categories_custom.js"></script>
-        <script>
-                                                    function changeColor(event) {
-                                                        event.preventDefault();
-                                                        var link = event.target;
+    <script src="js/signup.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="styles/bootstrap4/popper.js"></script>
+    <script src="styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="plugins/Isotope/isotope.pkgd.min.js"></script>
+    <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="plugins/easing/easing.js"></script>
+    <script src="plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <script src="js/categories_custom.js"></script>
+    <script>
+                                                function changeColor(event) {
+                                                    event.preventDefault();
+                                                    var link = event.target;
 
-                                                        var links = document.getElementsByClassName("btn btn-link");
-                                                        for (var i = 0; i < links.length; i++) {
-                                                            links[i].classList.remove("active-link");
-                                                        }
-
-                                                        link.classList.add("active-link");
+                                                    var links = document.getElementsByClassName("btn btn-link");
+                                                    for (var i = 0; i < links.length; i++) {
+                                                        links[i].classList.remove("active-link");
                                                     }
 
-                                                    document.addEventListener("DOMContentLoaded", function () {
-                                                        var accountDetailsLink = document.getElementById("accountdetails");
-                                                        accountDetailsLink.classList.add("active-link");
-                                                    });
+                                                    link.classList.add("active-link");
+                                                }
 
-                                                    function checkRepass() {
-                                                        var pass = document.getElementById("password").value;
-                                                        var repass = document.getElementById("repass").value;
-                                                        var checkRepass = document.getElementById("error_repass");
-                                                        if (pass !== repass) {
-                                                            checkRepass.innerHTML = "( Password is not the same as repassword! )";
-                                                        } else {
-                                                            checkRepass.innerHTML = "";
-                                                        }
+                                                document.addEventListener("DOMContentLoaded", function () {
+                                                    var accountDetailsLink = document.getElementById("accountdetails");
+                                                    accountDetailsLink.classList.add("active-link");
+                                                });
+
+                                                function checkRepass() {
+                                                    var pass = document.getElementById("password").value;
+                                                    var repass = document.getElementById("repass").value;
+                                                    var checkRepass = document.getElementById("error_repass");
+                                                    if (pass !== repass) {
+                                                        checkRepass.innerHTML = "( Password is not the same as repassword! )";
+                                                    } else {
+                                                        checkRepass.innerHTML = "";
                                                     }
-        </script>
-    </body>
+                                                }
+    </script>
+</body>
 </html>
+
 

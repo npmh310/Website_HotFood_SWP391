@@ -3,8 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/FPT/Semester%205/Final_Project_SWE391/web/single.jsp</file>
-            <file>file:/D:/FPT/Semester%205/Final_Project_SWE391/web/footer.jsp</file>
+            <file>file:/L:/FPT/kif%205/SWP/Webv2/HotFood/src/java/dao/FavouriteDAO.java</file>
+            <file>file:/L:/FPT/kif%205/SWP/Webv2/HotFood/web/managerPage.jsp</file>
+            <file>file:/L:/FPT/kif%205/SWP/Webv2/HotFood/src/java/controller/managerPage.java</file>
+            <file>file:/L:/FPT/kif%205/SWP/Webv2/HotFood/web/profile.jsp</file>
+            <file>file:/L:/FPT/kif%205/SWP/Webv2/HotFood/src/java/entity/Order.java</file>
+            <file>file:/L:/FPT/kif%205/SWP/Webv2/HotFood/src/java/entity/Discount.java</file>
+            <file>file:/L:/FPT/kif%205/SWP/Webv2/HotFood/web/index.jsp</file>
+            <file>file:/L:/FPT/kif%205/SWP/Webv2/HotFood/src/java/entity/Favourite.java</file>
+            <file>file:/L:/FPT/kif%205/SWP/Webv2/HotFood/src/java/dao/OrderDAO.java</file>
+            <file>file:/L:/FPT/kif%205/SWP/Webv2/HotFood/src/java/entity/OrderDetail.java</file>
+            <file>file:/L:/FPT/kif%205/SWP/Webv2/HotFood/src/java/dao/DiscountDAO.java</file>
+            <file>file:/L:/FPT/kif%205/SWP/Webv2/HotFood/web/promotional.jsp</file>
         </group>
     </open-files>
 </project-private>

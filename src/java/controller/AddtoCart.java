@@ -41,12 +41,7 @@ public class AddtoCart extends HttpServlet {
         HttpSession session = request.getSession(false);
         String pID = request.getParameter("pid");
         CartDAO c = new CartDAO();
-//        String check = request.getParameter("checkWeb");
-//        String URL = "home";
-        
-//        if(check.equals("cate")){
-//            URL = "category";
-//        }
+     
         
         Account user = null;
         if (session != null){
@@ -66,43 +61,8 @@ public class AddtoCart extends HttpServlet {
             session.setAttribute("listCart", listItems);
         }else{
             response.sendRedirect("login");
-        }
-            
-//        String CartId = c.getCartId(user.getaId());
-//        if(CartId == null){
-//            c.setCartId(user.getaId());
-//            CartId = c.getCartId(user.getaId());
-//        }
-//        
-//        c.addToCart(CartId, pID, 1);
+        }        
         request.getRequestDispatcher("home").forward(request, response);
-        
-//        System.out.println(CartId);
-        
-//        ArrayList<CartDetail> items = c.getAllCartItems(CartId);
-//        int countItems = items.size();
-//        ArrayList<Product> listProd = new ArrayList();
-//        for (CartDetail cd : items) {
-//            Product p = cd.getItems();
-//            listProd.add(p);
-//        }
-//        
-//        
-//        System.out.println(countItems);
-        
-//        for (Product product : listProd) {
-//            if(pID.equals(product.getpId())){
-//                
-//            }
-//            
-//        }
-        
-//        c.addToCart(CartId, pID, 1);
-        
-//        request.setAttribute("countItems", countItems);
-//        response.sendRedirect("home");
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
