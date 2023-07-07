@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
@@ -8,10 +9,10 @@ import dao.AccountDAO;
 import entity.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.w3c.dom.UserDataHandler;
 
 /**
@@ -24,8 +25,10 @@ public class EditUser extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String id = request.getParameter("aid");
         AccountDAO dao = new AccountDAO();
-        Account acc = dao.getAccountById(id);
+        Account acc = dao.getAccountById(id);        
+        
         request.setAttribute("acc", acc);
+
         request.getRequestDispatcher("editAccount.jsp").forward(request, response);
     }
 

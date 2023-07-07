@@ -39,13 +39,17 @@
                 padding: 0 20px;
                 margin: 0 20px;
             }
+            .form-group{
+                padding: 0 20px;
+            }
         </style>
     </head>
     <body>
 
         <div class="row mb-4">
             <div class="col-lg-8 mx-auto text-center">
-                <h1 class="display-6">Edit Product</h1>
+                <h1 class="display-6" style="padding-top: 30px">Edit Product</h1>
+                <a href="product"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></a>
             </div>
         </div> <!-- End -->
         <div class="row">
@@ -59,7 +63,7 @@
                                     <label>ID</label>
                                     <input value="${newP.pId}" name="id" type="text" class="form-control" readonly required>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label>Name</label>
                                     <input value="${newP.pName}" name="name" type="text" class="form-control" required>
@@ -77,14 +81,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Image</label>
-                                    <input value="${newP.pImg}" name="image" type="text" class="form-control" required>
+                                    <input value="${newP.pImg}" name="image" type="file" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Category</label>
                                     <select name="category" class="form-select" aria-label="Default select example">                                      
                                         <c:forEach items="${cate}" var="o">                                           
-                                            <option value="${o.cId}">${o.cName}</option>
+                                            <option value="${o.cId}" >${o.cName}</option>                                           
                                         </c:forEach>
+                                        
                                     </select>
                                 </div>
 
